@@ -1,0 +1,2 @@
+com/NFr1e/DancingLineSampleRewind/BuildConfig.java
+ com.NFr1e.DancingLineSampleRewind.BuildConfig

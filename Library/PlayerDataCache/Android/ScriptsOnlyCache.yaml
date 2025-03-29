@@ -1,0 +1,1527 @@
+ScriptsOnlyBuild:
+  usedScripts:
+    Assembly-CSharp.dll:
+    - DancingLineFanmade.Audio.AudioManager
+    - DancingLineFanmade.Collectable.Checkpoint
+    - DancingLineFanmade.Collectable.CollectionCollector
+    - DancingLineFanmade.Collectable.Diamond
+    - DancingLineFanmade.Debugging.PlayerRotatePointRecorder
+    - DancingLineFanmade.Debugging.RotatePointsBuffer
+    - DancingLineFanmade.Gameplay.CameraFollower
+    - DancingLineFanmade.Gameplay.GameController
+    - DancingLineFanmade.Gameplay.LevelProgressManager
+    - DancingLineFanmade.Gameplay.Player
+    - DancingLineFanmade.Gameplay.ReadyStairManager
+    - DancingLineFanmade.Triggers.TriggerCallOutmapEvent
+    - DancingLineFanmade.UI.OverInterface
+    - DancingLineFanmade.UI.ReadyInterface
+    - DancingLineFanmade.UI.RespawnInterface
+    - DancingLineFanmade.UI.UserInterfaceManager
+    - ErrorDebugger
+    - Gravitons.UI.Modal.GenericModal
+    - Gravitons.UI.Modal.ModalDatabase
+    - Gravitons.UI.Modal.ModalManager
+    - HintBoxTrigger
+    - InLevelDebugLable
+    - LevelData
+    - PathBuilder
+    LeTai.TranslucentImage.Demo.dll:
+    - LeTai.Asset.TranslucentImage.Demo.SetText
+    LeTai.TranslucentImage.Editor.dll:
+    - LeTai.Asset.TranslucentImage.Editor.ScalableBlurConfigEditor
+    LeTai.TranslucentImage.dll:
+    - LeTai.Asset.TranslucentImage.ScalableBlurConfig
+    - LeTai.Asset.TranslucentImage.TranslucentImage
+    - LeTai.Asset.TranslucentImage.TranslucentImageSource
+    LeTai.TrueShadow.Demo.dll:
+    - LeTai.TrueShadow.Demo.BarGraphBar
+    - LeTai.TrueShadow.Demo.DirectionalKnob
+    - LeTai.TrueShadow.Demo.HotDogCard
+    - LeTai.TrueShadow.Demo.ToggleSwitchAnimation
+    LeTai.TrueShadow.dll:
+    - LeTai.Effects.ScalableBlurConfig
+    - LeTai.TrueShadow.InsetOnPress
+    - LeTai.TrueShadow.InteractiveShadow
+    - LeTai.TrueShadow.ProjectSettings
+    - LeTai.TrueShadow.TrueShadow
+    Sirenix.OdinInspector.Editor.dll:
+    - Sirenix.OdinInspector.Editor.GeneralDrawerConfig
+    - Sirenix.OdinInspector.Editor.ImportSettingsConfig
+    - Sirenix.OdinInspector.Editor.InspectorConfig
+    - Sirenix.OdinInspector.Editor.Modules.OdinModuleConfig
+    - Sirenix.Serialization.AOTGenerationConfig
+    Sirenix.Serialization.Config.dll:
+    - Sirenix.Serialization.GlobalSerializationConfig
+    Unity.Rider.Editor.dll:
+    - Packages.Rider.Editor.UnitTesting.CallbackData
+    UnityEditor.TestRunner.dll:
+    - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
+    - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.Dropdown
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.HorizontalLayoutGroup
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.RawImage
+    - UnityEngine.UI.RectMask2D
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
+    - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
+  serializedClasses:
+    Assembly-CSharp:
+    - DancingLineFanmade.Debugging.RotatePoints
+    - Gravitons.UI.Modal.ModalData
+    LeTai.TrueShadow:
+    - LeTai.TrueShadow.QuickPreset
+    LeTai.TrueShadow.Demo:
+    - LeTai.TrueShadow.Demo.KnobValueChangedEvent
+    UnityEngine.CoreModule:
+    - UnityEngine.Events.ArgumentCache
+    - UnityEngine.Events.PersistentCallGroup
+    - UnityEngine.Events.PersistentListenerMode
+    - UnityEngine.RectOffset
+    UnityEngine.UI:
+    - UnityEngine.UI.AnimationTriggers
+    - UnityEngine.UI.Button/ButtonClickedEvent
+    - UnityEngine.UI.ColorBlock
+    - UnityEngine.UI.Dropdown/DropdownEvent
+    - UnityEngine.UI.Dropdown/OptionData
+    - UnityEngine.UI.Dropdown/OptionDataList
+    - UnityEngine.UI.FontData
+    - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+    - UnityEngine.UI.Navigation
+    - UnityEngine.UI.ScrollRect/ScrollRectEvent
+    - UnityEngine.UI.Scrollbar/ScrollEvent
+    - UnityEngine.UI.Slider/SliderEvent
+    - UnityEngine.UI.SpriteState
+    - UnityEngine.UI.Toggle/ToggleEvent
+  methodsToPreserve:
+  - assembly: UnityEngine.UI
+    fullTypeName: UnityEngine.UI.Image
+    methodName: set_fillAmount
+  sceneClasses:
+    Assets/[Levels]/Level01/NewLevel.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 16108}
+    - Class: 114
+      Script: {instanceID: 16110}
+    - Class: 114
+      Script: {instanceID: 16112}
+    - Class: 114
+      Script: {instanceID: 16114}
+    - Class: 114
+      Script: {instanceID: 16116}
+    - Class: 114
+      Script: {instanceID: 16154}
+    - Class: 114
+      Script: {instanceID: 16162}
+    - Class: 114
+      Script: {instanceID: 16176}
+    - Class: 114
+      Script: {instanceID: 16268}
+    - Class: 114
+      Script: {instanceID: 16546}
+    - Class: 114
+      Script: {instanceID: 16862}
+    - Class: 114
+      Script: {instanceID: 16986}
+    - Class: 114
+      Script: {instanceID: 17158}
+    - Class: 114
+      Script: {instanceID: 17286}
+    - Class: 114
+      Script: {instanceID: 17358}
+    - Class: 114
+      Script: {instanceID: 17492}
+    - Class: 114
+      Script: {instanceID: 17610}
+    - Class: 114
+      Script: {instanceID: 17676}
+    - Class: 114
+      Script: {instanceID: 17946}
+    - Class: 114
+      Script: {instanceID: 18060}
+    - Class: 114
+      Script: {instanceID: 18578}
+    - Class: 114
+      Script: {instanceID: 18698}
+    - Class: 114
+      Script: {instanceID: 18802}
+    - Class: 114
+      Script: {instanceID: 19172}
+    - Class: 114
+      Script: {instanceID: 19252}
+    - Class: 114
+      Script: {instanceID: 19280}
+    - Class: 114
+      Script: {instanceID: 19298}
+    - Class: 114
+      Script: {instanceID: 19536}
+    - Class: 114
+      Script: {instanceID: 19666}
+    - Class: 114
+      Script: {instanceID: 19722}
+    - Class: 114
+      Script: {instanceID: 19728}
+    - Class: 114
+      Script: {instanceID: 19842}
+    - Class: 114
+      Script: {instanceID: 20170}
+    - Class: 114
+      Script: {instanceID: 20642}
+    - Class: 114
+      Script: {instanceID: 20852}
+    - Class: 114
+      Script: {instanceID: 20860}
+    - Class: 114
+      Script: {instanceID: 21012}
+    - Class: 114
+      Script: {instanceID: 21236}
+    - Class: 114
+      Script: {instanceID: 21244}
+    - Class: 114
+      Script: {instanceID: 21456}
+    - Class: 114
+      Script: {instanceID: 21506}
+    - Class: 114
+      Script: {instanceID: 21740}
+    - Class: 114
+      Script: {instanceID: 21806}
+    - Class: 114
+      Script: {instanceID: 21844}
+    - Class: 114
+      Script: {instanceID: 21930}
+    - Class: 114
+      Script: {instanceID: 21968}
+    - Class: 114
+      Script: {instanceID: 22082}
+    - Class: 114
+      Script: {instanceID: 22238}
+    - Class: 114
+      Script: {instanceID: 330518}
+    - Class: 114
+      Script: {instanceID: 330528}
+    - Class: 114
+      Script: {instanceID: 330530}
+    - Class: 114
+      Script: {instanceID: 481406}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 225
+      Script: {instanceID: 0}
+    - Class: 258
+      Script: {instanceID: 0}
+    - Class: 850595691
+      Script: {instanceID: 0}
+  scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: 8165edc0ea71078aadd02b6c3ce945a1
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
+      Hash: 7bcb35908a60cac26edee0ff51816ada
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 8e0c8b499f64b686c0ec50f43e94d3af
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: b46a27dc8fe542927657974694fc29aa
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Slider
+  - hash:
+      serializedVersion: 2
+      Hash: 74101b1189e7f911aef3b5ca95b2db19
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Dropdown
+  - hash:
+      serializedVersion: 2
+      Hash: c1058004017c4d95e55a1c77d955e000
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UIElements
+    className: PanelRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 087280e03878f41cc55699044ef1ce1f
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.TrueShadow
+    className: InsetOnPress
+  - hash:
+      serializedVersion: 2
+      Hash: a9d9d285d996b592f1ccf674fa017099
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 74b40a67e09e13478bb241971c27bbad
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Gameplay
+    className: GameController
+  - hash:
+      serializedVersion: 2
+      Hash: 05360c276aad7027c046aed2bdcedc5f
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: PlatformPreset
+  - hash:
+      serializedVersion: 2
+      Hash: 976dd95e085f9699cb4510eb94731006
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.TrueShadow
+    className: ShadowSorter
+  - hash:
+      serializedVersion: 2
+      Hash: 719a1390f9eb856966a1aaab72041631
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnScrollbarValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: a506b72c53f139c380ebe7f3581a434b
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: SignalAsset
+  - hash:
+      serializedVersion: 2
+      Hash: a37faf901312960233689ac4ff3dfb59
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Gameplay
+    className: ReadyStairManager
+  - hash:
+      serializedVersion: 2
+      Hash: da05abcc878171591b25804eef377360
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: LayoutElement
+  - hash:
+      serializedVersion: 2
+      Hash: 53a7b905d2d7ddf0be4791ee8750ec47
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.TrueShadow
+    className: ShadowRenderer
+  - hash:
+      serializedVersion: 2
+      Hash: d5dbba1e095217e88ae7faf82e4e2dbe
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Selectable
+  - hash:
+      serializedVersion: 2
+      Hash: 105eb66426b2719b51a5e829a4d847b6
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: 
+    className: GradientSlider
+  - hash:
+      serializedVersion: 2
+      Hash: b6919327bcca55e4e56b20b361fa8ee4
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Shadow
+  - hash:
+      serializedVersion: 2
+      Hash: 40f1d61053fd46ebc6a06083fc0eafc0
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnCollisionStayMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 5609918a60ea832f95015e31aebd9763
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnMouseExitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 1710ba0978fb925616a19fc18ed4d1dc
+    assemblyName: LeTai.TranslucentImage.Editor.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Editor
+    className: TranslucentImageSourceEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 7ea1c268b72f429e5dd3ce22cadeb4c8
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: LeTai.TrueShadow.Demo
+    className: HotDogSwipeView
+  - hash:
+      serializedVersion: 2
+      Hash: c77b394489b57d157481e0a128ffbe43
+    assemblyName: LeTai.TranslucentImage.dll
+    namespaceName: LeTai.Asset.TranslucentImage
+    className: BlurConfig
+  - hash:
+      serializedVersion: 2
+      Hash: 5fed7401e11a13e4dea8e88f29ad88c5
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: 
+    className: OpenUrl
+  - hash:
+      serializedVersion: 2
+      Hash: 0818ae309a85774bc4c7560582a3f3f0
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: LeTai.TrueShadow.Demo
+    className: HotDogCard
+  - hash:
+      serializedVersion: 2
+      Hash: ff38044e68e747ec9ebaca5ffa516f88
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: ColorSchemeManager
+  - hash:
+      serializedVersion: 2
+      Hash: 4763159aa2d72ed796c2398564a4d18d
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnTriggerEnterMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 9605a0475669ece0189f675c4d408e5f
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: b1a6417a907f6e893339b98d4bb2a720
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Debugging
+    className: RotatePointsBuffer
+  - hash:
+      serializedVersion: 2
+      Hash: 53094487dc1668e88601b408ef99eb93
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnDropMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 15f336ff9b8646256be9933e64dcfb92
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnPointerUpMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: baf218a9799098962f3ddb5d79364282
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner
+    className: PlaymodeTestsController
+  - hash:
+      serializedVersion: 2
+      Hash: 7e1ca2b5e4b4a944c49675ecc44d136e
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnJointBreakMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 2fb714ace89dad42f9c7ff2d09e5848e
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: SliderChangeOnStart
+  - hash:
+      serializedVersion: 2
+      Hash: b8c62e6fbbd49b0adf47ca1dfd4b7754
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 188a6352cff39804941123202f432a57
+    assemblyName: LeTai.TranslucentImage.Editor.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Editor
+    className: TranslucentImageEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 48087eefa3d86e892613b8cf6af2c001
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: ChangeBlurConfig
+  - hash:
+      serializedVersion: 2
+      Hash: 9ad86d534918fc3140c42196ba848f10
+    assemblyName: LeTai.TranslucentImage.dll
+    namespaceName: LeTai.Asset.TranslucentImage
+    className: TranslucentImage
+  - hash:
+      serializedVersion: 2
+      Hash: 3a74ff97f36cb7570e57460d53dcf9c2
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnBecameVisibleMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: ef2a760dc8c0bb333363120518871762
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: EventSystem
+  - hash:
+      serializedVersion: 2
+      Hash: 46f8815aaefa696d509049c348ad6805
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_Dropdown
+  - hash:
+      serializedVersion: 2
+      Hash: c3220f7afd647b11dae09800190b3898
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: AudioTrack
+  - hash:
+      serializedVersion: 2
+      Hash: a152f4bbfcc1c203222264e9469e6cd6
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: TimelineAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 201b3e41302e8bd8463c6af1573b2adb
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnCollisionEnterMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 6554088abf80322f19a20856543c0003
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 9ca3af44e6fa872173c47e9e4443c9ef
+    assemblyName: LeTai.TranslucentImage.dll
+    namespaceName: LeTai.Asset.TranslucentImage
+    className: ScalableBlurConfig
+  - hash:
+      serializedVersion: 2
+      Hash: c3632937d58e47b256c6c90c1fb55119
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: CoroutineRunner
+  - hash:
+      serializedVersion: 2
+      Hash: 84c295144a2fce36bf4afcb7fb81265f
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestRunner.Utils
+    className: TestRunCallbackListener
+  - hash:
+      serializedVersion: 2
+      Hash: df6eab954ec864d23f72bf3587a64b76
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 9e8898d1705d409ec4c988108072c8af
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_SelectionCaret
+  - hash:
+      serializedVersion: 2
+      Hash: c630aa72ccf5a3014f88546065fcfc03
+    assemblyName: LeTai.TrueShadow.Editor.dll
+    namespaceName: LeTai.TrueShadow.Editor
+    className: ProjectSettingsEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 68d5dec1c60c68c2dfc1f02723e0b735
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: InputField
+  - hash:
+      serializedVersion: 2
+      Hash: bcb9b7a93c09c207eb313c02affe0d60
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: a401d62e0a7b4e119d20fb7f6723eba8
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnButtonClickMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: ac0995427965ff4d5e37afde8449a2d7
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnInputFieldEndEditMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 8c5ab079dbc06dd660a4f3f0f25c099e
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
+    className: TestResultRendererCallback
+  - hash:
+      serializedVersion: 2
+      Hash: f49c435cb3140ac7c99ccf354dee0b66
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Debugging
+    className: PlayerRotatePointRecorder
+  - hash:
+      serializedVersion: 2
+      Hash: d724b6e49da746e4fd6dfdcd6b0798ec
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnDropdownValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 6d4b33a633fdbb6d69a667cb3d111202
+    assemblyName: LeTai.TranslucentImage.dll
+    namespaceName: LeTai.Asset.TranslucentImage
+    className: TranslucentImageSource
+  - hash:
+      serializedVersion: 2
+      Hash: 4a3351e209ecf0eff6ab268e49d7f341
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ToggleGroup
+  - hash:
+      serializedVersion: 2
+      Hash: e767c4aa5ddc7228b6ca83da9aa0fba2
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnInputFieldValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 81bb2f606fceb858467b5a01d57faa6e
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnMouseDownMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 411a04d1ee8748824e224a553948367e
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnMouseDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: f8b223f640cb8dc146d2777cc21877e2
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnScrollMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 0cbb869fef39ccdf4b43a75bcfb91c51
+    assemblyName: Sirenix.Serialization.Config.dll
+    namespaceName: Sirenix.Serialization
+    className: GlobalSerializationConfig
+  - hash:
+      serializedVersion: 2
+      Hash: 68587ea39bb503ea8d65053e93c31d06
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ContentSizeFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 1d9e07bb8536f382c86a0ef0c58f5e7f
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: VariablesAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 0531d5fbddefc8de09b7b2699d523ee8
+    assemblyName: Unity.VisualScripting.Flow.dll
+    namespaceName: Unity.VisualScripting
+    className: ScriptMachine
+  - hash:
+      serializedVersion: 2
+      Hash: 59a3597e8b443837c9d7e56154cecead
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnSelectMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 1af4a97ed9c686174fcfcee38160e03a
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: LeTai.TrueShadow.Demo
+    className: BarGraphBar
+  - hash:
+      serializedVersion: 2
+      Hash: bd4016a2045f75e945497f07c5b80503
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
+    className: PlayerQuitHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 51f10e7961758dd62a1ec2f7863be045
+    assemblyName: DOTween.dll
+    namespaceName: DG.Tweening.Core
+    className: DOTweenComponent
+  - hash:
+      serializedVersion: 2
+      Hash: bf75fa8cb4f20aa58bc51646b041fb2b
+    assemblyName: DOTween.dll
+    namespaceName: DG.Tweening.Core
+    className: DOTweenSettings
+  - hash:
+      serializedVersion: 2
+      Hash: f87a82bdc1582c5f70b70ca85233d7f2
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: BaseInput
+  - hash:
+      serializedVersion: 2
+      Hash: 65784ab5ae832e00230735e19000957b
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnControllerColliderHitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 5ff0ebd81f209de7e0ca59eaeec7ad1b
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: ControlCenter
+  - hash:
+      serializedVersion: 2
+      Hash: b309f0b8b517f50a2601fbb7a2f9f705
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TextMeshPro
+  - hash:
+      serializedVersion: 2
+      Hash: 769abea9aa79f49a2ee1a4facd0a61d5
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: AnimationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: d7bd913ee74a4cad73a7c048d9783cd3
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnCollisionExit2DMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: a3c820935136d7c525cddf23cca2deb0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Triggers
+    className: TriggerSetPlayerDirection
+  - hash:
+      serializedVersion: 2
+      Hash: 2d950dd5179e8e1c04348fbdbe3d7bf5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PathBuilder
+  - hash:
+      serializedVersion: 2
+      Hash: 5d1b5a5aafd0c5cb3dc14985dc978d55
+    assemblyName: Unity.VisualScripting.Flow.dll
+    namespaceName: Unity.VisualScripting
+    className: ScriptGraphAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 3c3e5980c88a14a86741564a7fd08aaa
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: ActivationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: d28b52a863ba5e1504776a993e061dd2
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnPointerExitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 877d657c3763f1dcac5602b3adf111e4
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: SimpleCameraController
+  - hash:
+      serializedVersion: 2
+      Hash: 2bd783b5b85429caff317fd8ece19300
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Mask
+  - hash:
+      serializedVersion: 2
+      Hash: c485ca6199471e421b4c2d7359dc3084
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: AutoMoveAndRotate
+  - hash:
+      serializedVersion: 2
+      Hash: 4595fbc2b4dbed77bfcd13df4fa8ac78
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.TrueShadow
+    className: InteractiveShadow
+  - hash:
+      serializedVersion: 2
+      Hash: 1824a9130d49df16abbf95d88546f25c
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnCollisionStay2DMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 21f4f1fec12583058b4c5843abeefdbb
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_ColorGradient
+  - hash:
+      serializedVersion: 2
+      Hash: 6a9516770b070951680a95390b9098a5
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: SignalReceiver
+  - hash:
+      serializedVersion: 2
+      Hash: 89003befdf0a1cfbd8100c7759ff3201
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: VariablesSaver
+  - hash:
+      serializedVersion: 2
+      Hash: 6fea02e0a8b3cb3b15440b3ff3fce29b
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: PhysicsRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 621258cbf131e999213abbde65c03985
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: ControlPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 03116c959005bf565efe4a31f8be265e
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: RectMask2D
+  - hash:
+      serializedVersion: 2
+      Hash: 9b20bb37fe547a38e67e865c7074ed8f
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_Settings
+  - hash:
+      serializedVersion: 2
+      Hash: cb0af9d821296cd6914b3b57ceb35dac
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnJointBreak2DMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 76b17bf564fa9f8bd6ab3d1e431f9667
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: DictionaryAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 9ed9e421d17369f1952e18cc1edadbcb
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_SubMeshUI
+  - hash:
+      serializedVersion: 2
+      Hash: 7219ebb0b4a64fd19236e423b34046f6
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_SpriteAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 73e414d9bade6fd6f045aa054ca8a856
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnCancelMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 60fd575cf8063c594a90d0db946416c9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Gameplay
+    className: CameraFollower
+  - hash:
+      serializedVersion: 2
+      Hash: 6d1ca98bad1cb30a274f79776b279843
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnPointerClickMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: c060d4760fc2c1813e07660a6a7ff924
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Gameplay
+    className: Player
+  - hash:
+      serializedVersion: 2
+      Hash: be80bcb8ca209fea842c177f57e2f70c
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: LeTai.TrueShadow.Demo
+    className: AdsrBarGraphSource
+  - hash:
+      serializedVersion: 2
+      Hash: 0bd92fab57036859786689b3e2d10b7c
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: SetText
+  - hash:
+      serializedVersion: 2
+      Hash: 33745851233d550a3a8e634fe15406bc
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: LeTai.TrueShadow.Demo
+    className: DirectionalKnob
+  - hash:
+      serializedVersion: 2
+      Hash: 665d504a05abb1b2e16de454ee360997
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: UnrestrictFramerate
+  - hash:
+      serializedVersion: 2
+      Hash: 999c449ad95117c75b6263e062d2e58e
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: ActivationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 00772c2e501491e3584a0eea65958c5a
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: SceneVariables
+  - hash:
+      serializedVersion: 2
+      Hash: 2d03b8ce630f57cc7f5f2c763d4ed1a1
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: MacroScriptableObject
+  - hash:
+      serializedVersion: 2
+      Hash: 78fa8c70bef8c6d96ce76e6d539a1987
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GridLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 3d860abc344bfbd5a594aa55314fb635
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnEndDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 0456eee0df3e76241fa0370bcc9196f7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.UI
+    className: RespawnInterface
+  - hash:
+      serializedVersion: 2
+      Hash: edab05fedf948d75fb718de4a3c11001
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: FPSCounter
+  - hash:
+      serializedVersion: 2
+      Hash: f3af0e0f637016253c40351a71eac6ba
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnBeginDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 480e2a56c81cbe122ffc7c3fe7336a07
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: AnimationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: e688ed407bbfb11c21058187316ed44e
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 47a97dc31ba6f4a39f3a88bded1a8c82
+    assemblyName: Sirenix.Utilities.dll
+    namespaceName: Sirenix.Utilities
+    className: ProjectPathFinder
+  - hash:
+      serializedVersion: 2
+      Hash: 10b44983f0a7578909bb4d68fa771902
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Toggle
+  - hash:
+      serializedVersion: 2
+      Hash: 9efc8c65b86b5c1022ed3efd7ac004a8
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: GlobalMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 2380288dfe403a7f4b2182b575687cb8
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: HorizontalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 748160414290f17c4743064e67918c43
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.UI
+    className: UserInterfaceManager
+  - hash:
+      serializedVersion: 2
+      Hash: 1322f3b46ca542e429be6f10c725efaf
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: 
+    className: SymbolsManager
+  - hash:
+      serializedVersion: 2
+      Hash: 7283d7517057dea3e1257e97fd0e6f36
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnCollisionEnter2DMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 47a97dc31ba6f4a39f3a88bded1a8c82
+    assemblyName: Sirenix.Utilities.dll
+    namespaceName: Sirenix.Utilities
+    className: ProjectPathFinder
+  - hash:
+      serializedVersion: 2
+      Hash: e78f6985cfa9077afa7bb6c3ee81529f
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_FontAsset
+  - hash:
+      serializedVersion: 2
+      Hash: a0913ddc491f13a4dcbb479e69c779b9
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: WorldSpaceSetup
+  - hash:
+      serializedVersion: 2
+      Hash: 1f4dfbd3d1b2e3a8873356e283218f4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Audio
+    className: AudioManager
+  - hash:
+      serializedVersion: 2
+      Hash: d6b5caefb5ea8bdd71e5a9f7ea9cea5f
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.TrueShadow
+    className: ShadowMaterial
+  - hash:
+      serializedVersion: 2
+      Hash: 2d957d33afa5072080a40c9c783eb96c
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnBecameInvisibleMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 5d2eca6f6cfbab49b6fa5ee0d302f2f0
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UIElements
+    className: PanelEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: e969ea1a470d66118aa5ec2f11d7939e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.UI
+    className: InterfaceBase
+  - hash:
+      serializedVersion: 2
+      Hash: ce29c624b4e215f90c5fc5df651c5363
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: GroupTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 783fe3817b9e8424ee2e2a5c265db491
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.Effects
+    className: ScalableBlurConfig
+  - hash:
+      serializedVersion: 2
+      Hash: 9e29667a89e02241a5acac926156e2f2
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnDeselectMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 0caef29fe9d654edeb2a7891c23346c5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InLevelDebugLable
+  - hash:
+      serializedVersion: 2
+      Hash: 8de12aca8b8cb30fa29dfedb5a701e0e
+    assemblyName: Unity.VisualScripting.State.dll
+    namespaceName: Unity.VisualScripting
+    className: StateGraphAsset
+  - hash:
+      serializedVersion: 2
+      Hash: f20040d0aa0102edf99342f646278ea7
+    assemblyName: LeTai.TranslucentImage.Demo.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Demo
+    className: ToggleSecondBlurLayer
+  - hash:
+      serializedVersion: 2
+      Hash: 12300a15f3b18144bff4f36c10cbb280
+    assemblyName: LeTai.TrueShadow.Editor.dll
+    namespaceName: LeTai.TrueShadow.Editor
+    className: ShadowMaterialEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 206a5c9d773ef22bc5ed2f451cd7ffbf
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: AnimatorMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 0ab78f031b53dd5d55f964f3cd1c223e
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
+      Hash: d1ec5412443bdf72a7514a022b6772f2
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: LeTai.Utils
+    className: FpsCounter
+  - hash:
+      serializedVersion: 2
+      Hash: ed034cff83e1d608e66691a37102630c
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TextMeshProUGUI
+  - hash:
+      serializedVersion: 2
+      Hash: 035e2a7c856d9ddddb7547e04b8f5fe5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HintBoxTrigger
+  - hash:
+      serializedVersion: 2
+      Hash: ab83fa9209b73d94dbec301001db7690
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnMouseUpAsButtonMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 47a97dc31ba6f4a39f3a88bded1a8c82
+    assemblyName: Sirenix.Utilities.dll
+    namespaceName: Sirenix.Utilities
+    className: ProjectPathFinder
+  - hash:
+      serializedVersion: 2
+      Hash: 9690f760294698c29b1bee7d9b7bd452
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: StandaloneInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: a273edb1f10a7eafb870721bc4bddaca
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Scrollbar
+  - hash:
+      serializedVersion: 2
+      Hash: 0ffacc03a651624ad5bb72bc787275f7
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_SubMesh
+  - hash:
+      serializedVersion: 2
+      Hash: ceb4961d39f347996fda1404ac174d05
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: MarkerTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 6691dd18200d133e8dbae24b6281d1cf
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools
+    className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: c468a5300a6bf37aaf55ffd7c8167cd3
+    assemblyName: LeTai.TranslucentImage.Editor.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Editor
+    className: MenuIntegration
+  - hash:
+      serializedVersion: 2
+      Hash: e25274cd9e63d09ce14566af29d727f3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Gameplay
+    className: LevelProgressManager
+  - hash:
+      serializedVersion: 2
+      Hash: 33351225ad07d388c6f33d76ccfe9ba6
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: f1ba3939edcf4406dbb90ccb6e292259
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: f7ef7430be7d7ee863a33c48afb8aa14
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.TrueShadow
+    className: AnimatedBiStateButton
+  - hash:
+      serializedVersion: 2
+      Hash: c775193bec472a91767f76dccfe603e7
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Outline
+  - hash:
+      serializedVersion: 2
+      Hash: 7f5d04a23d7ad272dc7905d8fa0d3ae5
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnPointerEnterMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: e350c36370f4fa05cc1484216c693ba6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Collectable
+    className: CollectionCollector
+  - hash:
+      serializedVersion: 2
+      Hash: 678e1b1d2ead89a22d454421d06258e4
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 2c3a752cb5b1c589dd22314cdcdeefc8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.UI
+    className: OverInterface
+  - hash:
+      serializedVersion: 2
+      Hash: 60848472e362199ae5eac55c8892dcbe
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 098e616fddf2c530f28257c2c39f270b
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnCollisionExitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 4d701f52aa4a943691b73fe89fa65f30
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.TrueShadow
+    className: DisableShadowCache
+  - hash:
+      serializedVersion: 2
+      Hash: 466329aa1430edd5d9cc35262ee17096
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: Physics2DRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: f9786a3dca6228a6818ec4a0134d9212
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
+    className: PlayModeRunnerCallback
+  - hash:
+      serializedVersion: 2
+      Hash: 805c62fb3df38a31dfa854c4f1d54dfa
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: PositionAsUV1
+  - hash:
+      serializedVersion: 2
+      Hash: 279b841b0658eab73bd8343351b4be6f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Triggers
+    className: TriggerCallOutmapEvent
+  - hash:
+      serializedVersion: 2
+      Hash: c05e73c4535140d8b52eabb410ae089c
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: AudioPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: fe080edb42253ff47e3e338b21fe9f9e
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnPointerDownMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 8b413381f4c90b48e4c503425380eaeb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Collectable
+    className: Checkpoint
+  - hash:
+      serializedVersion: 2
+      Hash: dc15cdcfcce97f93a72c051990a267d3
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnScrollRectValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 03537dd42b6fc73a601799c77ceb0b9c
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
+    className: RemoteTestResultSender
+  - hash:
+      serializedVersion: 2
+      Hash: 453c286dc9c9c693626ccfeab876ea44
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: EventTrigger
+  - hash:
+      serializedVersion: 2
+      Hash: 644007494bc8f11f96cb3d9910dc3bce
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnSubmitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 55ac714ecd14f17465c0e21a680e5b69
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: SignalTrack
+  - hash:
+      serializedVersion: 2
+      Hash: e5dbf2a0431517261271b3b12711217a
+    assemblyName: LeTai.TrueShadow.Editor.dll
+    namespaceName: LeTai.TrueShadow.Editor
+    className: TrueShadowEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 0cfe7b31d6e4068da858253998af4959
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LevelData
+  - hash:
+      serializedVersion: 2
+      Hash: d2a6340328c37b3245a347d6bc6dcb09
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.TrueShadow
+    className: ProjectSettings
+  - hash:
+      serializedVersion: 2
+      Hash: e14dcf7af3981900fd7ccc998d6e0e85
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnMoveMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: ca85e081acbffcfe45ba0e07b7a252df
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.UI
+    className: ReadyInterface
+  - hash:
+      serializedVersion: 2
+      Hash: 7ae734697cf227645c0016731f854598
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.Effects
+    className: BlurConfig
+  - hash:
+      serializedVersion: 2
+      Hash: 1ff76b7a82b2b0fd6d84eed67370a649
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: ControlTrack
+  - hash:
+      serializedVersion: 2
+      Hash: a1926869a1b71ceb204692733af622c6
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: ScrollRect
+  - hash:
+      serializedVersion: 2
+      Hash: 802a972fed953bf9069dce9423638a03
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: DancingLineFanmade.Collectable
+    className: Diamond
+  - hash:
+      serializedVersion: 2
+      Hash: 52ac97fc285ebdfc24df118c18bc4af2
+    assemblyName: LeTai.TrueShadow.dll
+    namespaceName: LeTai.TrueShadow
+    className: TrueShadow
+  - hash:
+      serializedVersion: 2
+      Hash: b606ab072b9050216fe9dd68f26a7660
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: LeTai.TrueShadow.Demo
+    className: BarGraph
+  - hash:
+      serializedVersion: 2
+      Hash: 7d058425dfd4d06ddec4be7a4bb72067
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnParticleCollisionMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 9a892a8a59574894e4dfcc95e537835f
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnMouseOverMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 859333885587342035ff75ae28f9d734
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: Variables
+  - hash:
+      serializedVersion: 2
+      Hash: 227479bd62346e4ec94436066e4f660a
+    assemblyName: Unity.VisualScripting.State.dll
+    namespaceName: Unity.VisualScripting
+    className: StateMachine
+  - hash:
+      serializedVersion: 2
+      Hash: af7181aec1f72f7f5d616644b1d17714
+    assemblyName: LeTai.TrueShadow.Demo.dll
+    namespaceName: LeTai.TrueShadow.Demo
+    className: ToggleSwitchAnimation
+  - hash:
+      serializedVersion: 2
+      Hash: 9141da52667d5b03d4f12036ebce4d0f
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnMouseUpMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: cd5e4b671a6f3e47fe319d5913a5513e
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: d1e051e875009611e1511de53d70c70d
+    assemblyName: LeTai.TranslucentImage.Editor.dll
+    namespaceName: LeTai.Asset.TranslucentImage.Editor
+    className: ScalableBlurConfigEditor
+  - hash:
+      serializedVersion: 2
+      Hash: af3c7bb5f1a72685c8bff2aeb7ca8d1b
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: SignalEmitter
+  - hash:
+      serializedVersion: 2
+      Hash: 5c76b6826c5a42f322ba10c4da3fc50b
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnToggleValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 2a1618af3cf6183b2385d416626c759a
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnMouseEnterMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 829a3f3825b2b9d72365ef92d8177711
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: c5495cef5472c394a7d823d1315ba01d
+    assemblyName: Unity.VisualScripting.Core.dll
+    namespaceName: Unity.VisualScripting
+    className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 5bc411e18c57ded99c31e954a651064d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Gravitons.UI.Modal
+    className: GenericModal
+  - hash:
+      serializedVersion: 2
+      Hash: ca43f50ad0f476ee0ad1f22411c8f623
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Gravitons.UI.Modal
+    className: DemoManager
+  - hash:
+      serializedVersion: 2
+      Hash: dcc4cfa3aefd7b548bfc4103ceeda69f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Gravitons.UI.Modal
+    className: ModalManager
+  - hash:
+      serializedVersion: 2
+      Hash: 46b773515a300348a91f41b2a54ebdbb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Gravitons.UI.Modal
+    className: ModalDatabase
+  - hash:
+      serializedVersion: 2
+      Hash: cbc32236b0ed7b40bd11ddc21621d049
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ErrorDebugger
+  platform: 13
+  scenePathNames:
+  - Assets/[Levels]/Level01/NewLevel.unity
+  playerPath: D:/GameEngines/UnityEngine/Builds/Android/TemplateRenewedTest alpha
+    Zero_dot_Four_test3.apk
