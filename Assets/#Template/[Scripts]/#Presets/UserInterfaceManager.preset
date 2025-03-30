@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UserInterfaceManager
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 83b275a3b85566642aefd9302f51ef64, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ReadyInstance
+    value: 
+    objectReference: {fileID: 8189467018588250928, guid: 965614c4ec2a7264ea6d1ee6512cb717, type: 3}
+  - target: {fileID: 0}
+    propertyPath: RespawnInstance
+    value: 
+    objectReference: {fileID: 3235793167593295130, guid: f51dc26408a70c74da8cb51301a680db, type: 3}
+  - target: {fileID: 0}
+    propertyPath: OverInstance
+    value: 
+    objectReference: {fileID: 7492956348063500148, guid: 56b3ceef542fcf74e92fa183c0cc77ef, type: 3}
+  m_ExcludedProperties: []

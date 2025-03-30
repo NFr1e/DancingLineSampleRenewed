@@ -18,7 +18,8 @@ namespace DancingLineFanmade.Audio
             Destroy(player, clip.length + 0.1f);//安全缓冲时间
         }
 
-        public LevelData CurLevelData;
+        public GameController Controller;
+        public LevelData CurLevelData => Controller ? Controller.CurrentLevelData : null;
 
         public static AudioManager instance;
         public float LevelMusicSyncDelay { get; set; }

@@ -55,9 +55,15 @@ namespace DancingLineFanmade.Debugging
         {
             if (!Buffer) return;
 
-            if (Buffer.SavedPoints == Points) return;
+            if (Buffer.SavedPoints == Points) 
+            {
+                Debug.Log($"{GetType().Name}:Value equals");
+                return; 
+            }
 
             Buffer.SavedPoints = Points;
+
+            Debug.Log($"{GetType().Name}:Rotate Points Saved In Buffer");
         }
     }
 }

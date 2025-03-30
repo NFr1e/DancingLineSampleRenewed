@@ -87,7 +87,7 @@ namespace Gravitons.UI.Modal
                     ScaleTweenIn = gameObject.transform.DOScale(originScale, 0.8f).SetEase(Ease.OutExpo);
                     PosTweenIn = gameObject.transform.DOLocalMove(originPos, 0.5f).SetEase(Ease.OutExpo);
 
-                    alphaTweenIn = DOTween.To(() => group.alpha, a => group.alpha = a, 1, 0.3f).SetEase(Ease.OutExpo).OnComplete(() =>
+                    alphaTweenIn = DOTween.To(() => group.alpha, a => group.alpha = a, 1, 0.3f).SetEase(Ease.OutExpo).SetUpdate(true).OnComplete(() =>
                     {
                         group.interactable = true;
                         group.alpha = 1;
@@ -108,7 +108,7 @@ namespace Gravitons.UI.Modal
 
                     ScaleTweenOut = transform.DOScale(editedScale, 0.5f).SetEase(Ease.OutExpo);
                     PosTweenOut = transform.DOLocalMove(editedPos, 0.3f).SetEase(Ease.OutSine);
-                    alphaTweenOut = DOTween.To(() => group.alpha, a => group.alpha = a, 0, 0.2f).SetEase(Ease.OutExpo).OnComplete(() => 
+                    alphaTweenOut = DOTween.To(() => group.alpha, a => group.alpha = a, 0, 0.2f).SetEase(Ease.OutExpo).SetUpdate(true).OnComplete(() => 
                     {
                         Close();
                     });

@@ -2223,7 +2223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474e07c406a50ac40aabaf075b9425a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurLevelData: {fileID: 11400000, guid: 037e83df589a2fd4cba9bd613ca7e518, type: 2}
+  Controller: {fileID: 9198332894940819241}
 --- !u!1 &9198332894228776836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,12 +2859,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9198332894899904503}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e949c0c75271a9b419ef843b9bc34c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DrawGUI: 0
+  DrawGUI: 1
 --- !u!114 &6009128452441756442
 MonoBehaviour:
   m_ObjectHideFlags: 0
