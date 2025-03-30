@@ -70,6 +70,7 @@
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\TimeLine\TimeLineManager.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\Modal\GenericModalContent.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\CameraFollower.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Player.cs" />
@@ -99,7 +100,6 @@
     <Compile Include="Assets\#Template\[Scripts]\Collection\ICollectable.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\ErrorDebugger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
-    <Compile Include="Assets\#Template\[Scripts]\TimeLine\TimeLineManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />

@@ -84,15 +84,9 @@ namespace DancingLineFanmade.Collectable
         {
             SceneView sceneView = SceneView.currentDrawingSceneView;
             if (sceneView == null) return;
-
-            // 获取Scene视图的摄像机
             Camera sceneCamera = sceneView.camera;
             if (sceneCamera == null) return;
-
-            // 计算物体与摄像机的距离
             float distance = Vector3.Distance(transform.position, sceneCamera.transform.position);
-
-            // 如果超出最大距离，则不绘制
             if (distance > 40) return;
 
             if (!CheckpointTrigger) return;

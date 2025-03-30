@@ -8,13 +8,12 @@ using DancingLineFanmade.Debugging;
 
 public class PathBuilder : OdinEditorWindow
 {
-    [MenuItem("EditUtils/PathBuilder")] // 添加到Unity菜单栏
+    [MenuItem("EditUtils/PathBuilder")]
     private static void OpenWindow()
     {
-        GetWindow<PathBuilder>().Show(); // 创建并显示窗口
+        GetWindow<PathBuilder>().Show();
     }
 
-    // 窗口内容通过Odin自动序列化并展示
     [BoxGroup("General")]
     public RotatePointsBuffer PointsBuffer;
 
@@ -47,12 +46,10 @@ public class PathBuilder : OdinEditorWindow
             Vector3 direction = end - start;
             float distance = direction.magnitude;
 
-            // 跳过距离为零的情况
             if (distance <= Mathf.Epsilon) continue;
 
             Vector3 midpoint = (start + end) / 2;
 
-            // 创建立方体并调整属性
             GameObject line = Instantiate(PathCubeInstance, _pathContainer);
             line.transform.position = midpoint;
             line.transform.rotation = Quaternion.LookRotation(direction);
@@ -74,12 +71,10 @@ public class PathBuilder : OdinEditorWindow
             Vector3 direction = end - start;
             float distance = direction.magnitude;
 
-            // 跳过距离为零的情况
             if (distance <= Mathf.Epsilon) continue;
 
             Vector3 midpoint = (start + end) / 2;
 
-            // 创建立方体并调整属性
             GameObject line = Instantiate(HintLineInstance, _hintLineContainer);
             line.transform.position = midpoint;
             line.transform.rotation = Quaternion.LookRotation(direction);
