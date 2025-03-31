@@ -8,5 +8,5 @@ A unity project aiming to make a template as the game DancingLine.
   Project created in 2025/3
 ## ChangeLogs
 ### 2025/3/30
- 1.Player新增AutoPlay功能\n
+ 1.Player新增AutoPlay功能
  2.Player,CameraController,HintBoxTrigger内增加绘制Gizmos功能
