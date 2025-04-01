@@ -171,10 +171,10 @@ namespace DancingLineFanmade.Gameplay
 
         void Update() => _stateMachine.Update();
 
-        private void ChangeToStarted() { started = true; }
-        private void ChangeToUnstarted() { started = false; }
-        private void ChangeToDisablingState() { _stateMachine.ChangeState(new DisablingState(_stateMachine)); }
-        private void ChangeToDisabledState() { _stateMachine.ChangeState(new DisabledState(_stateMachine)); }
+        private void ChangeToStarted() => started = true;
+        private void ChangeToUnstarted() => started = false;
+        private void ChangeToDisablingState() => _stateMachine.ChangeState(new DisablingState(_stateMachine)); 
+        private void ChangeToDisabledState() => _stateMachine.ChangeState(new DisabledState(_stateMachine)); 
         private void InitReferance()
         {
             originValue = Stair.position.y;

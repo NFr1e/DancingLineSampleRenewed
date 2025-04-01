@@ -212,19 +212,14 @@ namespace DancingLineFanmade.Gameplay
             CollectableRemainParent = new GameObject("CollectableRemains").transform;
         }
         /// <summary>
-        /// 强制切换当前游戏模式为ReadyState
+        /// 切换当前游戏模式为ReadyState
         /// </summary>
-        private void ChangeToReadyState()
-        {
-            _stateMachine.ChangeState(new ReadyState(_stateMachine));
-        }
+        private void ChangeToReadyState() => _stateMachine.ChangeState(new ReadyState(_stateMachine));
+        
         /// <summary>
         /// 切换当前游戏模式为OnStairState
         /// </summary>
-        private void ChangeToOnStairState()
-        {
-            _stateMachine.ChangeState(new OnStairState(_stateMachine));
-        }
+        private void ChangeToOnStairState() => _stateMachine.ChangeState(new OnStairState(_stateMachine));
 
         #region StateMachine
         public class EnterLevelState : IState

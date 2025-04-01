@@ -224,6 +224,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9198332894544435567, guid: 4abed095fc5064c47a7ad73de39312f5, type: 3}
+      propertyPath: AutoPlay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9198332894940819240, guid: 4abed095fc5064c47a7ad73de39312f5, type: 3}
       propertyPath: m_Name
       value: GameController
