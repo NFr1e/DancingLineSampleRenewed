@@ -19,6 +19,9 @@ namespace DancingLineFanmade.Collectable
         private MeshRenderer _renderer;
         private Tween iconFadeTween;
         private GameObject particle;
+
+        public static event System.Action OnCheckpointCollected;
+        public static void TriggerCollectCheckpoint() => OnCheckpointCollected?.Invoke();
         private void Awake()
         {
             _collider = GetComponent<Collider>();
@@ -44,6 +47,8 @@ namespace DancingLineFanmade.Collectable
             _renderer.enabled = false;
 
             ParticleRun();
+            
+            TriggerCollectCheckpoint();
         }
         public void ParticleRun()
         {

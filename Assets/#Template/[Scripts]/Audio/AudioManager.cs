@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using DancingLineFanmade.Gameplay;
 using DancingLineFanmade.Collectable;
 
@@ -19,6 +20,10 @@ namespace DancingLineFanmade.Audio
         }
 
         public GameController Controller;
+
+        [BoxGroup("Sounds")]
+        public AudioClip DrownSound,
+                         HitSound;
         public LevelData CurLevelData => Controller ? Controller.CurrentLevelData : null;
 
         public static AudioManager instance;
@@ -42,14 +47,19 @@ namespace DancingLineFanmade.Audio
         {
             instance = this;
 
-            if(CurLevelData)_baseSoundtrackStartTime = CurLevelData.SoundtrackStartTime;
+            if (CurLevelData) _baseSoundtrackStartTime = CurLevelData.SoundtrackStartTime;
 
             GameEvents.OnEnterLevel += CreateMusicPlayer;
             GameEvents.OnStartPlay += PlayLevelSoundtrack;
             GameEvents.OnStartPlay += ResetSoundTrackVolume;
             GameEvents.OnGamePaused += RecordLevelSoundtrackTime;
             GameEvents.OnGamePaused += PauseLevelSoundtrack;
+
+            PlayerEvents.OnPlayerHit += PlayPlayerHitSound;
+            PlayerEvents.OnPlayerDrowned += PlayPlayerDrownSound;
+
             CollectorEvents.OnCollectCheckpoint += RecordLevelSoundtrackTime;
+
             GameEvents.OnGameOver += FadeoutLevelSoundtrack;
             GameEvents.OnRespawnDone += SetLevelSoundtrackTime;
 
@@ -66,7 +76,12 @@ namespace DancingLineFanmade.Audio
             GameEvents.OnStartPlay -= ResetSoundTrackVolume;
             GameEvents.OnGamePaused -= RecordLevelSoundtrackTime;
             GameEvents.OnGamePaused -= PauseLevelSoundtrack;
+
+            PlayerEvents.OnPlayerHit -= PlayPlayerHitSound;
+            PlayerEvents.OnPlayerDrowned -= PlayPlayerDrownSound;
+
             CollectorEvents.OnCollectCheckpoint -= RecordLevelSoundtrackTime;
+
             GameEvents.OnGameOver -= FadeoutLevelSoundtrack;
             GameEvents.OnRespawnDone -= SetLevelSoundtrackTime;
         }
@@ -80,7 +95,7 @@ namespace DancingLineFanmade.Audio
             }
             _levelSoundtrackPlayer = new GameObject("LevelMusicPlayer").AddComponent<AudioSource>();
             _levelSoundtrackPlayer.playOnAwake = false;
-            if(CurLevelData) _levelSoundtrackPlayer.clip = CurLevelData.LevelSoundtrack;
+            if (CurLevelData) _levelSoundtrackPlayer.clip = CurLevelData.LevelSoundtrack;
             _levelSoundtrackPlayer.time = _baseSoundtrackStartTime;
             _originalVolume = _levelSoundtrackPlayer.volume;
         }
@@ -124,6 +139,17 @@ namespace DancingLineFanmade.Audio
                 _audioFadeoutTween = null;
             }
             _levelSoundtrackPlayer.volume = _originalVolume;
+        }
+
+        private void PlayPlayerDrownSound()
+        {
+            if (DrownSound)
+                PlayAudioClip(DrownSound);
+        }
+        private void PlayPlayerHitSound()
+        {
+            if(HitSound)
+                PlayAudioClip(HitSound); 
         }
     }
 }

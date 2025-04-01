@@ -57,7 +57,7 @@ namespace DancingLineFanmade.UI
         {
             _canvasGroup.DOFade(1, 0.8f).SetUpdate(true);
         }
-        private void AnimateExit()
+        protected void AnimateExit()
         {
             _canvasGroup.blocksRaycasts = false;
             _canvasGroup.DOFade(0, 0.4f).SetUpdate(true).OnComplete(() => { Destroy(gameObject); });

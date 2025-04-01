@@ -1965,7 +1965,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 25
   m_TargetDisplay: 0
 --- !u!114 &5040419661629392570
 MonoBehaviour:
@@ -2224,6 +2224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 9198332894940819241}
+  DrownSound: {fileID: 8300000, guid: a8647e3d6dd1b064786ad2bfee8138c0, type: 3}
+  HitSound: {fileID: 8300000, guid: bb5e46f36f2aebf4a9564d43d975b1c1, type: 3}
 --- !u!1 &9198332894228776836
 GameObject:
   m_ObjectHideFlags: 0

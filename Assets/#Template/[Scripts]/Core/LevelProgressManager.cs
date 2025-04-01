@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DancingLineFanmade.Collectable;
 using DancingLineFanmade.Audio;
+using DancingLineFanmade.Triggers;
 
 namespace DancingLineFanmade.Gameplay
 {
@@ -18,6 +19,7 @@ namespace DancingLineFanmade.Gameplay
 
         private LevelData _levelData;
         private float _levelLength;
+        private bool _isPassed = false;
 
         private List<ICollectable> _collectedDiamonds = new();
         private List<ICollectable> _collectedCheckpoints = new();
@@ -42,14 +44,15 @@ namespace DancingLineFanmade.Gameplay
         {
             currentProgress = new LevelProgress 
             {
-                Percentage = (int)(CurrentAudioManager.CurrentLevelTime * 100 / _levelLength),
+                Percentage = _isPassed 
+                             ? 100 
+                             : (int)(CurrentAudioManager.CurrentLevelTime * 100 / _levelLength),
                 DiamondCount = _collectedDiamonds.Count,
                 CheckpointCount = _collectedCheckpoints.Count
             };
 
             TriggerProgressUpdated();
         }
-
         public void RecordCollectable(ICollectable c)
         {
             switch(c.GetType().Name)
@@ -59,13 +62,12 @@ namespace DancingLineFanmade.Gameplay
                         _collectedDiamonds.Add(c);
                     break;
                 case "Checkpoint":
-                    //_checkpointed = true;
                     if (!_collectedCheckpoints.Contains(c))
                         _collectedCheckpoints.Add(c);
                     break;
             }
         }
-
+        private void GamePassed() => _isPassed = true;
         private void Awake()
         {
             instance = this;
@@ -78,10 +80,12 @@ namespace DancingLineFanmade.Gameplay
         private void OnEnable()
         {
             GameEvents.OnGameOver += UpdateCurrentProgress;
+            PyramidTrigger.OnEnterPyramidTrigger += GamePassed;
         }
         private void OnDestroy()
         {
             GameEvents.OnGameOver -= UpdateCurrentProgress;
+            PyramidTrigger.OnEnterPyramidTrigger -= GamePassed;
         }
     }
 }

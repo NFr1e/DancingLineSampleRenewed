@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DancingLineFanmade.Gameplay;
+using DancingLineFanmade.Collectable;
+using DancingLineFanmade.Triggers;
 
 namespace DancingLineFanmade.UI
 {
@@ -69,12 +71,16 @@ namespace DancingLineFanmade.UI
         }
         #endregion
 
-        public InterfaceBase ReadyInstance, RespawnInstance, OverInstance;
+        public InterfaceBase ReadyInstance, 
+                             RespawnInstance, 
+                             OverInstance;
 
         private InterfaceBase curInterface;
         private GameObject _eventSystem;
-        private bool _checkpointed = false;
-        private bool _confirmdDisRespawn = false;
+
+        private bool _checkpointed = false, 
+                     _gamePassed = false,
+                     _confirmdDisRespawn = false;
 
         private void OnEnable()
         {
@@ -82,6 +88,11 @@ namespace DancingLineFanmade.UI
             GameEvents.OnEnterLevel += LoadReadyInterface;
             GameEvents.OnGamePaused += LoadReadyInterface;
             GameEvents.OnGameOver += LoadOverInterface;
+
+            Checkpoint.OnCheckpointCollected += SetCheckpointed;
+
+            PyramidTrigger.OnEnterPyramidTrigger += SetGamePassed;
+
             UserInterfaceEvents.OnRespawnInterfaceExit += DisRespawnSetTrue;
             UserInterfaceEvents.OnRespawnInterfaceExit += LoadOverInterface;
         }
@@ -91,11 +102,17 @@ namespace DancingLineFanmade.UI
             GameEvents.OnEnterLevel -= LoadReadyInterface;
             GameEvents.OnGamePaused -= LoadReadyInterface;
             GameEvents.OnGameOver -= LoadOverInterface;
+
+            Checkpoint.OnCheckpointCollected -= SetCheckpointed;
+
+            PyramidTrigger.OnEnterPyramidTrigger -= SetGamePassed;
+
             UserInterfaceEvents.OnRespawnInterfaceExit -= DisRespawnSetTrue;
             UserInterfaceEvents.OnRespawnInterfaceExit -= LoadOverInterface;
         }
-        void DisRespawnSetTrue() { _confirmdDisRespawn = true; }
-        void DisRespawnSetFalse() { _confirmdDisRespawn = false; }
+        private void SetCheckpointed() => _checkpointed = true;
+        private void SetGamePassed() => _gamePassed = true;
+        private void DisRespawnSetTrue() => _confirmdDisRespawn = true; 
         private void Init()
         {
             if (FindObjectOfType<EventSystem>()) _eventSystem = FindObjectOfType<EventSystem>().gameObject;
@@ -125,7 +142,7 @@ namespace DancingLineFanmade.UI
         }
         private void LoadOverInterface()
         {
-            if(_checkpointed && !_confirmdDisRespawn) 
+            if(_checkpointed && !_confirmdDisRespawn && !_gamePassed) 
             {
                 LoadRespawnInterface();
                 return;

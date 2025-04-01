@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using DancingLineFanmade.Audio;
 using DancingLineFanmade.UI;
+using DancingLineFanmade.Triggers;
 
 public interface IState
 {
@@ -181,9 +182,9 @@ namespace DancingLineFanmade.Gameplay
             }
         }
         /// <summary>
-        /// 游戏失败时调用
+        /// 游戏结束时调用
         /// </summary>
-        public void GameFailed()
+        public void GameOver()
         {
             StateMachine stateMachine = new StateMachine();
             stateMachine.ChangeState(new OverState(stateMachine));
@@ -222,6 +223,9 @@ namespace DancingLineFanmade.Gameplay
         private void ChangeToOnStairState() => _stateMachine.ChangeState(new OnStairState(_stateMachine));
 
         #region StateMachine
+        /// <summary>
+        /// 进入关卡状态
+        /// </summary>
         public class EnterLevelState : IState
         {
             private StateMachine stateMachine;
@@ -244,6 +248,9 @@ namespace DancingLineFanmade.Gameplay
                 Debug.Log($"{GetType().Name} Exit");
             }
         }
+        /// <summary>
+        /// 在准备台阶上的状态
+        /// </summary>
         public class OnStairState : IState
         {
             private StateMachine stateMachine;
@@ -271,6 +278,9 @@ namespace DancingLineFanmade.Gameplay
                 Debug.Log($"{GetType().Name} Exit");
             }
         }
+        /// <summary>
+        /// 预备状态
+        /// </summary>
         public class ReadyState : IState
         {
             private StateMachine stateMachine;
@@ -302,6 +312,9 @@ namespace DancingLineFanmade.Gameplay
                 Debug.Log($"{GetType().Name} Exit");
             }
         }
+        /// <summary>
+        /// 游玩中状态
+        /// </summary>
         public class PlayingState : IState
         {
             private StateMachine stateMachine;
@@ -323,7 +336,7 @@ namespace DancingLineFanmade.Gameplay
             public void Update()
             {
                 HandleRestartkeyUpdate();
-                HandlePausekeyUpdate(stateMachine);
+                if(curGameState == GameState.Playing) HandlePausekeyUpdate(stateMachine);
             }
 
             public void Exit()
@@ -331,6 +344,9 @@ namespace DancingLineFanmade.Gameplay
                 Debug.Log($"{GetType().Name} Exit");
             }
         }
+        /// <summary>
+        /// 游玩暂停状态
+        /// </summary>
         public class PausedState : IState
         {
             private StateMachine stateMachine;
@@ -379,6 +395,9 @@ namespace DancingLineFanmade.Gameplay
                 Debug.Log($"{GetType().Name} Exit");
             }
         }
+        /// <summary>
+        /// 复活状态
+        /// </summary>
         public class RespawnState : IState
         {
             private StateMachine stateMachine;
@@ -406,6 +425,9 @@ namespace DancingLineFanmade.Gameplay
                 Debug.Log($"{GetType().Name} Exit");
             }
         }
+        /// <summary>
+        /// 游戏结束状态
+        /// </summary>
         public class OverState : IState
         {
             private StateMachine stateMachine;
@@ -432,6 +454,9 @@ namespace DancingLineFanmade.Gameplay
                 Debug.Log($"{GetType().Name} Exit");
             }
         }
+        /// <summary>
+        /// 退出游戏
+        /// </summary>
         public class ExitLevelState : IState
         {
             private StateMachine stateMachine;
@@ -465,7 +490,6 @@ namespace DancingLineFanmade.Gameplay
         {
             instance = this;
 
-
             Screen.SetResolution(Screen.width, Screen.height, true, 120);
             Application.targetFrameRate = int.MaxValue;
 
@@ -473,8 +497,6 @@ namespace DancingLineFanmade.Gameplay
             //Application.targetFrameRate = -1;
 
             if (_stateMachine == null) _stateMachine = new StateMachine();
-
-            
 
             CreatePlayerRemainParent();
             CreateCollectableRemainParent();
@@ -488,9 +510,10 @@ namespace DancingLineFanmade.Gameplay
             StairEvents.OnEndLaunch += ChangeToReadyState;
             StairEvents.OnStartDisable += ChangeToOnStairState;
             ReadyInterface.OnPauseAlterRestart += ChangeToReadyState;
-            PlayerEvents.OnPlayerHit += GameFailed;
-            PlayerEvents.OnPlayerDrowned += GameFailed;
-            PlayerEvents.OnPlayerFall += GameFailed;
+            PlayerEvents.OnPlayerHit += GameOver;
+            PlayerEvents.OnPlayerDrowned += GameOver;
+            PlayerEvents.OnPlayerFall += GameOver;
+            PyramidTrigger.OnEnterPyramidTrigger += GameOver;
         }
         private void OnDestroy()
         {
@@ -500,18 +523,13 @@ namespace DancingLineFanmade.Gameplay
             StairEvents.OnEndLaunch -= ChangeToReadyState;
             StairEvents.OnStartDisable -= ChangeToOnStairState;
             ReadyInterface.OnPauseAlterRestart -= ChangeToReadyState;
-            PlayerEvents.OnPlayerHit -= GameFailed;
-            PlayerEvents.OnPlayerDrowned -= GameFailed;
-            PlayerEvents.OnPlayerFall -= GameFailed;
+            PlayerEvents.OnPlayerHit -= GameOver;
+            PlayerEvents.OnPlayerDrowned -= GameOver;
+            PlayerEvents.OnPlayerFall -= GameOver;
+            PyramidTrigger.OnEnterPyramidTrigger -= GameOver;
         }
 
         void Update() => _stateMachine.Update();
-
-        /*private void OnApplicationPause(bool pause)
-        {
-            GameEvents.TriggerPauseEvent();
-        }*/
-
 #endregion
     }
 }

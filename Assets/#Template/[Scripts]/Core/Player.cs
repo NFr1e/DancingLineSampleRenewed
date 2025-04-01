@@ -123,7 +123,9 @@ namespace DancingLineFanmade.Gameplay
         {
             _rigid.useGravity = false;
             _inputCooldown = true;
-            
+
+            gameObject.tag = "Player";
+
             Debug.Log($"{GetType().Name}InitDone");
 
             if (!AutoPlay) return;

@@ -22,7 +22,20 @@ namespace DancingLineFanmade.UI
             base.EnterInterface();
 
             _levelData = GameController.instance.CurrentLevelData;
+
+            RespawnButton.onClick.AddListener(() =>
+            {
+                //TODO -> Respawn
+                base.AnimateExit();
+            });
+
             UserInterfaceEvents.TriggerRespawnEnterEvent();
+        }
+        protected override void UpdateInterface()
+        {
+            base.UpdateInterface();
+
+            HandleInfoDisplay();
         }
         public override void ExitInterface()
         {
@@ -33,12 +46,6 @@ namespace DancingLineFanmade.UI
         protected override void OnEnable()
         {
             base.OnEnable();
-
-            LevelProgressManager.OnProgressUpdated += HandleInfoDisplay;
-        }
-        private void OnDisable()
-        {
-            LevelProgressManager.OnProgressUpdated -= HandleInfoDisplay;
         }
         private void HandleInfoDisplay()
         {
