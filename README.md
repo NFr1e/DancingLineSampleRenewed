@@ -11,9 +11,9 @@ A unity project aiming to make a template as the game DancingLine.
   <h1>ChangeLogs</h1>
   <h2>2025/4/2</h2>
   1.新增UnityEventTrigger<br>
-  2.新增Pyramid
-  3.修复了Respawn界面调用基类ExitInterface出现空引用的问题
-  4.新增Drowned死亡模式
+  2.新增Pyramid<br>
+  3.修复了Respawn界面调用基类ExitInterface出现空引用的问题<br>
+  4.新增Drowned死亡模式<br>
   <h2>2025/4/1</h2>
   1.增加拾取检查点后死亡会先调用Respawn界面的逻辑<br>
   2.修复Respawn界面不能正确显示游玩进度的bug<br>
