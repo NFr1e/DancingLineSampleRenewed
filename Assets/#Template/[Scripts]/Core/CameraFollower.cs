@@ -94,6 +94,8 @@ namespace DancingLineFanmade.Gameplay
         private void EnableFollow() => follow = true;
         private void DisableFollow() => follow = false;
 
+        public void SetFollowState(bool foll) => follow = foll;
+
         public void Trigger(Vector3 n_offset, Vector3 n_rotation, Vector3 n_scale, float n_fov, float duration,
             Ease ease, RotateMode mode, UnityEvent callback, bool use, AnimationCurve curve)
         {

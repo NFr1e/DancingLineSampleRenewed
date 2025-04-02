@@ -15,6 +15,7 @@ namespace DancingLineFanmade.UI
         public Text PercentageText;
         public Text DiamondText;
 
+        private bool _isRespawn = false;
         private LevelData _levelData;
         private LevelProgressManager.LevelProgress _progress;
         protected override void EnterInterface()
@@ -25,8 +26,8 @@ namespace DancingLineFanmade.UI
 
             RespawnButton.onClick.AddListener(() =>
             {
-                //TODO -> Respawn
-                base.AnimateExit();
+                _isRespawn = true;
+                ExitInterface();
             });
 
             UserInterfaceEvents.TriggerRespawnEnterEvent();
@@ -41,7 +42,8 @@ namespace DancingLineFanmade.UI
         {
             base.ExitInterface();
 
-            UserInterfaceEvents.TriggerRespawnExitEvent();
+            if(!_isRespawn)
+                UserInterfaceEvents.TriggerRespawnExitEvent();
         }
         protected override void OnEnable()
         {

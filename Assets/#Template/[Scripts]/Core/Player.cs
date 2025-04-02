@@ -97,7 +97,11 @@ namespace DancingLineFanmade.Gameplay
         private void OnEnable()
         {
             StairEvents.OnEndLaunch += SetAsStartDirection;
+
             TriggerCallOutmapEvent.OnEnterOutmapTrigger += PlayerFall;
+
+            TriggerCallDrownEvent.OnEnterDrownTrigger += PlayerDrown;
+
             GameEvents.OnEnterLevel += PlayerInit;
             GameEvents.OnStartPlay += StartPlayer;
             GameEvents.OnGamePaused += PlayerInit;
@@ -105,7 +109,11 @@ namespace DancingLineFanmade.Gameplay
         private void OnDisable()
         {
             StairEvents.OnEndLaunch -= SetAsStartDirection;
+
             TriggerCallOutmapEvent.OnEnterOutmapTrigger -= PlayerFall;
+
+            TriggerCallDrownEvent.OnEnterDrownTrigger -= PlayerDrown;
+
             GameEvents.OnEnterLevel -= PlayerInit;
             GameEvents.OnStartPlay -= StartPlayer;
             GameEvents.OnGamePaused -= PlayerInit;
@@ -220,6 +228,11 @@ namespace DancingLineFanmade.Gameplay
             _overMode = OverMode.Fall;
             PlayerDie();
         }
+        private void PlayerDrown()
+        {
+            _overMode = OverMode.Drowned;
+            PlayerDie();
+        }
         private void CheckSpecialLayers(LayerMask layer, OverMode mode)
         {
             if (Physics.Raycast(transform.position, Vector3.down,
@@ -316,14 +329,9 @@ namespace DancingLineFanmade.Gameplay
 
             Debug.Log($"{GetType().Name}: PlayerDie(),OverMode:{_overMode}");
         }
-        public void SetControllable(bool ctrllable)
-        {
-            _controllable = ctrllable;
-        }
-        public void SetSpawnTailAbility(bool ability)
-        {
-            _spawnTail = ability;
-        }
+        public void SetControllable(bool ctrllable) => _controllable = ctrllable;
+        public void SetSpawnTailAbility(bool ability) => _spawnTail = ability;
+
         public void SetAsStartDirection()
         {
             transform.eulerAngles = startDirection;

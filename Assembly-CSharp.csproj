@@ -58,6 +58,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\#Template\[Scripts]\Collection\Pyramid.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\GameController.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\ReadyStairManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\RotatePointsBuffer.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Resources\UIModal\Scripts\Modal\GenericModalContent.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\CameraFollower.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Player.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Trigger\PyramidTrigger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\UI\RespawnInterface.cs" />
     <Compile Include="Assets\#Template\[Scripts]\UI\UserInterfaceManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Audio\AudioManager.cs" />
@@ -100,8 +102,9 @@
     <Compile Include="Assets\#Template\[Scripts]\Collection\ICollectable.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\ErrorDebugger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
-    <Compile Include="Assets\#Template\[Scripts]\Trigger\PyramidTrigger.cs" />
-    <Compile Include="Assets\#Template\[Scripts]\Collection\Pyramid.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Trigger\UnityEventTrigger.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerCallDrownEvent.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Core\RespawnManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />

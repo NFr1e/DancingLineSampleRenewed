@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeTai.TrueShadow", "LeTai.TrueShadow.csproj", "{182841C3-8677-666F-57F2-9817B5443598}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{3C9AEF65-0BEB-168B-3106-324000DBB916}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeTai.TrueShadow", "LeTai.TrueShadow.csproj", "{182841C3-8677-666F-57F2-9817B5443598}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeTai.TranslucentImage.Demo", "LeTai.TranslucentImage.Demo.csproj", "{5E727C08-C087-C3A7-0DE6-457345610823}"
 EndProject
@@ -25,14 +25,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{182841C3-8677-666F-57F2-9817B5443598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{182841C3-8677-666F-57F2-9817B5443598}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{182841C3-8677-666F-57F2-9817B5443598}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{182841C3-8677-666F-57F2-9817B5443598}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3C9AEF65-0BEB-168B-3106-324000DBB916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3C9AEF65-0BEB-168B-3106-324000DBB916}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C9AEF65-0BEB-168B-3106-324000DBB916}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C9AEF65-0BEB-168B-3106-324000DBB916}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182841C3-8677-666F-57F2-9817B5443598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182841C3-8677-666F-57F2-9817B5443598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182841C3-8677-666F-57F2-9817B5443598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182841C3-8677-666F-57F2-9817B5443598}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E727C08-C087-C3A7-0DE6-457345610823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E727C08-C087-C3A7-0DE6-457345610823}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E727C08-C087-C3A7-0DE6-457345610823}.Release|Any CPU.ActiveCfg = Release|Any CPU
