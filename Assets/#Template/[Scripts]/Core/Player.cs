@@ -173,13 +173,19 @@ namespace DancingLineFanmade.Gameplay
                 RotatePlayer();
             }
         }
+        /// <summary>
+        /// 一般在Playing状态时调用，用于输入冷却
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator InputCooldown()
         {
             _inputCooldown = true;
             yield return new WaitForSeconds(0.05f);
             _inputCooldown = false;
         }
-
+        /// <summary>
+        /// 使Player改变方向
+        /// </summary>
         public void RotatePlayer()
         {
             Quaternion targetRotation = transform.rotation.eulerAngles == firstDirection
@@ -191,6 +197,10 @@ namespace DancingLineFanmade.Gameplay
             PlayerEvents.TriggerRotateEvent();
             Debug.Log("PlayerRotated");
         }
+        /// <summary>
+        /// 创建新的activeTail
+        /// </summary>
+        /// <param name="startPos">初始位置</param>
         private void CreateTail(Vector3 startPos)
         {
             if (_spawnTail && _isGrounded)
@@ -203,6 +213,9 @@ namespace DancingLineFanmade.Gameplay
                 };
             }
         }
+        /// <summary>
+        /// 拉伸ActiveTail
+        /// </summary>
         private void UpdateActiveTail()
         {
             if (activeTail != null && _isGrounded && GameController.curGameState == GameState.Playing)
@@ -227,16 +240,27 @@ namespace DancingLineFanmade.Gameplay
         }
         private void OnCollisionStay(Collision collision) => _onCollider = true;
         private void OnCollisionExit(Collision collision) => _onCollider = false;
+        /// <summary>
+        /// Player坠落或超出地图范围时调用
+        /// </summary>
         private void PlayerFall()
         {
             _overMode = OverMode.Fall;
             PlayerDie();
         }
+        /// <summary>
+        /// Player坠落于水中时调用
+        /// </summary>
         private void PlayerDrown()
         {
             _overMode = OverMode.Drowned;
             PlayerDie();
         }
+        /// <summary>
+        /// 一般在CheckGroundStatus中调用，用于检Player测射线下的对象Layer并设置OverMode
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <param name="mode"></param>
         private void CheckSpecialLayers(LayerMask layer, OverMode mode)
         {
             if (Physics.Raycast(transform.position, Vector3.down,
@@ -246,6 +270,9 @@ namespace DancingLineFanmade.Gameplay
                 PlayerDie();
             }
         }
+        /// <summary>
+        /// 检测Player是否落地
+        /// </summary>
         private void CheckGroundStatus()
         {
             bool wasGrounded = _isGrounded;
@@ -269,6 +296,9 @@ namespace DancingLineFanmade.Gameplay
                 activeTail.isStretching = false;
             }
         }
+        /// <summary>
+        /// 在Player刚落地时调用
+        /// </summary>
         private void PlayerLanding()
         {
             if (GameController.curGameState == GameState.Playing ||
@@ -283,6 +313,9 @@ namespace DancingLineFanmade.Gameplay
                 CreateLandingEffect();
             }
         }
+        /// <summary>
+        /// 一般在PlayerLanding中调用，用于生成LandingEffects等特效
+        /// </summary>
         private void CreateLandingEffect()
         {
             if (GameController.curGameState == GameState.Playing || 
@@ -336,15 +369,26 @@ namespace DancingLineFanmade.Gameplay
         public void SetControllable(bool ctrllable) => _controllable = ctrllable;
         public void SetSpawnTailAbility(bool ability) => _spawnTail = ability;
 
+        /// <summary>
+        /// 设置Player的角度为StartDirection
+        /// </summary>
         public void SetAsStartDirection()
         {
             transform.eulerAngles = startDirection;
         }
+        /// <summary>
+        /// 改变Player的firstDirection和secondDirection
+        /// </summary>
+        /// <param name="first">new firstDirection</param>
+        /// <param name="second">new secondDirection</param>
         public void SetPlayerDirection(Vector3 first,Vector3 second)
         {
             firstDirection = first;
             secondDirection = second;
         }
+        /// <summary>
+        /// 自动游玩
+        /// </summary>
         private void HandleAutoPlay()
         {
             if (!AutoPlay) return;

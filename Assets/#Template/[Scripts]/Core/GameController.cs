@@ -501,17 +501,10 @@ namespace DancingLineFanmade.Gameplay
         {
             instance = this;
 
-            Screen.SetResolution(Screen.width, Screen.height, true, 120);
+            Screen.SetResolution(Screen.width, Screen.height, true, 240);
             Application.targetFrameRate = int.MaxValue;
 
-            //Screen.SetResolution(Screen.width, Screen.height, true, 240);
-            //Application.targetFrameRate = -1;
-
             if (_stateMachine == null) _stateMachine = new StateMachine();
-            /*
-            CreatePlayerRemainParent();
-            CreateCollectableRemainParent();
-            */
         }
         private void Start()
         {
@@ -525,7 +518,7 @@ namespace DancingLineFanmade.Gameplay
             StairEvents.OnEndLaunch += ChangeToReadyState;
             StairEvents.OnStartDisable += ChangeToOnStairState;
 
-            ReadyInterface.OnPauseAlterRestart += ChangeToReadyState;
+            ReadyInterface.OnPauseAlterRestart += ChangeToOnStairState;
 
             RespawnEvents.OnCallRespawn += ChangeToRespawningState;
             RespawnEvents.OnRespawning += DestroyAllRemains;
@@ -548,7 +541,7 @@ namespace DancingLineFanmade.Gameplay
             StairEvents.OnEndLaunch -= ChangeToReadyState;
             StairEvents.OnStartDisable -= ChangeToOnStairState;
 
-            ReadyInterface.OnPauseAlterRestart -= ChangeToReadyState;
+            ReadyInterface.OnPauseAlterRestart -= ChangeToOnStairState;
 
             RespawnEvents.OnCallRespawn -= ChangeToRespawningState;
             RespawnEvents.OnRespawning -= DestroyAllRemains;

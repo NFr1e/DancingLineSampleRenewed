@@ -84,6 +84,7 @@
     <Compile Include="Assets\#Template\[Scripts]\UI\InterfaceBase.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\InLevelDebugLable.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\Modal\GenericModal.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Core\RespawnAttributes.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\HintBoxTrigger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\LevelProgressManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Collection\CollectionCollector.cs" />
@@ -105,7 +106,6 @@
     <Compile Include="Assets\#Template\[Scripts]\Collection\ICollectable.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\ErrorDebugger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
-    <Compile Include="Assets\#Template\[Scripts]\Core\RespawnAttributes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />

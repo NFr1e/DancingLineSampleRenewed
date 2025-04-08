@@ -67,6 +67,9 @@ public class RespawnAttributes : MonoBehaviour
             DefaultPlayerSpeed = CurrentPlayer.DefaultPlayerSpeed;
         }
     }
+    /// <summary>
+    /// »Ö¸´Attributes
+    /// </summary>
     public void ResetAttributes()
     {
         CurrentPlayer.transform.position = RespawnTransform.position;

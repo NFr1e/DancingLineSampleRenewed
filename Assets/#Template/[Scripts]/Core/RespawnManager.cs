@@ -148,12 +148,16 @@ namespace DancingLineFanmade.Gameplay
             });
         }
         /// <summary>
-        /// 使_curAttributes执行ResetAttributes()
+        /// 给_curAttributes赋值为target
         /// </summary>
+        /// <param name="target">切换到的Attribute</param>
         private void SetCurrentAttributes(RespawnAttributes target)
         {
             _curAttributes = target;
         }
+        /// <summary>
+        /// 使_curAttributes执行ResetAttributes()
+        /// </summary>
         private void ResetAttributes()
         {
             if (!_curAttributes) return;

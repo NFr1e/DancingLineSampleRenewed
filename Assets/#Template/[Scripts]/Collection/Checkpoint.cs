@@ -30,13 +30,11 @@ namespace DancingLineFanmade.Collectable
         }
         private void OnEnable()
         {
-            GameEvents.OnRespawnDone += ResetObject;
             PlayerEvents.OnPlayerStart += AnimateFade;
             Icon.material.DOFade(0, 0f);
         }
         private void OnDisable()
         {
-            GameEvents.OnRespawnDone -= ResetObject;
             PlayerEvents.OnPlayerStart -= AnimateFade;
         }
         private void Update()
@@ -96,11 +94,6 @@ namespace DancingLineFanmade.Collectable
             iconFadeTween = Icon.material.DOFade(0, 1);
 
             _animatedFade = true;
-        }
-        private void ResetObject()
-        {
-            _collider.enabled = false;
-            _renderer.enabled = false;
         }
     }
 }

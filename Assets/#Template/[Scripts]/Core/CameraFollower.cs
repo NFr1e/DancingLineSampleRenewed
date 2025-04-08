@@ -63,7 +63,7 @@ namespace DancingLineFanmade.Gameplay
             GameEvents.OnGameOver += DisableFollow;
 
             RespawnEvents.OnRespawning += KillAll;
-            RespawnEvents.OnRespawning += ResetToPlayerTransform;
+            RespawnEvents.OnEndRespawn += ResetToPlayerTransform;
         }
         private void OnDisable()
         {
@@ -71,11 +71,12 @@ namespace DancingLineFanmade.Gameplay
             GameEvents.OnGameOver -= DisableFollow;
 
             RespawnEvents.OnRespawning -= KillAll;
-            RespawnEvents.OnRespawning -= ResetToPlayerTransform;
+            RespawnEvents.OnEndRespawn -= ResetToPlayerTransform;
         }
 
         private void Start()
         {
+            selfTransform = transform;
             SetDefaultTransform();
             origin = new GameObject("CameraMovementOrigin")
             {
@@ -93,14 +94,18 @@ namespace DancingLineFanmade.Gameplay
             var translation = new Vector3(Translation.x * Time.smoothDeltaTime * followSpeed.x,
                 Translation.y * Time.smoothDeltaTime * followSpeed.y,
                 Translation.z * Time.smoothDeltaTime * followSpeed.z);
-            if (GameController.curGameState == GameState.Playing && follow)
+            if ((GameController.curGameState == GameState.Playing || GameController.curGameState == GameState.Respawning) && follow)
                 selfTransform.Translate(smooth ? translation : Translation, origin);
         }
 
         private void EnableFollow() => follow = true;
         private void DisableFollow() => follow = false;
         public void SetFollowState(bool foll) => follow = foll;
-        public void ResetToPlayerTransform() => selfTransform.position = Player.instance.transform.position;
+        public void ResetToPlayerTransform() 
+        {
+            transform.position = target.position;
+            Debug.LogWarning($"{GetType().Name} ResetPosition");
+        }
         public void Trigger(Vector3 n_offset, Vector3 n_rotation, Vector3 n_scale, float n_fov, float duration,
             Ease ease, RotateMode mode, UnityEvent callback, bool use, AnimationCurve curve)
         {
