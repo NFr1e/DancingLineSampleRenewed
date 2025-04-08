@@ -1,18 +1,163 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
+using DancingLineFanmade.UI;
 
-public class RespawnManager : MonoBehaviour
+namespace DancingLineFanmade.Gameplay
 {
-    // Start is called before the first frame update
-    void Start()
+    public class RespawnEvents
     {
-        
-    }
+        public static event System.Action
+            OnCallRespawn,
+            OnStartRespawn,
+            OnRespawning,
+            OnEndRespawn;
 
-    // Update is called once per frame
-    void Update()
+        public static void CallResapwan() => OnCallRespawn?.Invoke();
+        public static void TriggerStartResapwn() => OnStartRespawn?.Invoke();
+        public static void TriggerRespawning() => OnRespawning?.Invoke();
+        public static void TriggerEndRespawn() => OnEndRespawn?.Invoke();
+    }
+    /// <summary>
+    /// 开始复活状态(执行效果)
+    /// </summary>
+    public class StartRespawnState : IState
     {
-        
+        StateMachine stateMachine;
+        public StartRespawnState (StateMachine sm)
+        {
+            stateMachine = sm;
+        }
+        public void Enter()
+        {
+            Debug.Log($"{GetType().Name} Enter");
+
+            RespawnEvents.TriggerStartResapwn();
+        }
+        public void Update()
+        {
+
+        }
+        public void Exit()
+        {
+            Debug.Log($"{GetType().Name} Exit");
+        }
+    }
+    /// <summary>
+    /// 复活中状态(广播重设变量事件)
+    /// </summary>
+    public class RespawningState : IState
+    {
+        StateMachine stateMachine;
+        public RespawningState(StateMachine sm)
+        {
+            stateMachine = sm;
+        }
+        public void Enter()
+        {
+            Debug.Log($"{GetType().Name} Enter");
+
+            RespawnEvents.TriggerRespawning();
+
+            stateMachine.ChangeState(new EndRespawnState(stateMachine));
+        }
+        public void Update()
+        {
+
+        }
+        public void Exit()
+        {
+            Debug.Log($"{GetType().Name} Exit");
+        }
+    }
+    /// <summary>
+    /// 结束复活状态(收尾)
+    /// </summary>
+    public class EndRespawnState : IState
+    {
+        StateMachine stateMachine;
+        public EndRespawnState(StateMachine sm)
+        {
+            stateMachine = sm;
+        }
+        public void Enter()
+        {
+            Debug.Log($"{GetType().Name} Enter");
+
+            RespawnEvents.TriggerEndRespawn();
+        }
+        public void Update()
+        {
+
+        }
+        public void Exit()
+        {
+            Debug.Log($"{GetType().Name} Exit");
+        }
+    }
+    public class RespawnManager : MonoBehaviour
+    {
+        private RespawnAttributes _curAttributes;
+
+        private StateMachine _stateMachine;
+        private void OnEnable()
+        {
+            RespawnAttributes.OnSetAttribute += SetCurrentAttributes;
+
+            RespawnEvents.OnCallRespawn += StartRespawn;
+            RespawnEvents.OnStartRespawn += AnimateMask;
+            RespawnEvents.OnRespawning += ResetAttributes;
+        }
+        private void OnDestroy()
+        {
+            RespawnAttributes.OnSetAttribute -= SetCurrentAttributes;
+
+            RespawnEvents.OnCallRespawn -= StartRespawn;
+            RespawnEvents.OnStartRespawn -= AnimateMask;
+            RespawnEvents.OnRespawning -= ResetAttributes;
+        }
+        private void Start()
+        {
+            if (_stateMachine == null) _stateMachine = new StateMachine();
+        }
+        /// <summary>
+        /// 切换复活状态机模式为StartRespawnState
+        /// </summary>
+        private void StartRespawn()
+        {
+            _stateMachine.ChangeState(new StartRespawnState(_stateMachine));
+        }
+        /// <summary>
+        /// 执行遮罩动画并切换状态机模式为RespawningState
+        /// </summary>
+        private void AnimateMask()
+        {
+            float duration = 0.2f;
+
+            Tweener fadeTweener;
+            Image mask = UserInterfaceManager.InstantiateImage(new Color(RenderSettings.fogColor.r, RenderSettings.fogColor.g, RenderSettings.fogColor.b, 0));
+            fadeTweener = mask.DOFade(1, duration);
+            fadeTweener.OnComplete(() =>
+            {
+                mask.DOFade(0, 1).SetUpdate(true).OnComplete(() => Destroy(mask.transform.parent.gameObject));
+
+                _stateMachine.ChangeState(new RespawningState(_stateMachine));
+            });
+        }
+        /// <summary>
+        /// 使_curAttributes执行ResetAttributes()
+        /// </summary>
+        private void SetCurrentAttributes(RespawnAttributes target)
+        {
+            _curAttributes = target;
+        }
+        private void ResetAttributes()
+        {
+            if (!_curAttributes) return;
+            _curAttributes.ResetAttributes();
+        }
     }
 }

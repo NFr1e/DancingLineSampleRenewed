@@ -27,6 +27,7 @@ namespace DancingLineFanmade.UI
             RespawnButton.onClick.AddListener(() =>
             {
                 _isRespawn = true;
+                RespawnEvents.CallResapwan();
                 ExitInterface();
             });
 

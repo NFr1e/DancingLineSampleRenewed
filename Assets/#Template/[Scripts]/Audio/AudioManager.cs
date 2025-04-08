@@ -16,7 +16,7 @@ namespace DancingLineFanmade.Audio
             AudioSource player = new GameObject(clip.name + "Player").AddComponent<AudioSource>();
             player.clip = clip;
             player.Play();
-            Destroy(player, clip.length + 0.1f);//安全缓冲时间
+            Destroy(player.gameObject, clip.length + 0.1f);//安全缓冲时间
         }
 
         public GameController Controller;
@@ -58,10 +58,12 @@ namespace DancingLineFanmade.Audio
             PlayerEvents.OnPlayerHit += PlayPlayerHitSound;
             PlayerEvents.OnPlayerDrowned += PlayPlayerDrownSound;
 
+            RespawnAttributes.OnRecording += RecordLevelSoundtrackTime;
+            RespawnEvents.OnRespawning += SetLevelSoundtrackTime;
+
             CollectorEvents.OnCollectCheckpoint += RecordLevelSoundtrackTime;
 
             GameEvents.OnGameOver += FadeoutLevelSoundtrack;
-            GameEvents.OnRespawnDone += SetLevelSoundtrackTime;
 
             if (CurLevelData == null)
             {
@@ -80,10 +82,12 @@ namespace DancingLineFanmade.Audio
             PlayerEvents.OnPlayerHit -= PlayPlayerHitSound;
             PlayerEvents.OnPlayerDrowned -= PlayPlayerDrownSound;
 
+            RespawnAttributes.OnRecording -= RecordLevelSoundtrackTime;
+            RespawnEvents.OnRespawning -= SetLevelSoundtrackTime;
+
             CollectorEvents.OnCollectCheckpoint -= RecordLevelSoundtrackTime;
 
             GameEvents.OnGameOver -= FadeoutLevelSoundtrack;
-            GameEvents.OnRespawnDone -= SetLevelSoundtrackTime;
         }
         #endregion
 

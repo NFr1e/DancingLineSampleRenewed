@@ -74,17 +74,21 @@ namespace DancingLineFanmade.Gameplay
 
             Init();
 
-            _collectedDiamonds.Clear();
-            _collectedCheckpoints.Clear();
+            ClearCollectedDiamonds();
+            ClearCollectedCheckpoints();
         }
+        private void ClearCollectedDiamonds() => _collectedDiamonds.Clear();
+        private void ClearCollectedCheckpoints() => _collectedCheckpoints.Clear();
         private void OnEnable()
         {
             GameEvents.OnGameOver += UpdateCurrentProgress;
+            RespawnEvents.OnRespawning += ClearCollectedDiamonds;
             PyramidTrigger.OnEnterPyramidTrigger += GamePassed;
         }
         private void OnDestroy()
         {
             GameEvents.OnGameOver -= UpdateCurrentProgress;
+            RespawnEvents.OnRespawning -= ClearCollectedDiamonds;
             PyramidTrigger.OnEnterPyramidTrigger -= GamePassed;
         }
     }

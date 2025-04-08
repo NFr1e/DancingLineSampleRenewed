@@ -91,6 +91,8 @@ namespace DancingLineFanmade.UI
 
             Checkpoint.OnCheckpointCollected += SetCheckpointed;
 
+            RespawnEvents.OnEndRespawn += LoadReadyInterface;
+
             PyramidTrigger.OnEnterPyramidTrigger += SetGamePassed;
 
             UserInterfaceEvents.OnRespawnInterfaceExit += DisRespawnSetTrue;
@@ -104,6 +106,8 @@ namespace DancingLineFanmade.UI
             GameEvents.OnGameOver -= LoadOverInterface;
 
             Checkpoint.OnCheckpointCollected -= SetCheckpointed;
+
+            RespawnEvents.OnEndRespawn -= LoadReadyInterface;
 
             PyramidTrigger.OnEnterPyramidTrigger -= SetGamePassed;
 

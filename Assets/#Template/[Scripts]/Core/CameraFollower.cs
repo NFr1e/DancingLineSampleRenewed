@@ -61,11 +61,17 @@ namespace DancingLineFanmade.Gameplay
         {
             GameEvents.OnStartPlay += EnableFollow;
             GameEvents.OnGameOver += DisableFollow;
+
+            RespawnEvents.OnRespawning += KillAll;
+            RespawnEvents.OnRespawning += ResetToPlayerTransform;
         }
         private void OnDisable()
         {
             GameEvents.OnStartPlay -= EnableFollow;
             GameEvents.OnGameOver -= DisableFollow;
+
+            RespawnEvents.OnRespawning -= KillAll;
+            RespawnEvents.OnRespawning -= ResetToPlayerTransform;
         }
 
         private void Start()
@@ -93,9 +99,8 @@ namespace DancingLineFanmade.Gameplay
 
         private void EnableFollow() => follow = true;
         private void DisableFollow() => follow = false;
-
         public void SetFollowState(bool foll) => follow = foll;
-
+        public void ResetToPlayerTransform() => selfTransform.position = Player.instance.transform.position;
         public void Trigger(Vector3 n_offset, Vector3 n_rotation, Vector3 n_scale, float n_fov, float duration,
             Ease ease, RotateMode mode, UnityEvent callback, bool use, AnimationCurve curve)
         {

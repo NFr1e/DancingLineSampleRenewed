@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets\#Template\[Scripts]\Collection\Pyramid.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\GameController.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Trigger\UnityEventTrigger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\ReadyStairManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\RotatePointsBuffer.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\ModalManager.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerSetPlayerDirection.cs" />
     <Compile Include="Assets\#Template\[Scripts]\EditUtils\PathBuilder.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\ModalButton.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Core\RespawnManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
@@ -96,15 +98,14 @@
     <Compile Include="Assets\#Template\[Scripts]\UI\ReadyInterface.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\IResettable.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerCallDrownEvent.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Collection\Diamond.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\ModalContentBase.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Collection\ICollectable.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\ErrorDebugger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
-    <Compile Include="Assets\#Template\[Scripts]\Trigger\UnityEventTrigger.cs" />
-    <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerCallDrownEvent.cs" />
-    <Compile Include="Assets\#Template\[Scripts]\Core\RespawnManager.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Core\RespawnAttributes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />

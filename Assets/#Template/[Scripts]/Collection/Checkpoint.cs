@@ -12,14 +12,15 @@ namespace DancingLineFanmade.Collectable
     {
         public MeshRenderer Crown;
         public MeshRenderer Icon;
-        public BoxCollider CheckpointTrigger;
         public GameObject CollectParticle;
 
         private Collider _collider;
         private MeshRenderer _renderer;
         private Tween iconFadeTween;
         private GameObject particle;
-
+        private bool
+            _animatedCollect = false,
+            _animatedFade = false;
         public static event System.Action OnCheckpointCollected;
         public static void TriggerCollectCheckpoint() => OnCheckpointCollected?.Invoke();
         private void Awake()
@@ -30,12 +31,13 @@ namespace DancingLineFanmade.Collectable
         private void OnEnable()
         {
             GameEvents.OnRespawnDone += ResetObject;
-
+            PlayerEvents.OnPlayerStart += AnimateFade;
             Icon.material.DOFade(0, 0f);
         }
         private void OnDisable()
         {
             GameEvents.OnRespawnDone -= ResetObject;
+            PlayerEvents.OnPlayerStart -= AnimateFade;
         }
         private void Update()
         {
@@ -46,11 +48,11 @@ namespace DancingLineFanmade.Collectable
             _collider.enabled = false;
             _renderer.enabled = false;
 
-            ParticleRun();
+            AnimateCollect();
             
             TriggerCollectCheckpoint();
         }
-        public void ParticleRun()
+        public void AnimateCollect()
         {
             if (!Crown || !Icon) return;
 
@@ -76,34 +78,29 @@ namespace DancingLineFanmade.Collectable
             {
                 iconFadeTween = Icon.material.DOFade(1f, 1f);
                 Destroy(particle, 1f);
+                _animatedCollect = true;
             });
+        }
+        private void AnimateFade()
+        {
+            if (!_animatedCollect) return;
+            if (_animatedFade) return;
+            if (!Crown || !Icon) return;
 
+            if (particle) Destroy(particle);
+
+            particle = Instantiate(CollectParticle, Icon.transform.position, transform.rotation, GameController.CollectableRemainParent);
+            particle.transform.DOLocalMoveY(10, 2f).SetEase(Ease.OutQuad);
+
+            iconFadeTween?.Kill();
+            iconFadeTween = Icon.material.DOFade(0, 1);
+
+            _animatedFade = true;
         }
         private void ResetObject()
         {
             _collider.enabled = false;
             _renderer.enabled = false;
         }
-#if UNITY_EDITOR
-        private void OnDrawGizmos()
-        {
-            SceneView sceneView = SceneView.currentDrawingSceneView;
-            if (sceneView == null) return;
-            Camera sceneCamera = sceneView.camera;
-            if (sceneCamera == null) return;
-            float distance = Vector3.Distance(transform.position, sceneCamera.transform.position);
-            if (distance > 40) return;
-
-            if (!CheckpointTrigger) return;
-
-            Gizmos.color = Color.yellow;
-            Gizmos.matrix = Matrix4x4.TRS(
-                CheckpointTrigger.transform.position,
-                CheckpointTrigger.transform.rotation,
-                Vector3.one
-            );
-            Gizmos.DrawWireCube(Vector3.zero, CheckpointTrigger.transform.localScale);
-        }
-#endif
     }
 }

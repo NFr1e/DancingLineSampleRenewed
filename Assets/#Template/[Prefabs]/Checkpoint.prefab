@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1782806003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1782806004}
+  m_Layer: 0
+  m_Name: RespawnTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1782806004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782806003}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1106482381245491348}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1106482381245491368
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +42,8 @@ GameObject:
   - component: {fileID: 1106482381245491348}
   - component: {fileID: 1106482381245491351}
   - component: {fileID: 1106482381245491369}
+  - component: {fileID: 1236066981}
+  - component: {fileID: 1236066982}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -33,6 +66,7 @@ Transform:
   - {fileID: 1106482381726016461}
   - {fileID: 1106482381733388373}
   - {fileID: 1106482382066916608}
+  - {fileID: 1782806004}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -63,8 +97,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Crown: {fileID: 1106482381726016463}
   Icon: {fileID: 1106482381852308170}
-  CheckpointTrigger: {fileID: 1106482382066916609}
   CollectParticle: {fileID: 8858788054406224009, guid: a43002bababab3c419d80087a427a2a8, type: 3}
+--- !u!114 &1236066981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106482381245491368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010ffa0e5cc580945891d38ad4dfa3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CheckpointTrigger: {fileID: 1236066982}
+  RecordTrigger: {fileID: 460598941}
+  AutoRecord: 1
+  AutoRespawnTransform: 1
+  CurrentPlayer: {fileID: 0}
+  RespawnTransform: {fileID: 1782806004}
+  FirstDir: {x: 0, y: 90, z: 0}
+  SecondDir: {x: 0, y: 0, z: 0}
+  DefaultPlayerSpeed: 12
+--- !u!114 &1236066982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106482381245491368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5c8a9fb9122e24ebeb517c6868295e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1106482381726016449
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,8 +349,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1106482382066916608}
   - component: {fileID: 1106482382066916609}
+  - component: {fileID: 460598941}
   m_Layer: 0
-  m_Name: CheckpointTrigger
+  m_Name: RecordTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,6 +385,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &460598941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106482382066916611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5c8a9fb9122e24ebeb517c6868295e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1106482382175126337
 GameObject:
   m_ObjectHideFlags: 0

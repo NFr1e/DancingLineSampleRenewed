@@ -6,7 +6,7 @@ using DancingLineFanmade.Gameplay;
 namespace DancingLineFanmade.Collectable 
 {
     [RequireComponent(typeof(Collider),typeof(MeshRenderer))]
-    public class Diamond : MonoBehaviour, ICollectable,IResettable
+    public class Diamond : MonoBehaviour, ICollectable
     {
         public GameObject[] CollectParticle;
 
@@ -19,23 +19,15 @@ namespace DancingLineFanmade.Collectable
         }
         private void OnEnable()
         {
-            GameEvents.OnRespawnDone += ResetObject;
+            RespawnEvents.OnRespawning += ResetObject;
         }
         private void OnDisable()
         {
-            GameEvents.OnRespawnDone -= ResetObject;
+            RespawnEvents.OnRespawning -= ResetObject;
         }
         private void Update()
         {
             transform.Rotate(0, 45*Time.deltaTime, 0);
-        }
-
-        public void NoteVar()
-        { }
-        public void ResetVar()
-        {
-            _collider.enabled = false;
-            _renderer.enabled = false;
         }
         public void Collect()
         {
@@ -51,8 +43,8 @@ namespace DancingLineFanmade.Collectable
         }
         private void ResetObject()
         {
-            _collider.enabled = false;
-            _renderer.enabled = false;
+            _collider.enabled = true;
+            _renderer.enabled = true;
         }
     } 
 }

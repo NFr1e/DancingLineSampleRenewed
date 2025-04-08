@@ -84,7 +84,6 @@ namespace DancingLineFanmade.Gameplay
             set { lock (_stateLock) _curGameState = value; }
         }
 
-        //private static bool _ready = true;
         /// <summary>
         /// 重新加载当前已激活的场景
         /// </summary>
@@ -213,15 +212,27 @@ namespace DancingLineFanmade.Gameplay
             CollectableRemainParent = new GameObject("CollectableRemains").transform;
         }
         /// <summary>
+        /// 清除所有生成物
+        /// </summary>
+        public void DestroyAllRemains()
+        {
+            //Debug.LogWarning($"{GetType().Name} DestroyAllRemains");
+
+            if (CollectableRemainParent != null) Destroy(CollectableRemainParent.gameObject);
+            if (PlayerRemainParent != null) Destroy(PlayerRemainParent.gameObject);
+        }
+        /// <summary>
         /// 切换当前游戏模式为ReadyState
         /// </summary>
         private void ChangeToReadyState() => _stateMachine.ChangeState(new ReadyState(_stateMachine));
-        
         /// <summary>
         /// 切换当前游戏模式为OnStairState
         /// </summary>
         private void ChangeToOnStairState() => _stateMachine.ChangeState(new OnStairState(_stateMachine));
-
+        /// <summary>
+        /// 切换当前游戏模式为RespawnState
+        /// </summary>
+        private void ChangeToRespawningState() => _stateMachine.ChangeState(new RespawnState(_stateMachine));
         #region StateMachine
         /// <summary>
         /// 进入关卡状态
@@ -300,7 +311,7 @@ namespace DancingLineFanmade.Gameplay
 
             public void Update()
             {
-                if (ReadyStairManager.curStairState == StairState.Launched && Clicked && !PointerOnUI)
+                if ((ReadyStairManager.curStairState == StairState.Launched || ReadyStairManager.curStairState == StairState.Disabled) && Clicked && !PointerOnUI)
                 {
                     stateMachine.ChangeState(new PlayingState(stateMachine));
                 }
@@ -497,9 +508,10 @@ namespace DancingLineFanmade.Gameplay
             //Application.targetFrameRate = -1;
 
             if (_stateMachine == null) _stateMachine = new StateMachine();
-
+            /*
             CreatePlayerRemainParent();
             CreateCollectableRemainParent();
+            */
         }
         private void Start()
         {
@@ -507,12 +519,22 @@ namespace DancingLineFanmade.Gameplay
         }
         private void OnEnable()
         {
+            GameEvents.OnGameReady += CreatePlayerRemainParent;
+            GameEvents.OnGameReady += CreateCollectableRemainParent;
+
             StairEvents.OnEndLaunch += ChangeToReadyState;
             StairEvents.OnStartDisable += ChangeToOnStairState;
+
             ReadyInterface.OnPauseAlterRestart += ChangeToReadyState;
+
+            RespawnEvents.OnCallRespawn += ChangeToRespawningState;
+            RespawnEvents.OnRespawning += DestroyAllRemains;
+            RespawnEvents.OnEndRespawn += ChangeToReadyState;
+
             PlayerEvents.OnPlayerHit += GameOver;
             PlayerEvents.OnPlayerDrowned += GameOver;
             PlayerEvents.OnPlayerFall += GameOver;
+
             PyramidTrigger.OnEnterPyramidTrigger += GameOver;
         }
         private void OnDestroy()
@@ -520,12 +542,22 @@ namespace DancingLineFanmade.Gameplay
             _stateMachine = null;
             instance = null;
 
+            GameEvents.OnGameReady += CreatePlayerRemainParent;
+            GameEvents.OnGameReady += CreateCollectableRemainParent;
+
             StairEvents.OnEndLaunch -= ChangeToReadyState;
             StairEvents.OnStartDisable -= ChangeToOnStairState;
+
             ReadyInterface.OnPauseAlterRestart -= ChangeToReadyState;
+
+            RespawnEvents.OnCallRespawn -= ChangeToRespawningState;
+            RespawnEvents.OnRespawning -= DestroyAllRemains;
+            RespawnEvents.OnEndRespawn -= ChangeToReadyState;
+
             PlayerEvents.OnPlayerHit -= GameOver;
             PlayerEvents.OnPlayerDrowned -= GameOver;
             PlayerEvents.OnPlayerFall -= GameOver;
+
             PyramidTrigger.OnEnterPyramidTrigger -= GameOver;
         }
 

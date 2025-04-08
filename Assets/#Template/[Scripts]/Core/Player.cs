@@ -105,6 +105,8 @@ namespace DancingLineFanmade.Gameplay
             GameEvents.OnEnterLevel += PlayerInit;
             GameEvents.OnStartPlay += StartPlayer;
             GameEvents.OnGamePaused += PlayerInit;
+
+            RespawnEvents.OnEndRespawn += PlayerInit;
         }
         private void OnDisable()
         {
@@ -117,6 +119,8 @@ namespace DancingLineFanmade.Gameplay
             GameEvents.OnEnterLevel -= PlayerInit;
             GameEvents.OnStartPlay -= StartPlayer;
             GameEvents.OnGamePaused -= PlayerInit;
+
+            RespawnEvents.OnEndRespawn -= PlayerInit;
         }
         private void Update()
         {
@@ -201,7 +205,7 @@ namespace DancingLineFanmade.Gameplay
         }
         private void UpdateActiveTail()
         {
-            if (activeTail != null && _isGrounded)
+            if (activeTail != null && _isGrounded && GameController.curGameState == GameState.Playing)
             {
                 activeTail._transform.localScale = new Vector3(activeTail._transform.localScale.x, activeTail._transform.localScale.y, Vector3.Distance(activeTail.startPosition, this.gameObject.transform.position) + 0.5f);
                 activeTail._transform.position = (activeTail.startPosition + this.gameObject.transform.position) / 2;
