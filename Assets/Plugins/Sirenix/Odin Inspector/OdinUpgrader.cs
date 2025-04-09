@@ -6,6 +6,7 @@
 
 namespace Sirenix.OdinInspector.Internal
 {
+#if UNITY_EDITOR
     using Sirenix.OdinInspector.Editor;
     using Sirenix.Utilities;
     using System;
@@ -22,7 +23,7 @@ namespace Sirenix.OdinInspector.Internal
         private static bool DEBUG = false;
         private static int numberOfTimesCalled = 0;
 
-        [InitializeOnLoadMethod]
+        [UnityEditor.InitializeOnLoadMethod]
         [UnityEditor.Callbacks.DidReloadScripts]
         private static void Update()
         {
@@ -240,4 +241,5 @@ namespace Sirenix.OdinInspector.Internal
             }
         }
     }
+#endif
 }

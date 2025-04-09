@@ -1,0 +1,25 @@
+-想到啥写啥，当发牢骚了
+
+tips 主播是菜鸡，很多东西都不会，属于是边学边写的状态，故部分代码可能比较诡异，哈哈
+
+每天游戏玩累了就打开工程看几眼，心情好就敲几下键盘，你可能会发现有些代码的逻辑可以放进猎奇区了，比如AudioManager和TimeLineManager啥的，嘻嘻
+
+写着写着总会出现很多莫名其妙的bug，，，有能找到原因的，也有比较猎奇的主播自己参不透，主播于是以毒攻毒用猎奇的办法修好，哈哈
+
+为什么结算界面的进度条又不动了...asdjkbkabfsbsjbkjhbakjkabfjsbjabgfjawhyvfhjvawfjkhawbjhfblakjwbnfikabwk
+
+哈哈，原来标签还能连着写，，，，，就不改了
+
+丢了点代码给ai看了，给CurGameState加了个lock，第二次丢给ai的时候又说没必要加。。。嘻嘻
+
+Player里的CheckSpecialLayers(是叫这个名字吗)好像没啥必要哈。。。懒得管了
+
+才发现很早以前丢了个IResetable，但是后面好像忘了 qwq
+
+喜欢没事写写README，发现已经30个commits了  无辜(？
+
+有点想重写Player的物理，直接用全局的gravity总感觉不太舒服。。。但是懒 嘻嘻
+
+为什么在我手机上这线一抽一抽的，是因为我关了垂直同步吗
+
+
