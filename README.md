@@ -10,7 +10,10 @@ A unity project aiming to make a template as the game DancingLine.
 <html>
   <h1>ChangeLogs</h1>
   <h2>2025/4/8</h2>
-  1.新增RespawnManager和RespawnAttributes以及修改了部分代码实现复活功能
+  1.新增RespawnManager和RespawnAttributes以及修改了部分代码实现复活功能<br>
+  2.修复<br>
+  (1)有时相机无法回到正常位置的bug<br>
+  (2)从暂停时重新开始游戏会清除生成物的bug
   <h3>目前已支持:</h3>
   (1)恢复Player位置<br>
   (2)恢复CameraController位置<br>
@@ -18,7 +21,7 @@ A unity project aiming to make a template as the game DancingLine.
   (4)清空LevelProgressManager中的已收集物<br>
   (5)复活后检查点标志动画<br>
   (6)复活后生成ReadyInterface<br>
-  (7)检查点自动记录属性
+  (7)检查点自动记录属性<br>
   
   <h2>2025/4/2</h2>
   1.新增UnityEventTrigger<br>
