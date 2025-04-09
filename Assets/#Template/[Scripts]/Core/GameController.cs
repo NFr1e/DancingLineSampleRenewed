@@ -27,6 +27,16 @@ public class StateMachine
     public void Update() => curState?.Update();
 }
 
+public static class ExtensionUtils
+{
+    public static Texture2D ToTexture2D(this Color color)
+    {
+        Texture2D texture = new Texture2D(1, 1);
+        texture.SetPixel(0, 0, color);
+        texture.Apply();
+        return texture;
+    }
+}
 namespace DancingLineFanmade.Gameplay
 {
     public enum GameState

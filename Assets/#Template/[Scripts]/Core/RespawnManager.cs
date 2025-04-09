@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using DancingLineFanmade.UI;
+using DancingLineFanmade.Collectable;
 
 namespace DancingLineFanmade.Gameplay
 {
@@ -15,11 +16,23 @@ namespace DancingLineFanmade.Gameplay
             OnStartRespawn,
             OnRespawning,
             OnEndRespawn;
+        public static event System.Action<Checkpoint> OnUpdateCheckpoint;
 
+        public static Checkpoint currentCheckpoint = null;
+        public static void UpdateCheckpoint(Checkpoint target) 
+        {
+            currentCheckpoint = target;
+            
+            OnUpdateCheckpoint?.Invoke(target); 
+        }
         public static void CallResapwan() => OnCallRespawn?.Invoke();
         public static void TriggerStartResapwn() => OnStartRespawn?.Invoke();
         public static void TriggerRespawning() => OnRespawning?.Invoke();
-        public static void TriggerEndRespawn() => OnEndRespawn?.Invoke();
+        public static void TriggerEndRespawn() 
+        { 
+            OnEndRespawn?.Invoke();
+            currentCheckpoint._consumed = true;
+        }
     }
     /// <summary>
     /// 开始复活状态(执行效果)
@@ -100,11 +113,13 @@ namespace DancingLineFanmade.Gameplay
     }
     public class RespawnManager : MonoBehaviour
     {
-        private RespawnAttributes _curAttributes;
+        public RespawnAttributes _curAttributes;
 
         private StateMachine _stateMachine;
         private void OnEnable()
         {
+            _curAttributes = null;
+
             RespawnAttributes.OnSetAttribute += SetCurrentAttributes;
 
             RespawnEvents.OnCallRespawn += StartRespawn;
@@ -113,6 +128,8 @@ namespace DancingLineFanmade.Gameplay
         }
         private void OnDestroy()
         {
+            _curAttributes = null;
+
             RespawnAttributes.OnSetAttribute -= SetCurrentAttributes;
 
             RespawnEvents.OnCallRespawn -= StartRespawn;
@@ -128,6 +145,7 @@ namespace DancingLineFanmade.Gameplay
         /// </summary>
         private void StartRespawn()
         {
+            //_curAttributes.Checkpoint. TODO
             _stateMachine.ChangeState(new StartRespawnState(_stateMachine));
         }
         /// <summary>
@@ -142,7 +160,7 @@ namespace DancingLineFanmade.Gameplay
             fadeTweener = mask.DOFade(1, duration);
             fadeTweener.OnComplete(() =>
             {
-                mask.DOFade(0, 1).SetUpdate(true).OnComplete(() => Destroy(mask.transform.parent.gameObject));
+                mask.DOFade(0, 0.6f).SetUpdate(true).OnComplete(() => Destroy(mask.transform.parent.gameObject));
 
                 _stateMachine.ChangeState(new RespawningState(_stateMachine));
             });

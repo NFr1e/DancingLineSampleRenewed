@@ -101,13 +101,9 @@ namespace DancingLineFanmade.Gameplay
         private void EnableFollow() => follow = true;
         private void DisableFollow() => follow = false;
         public void SetFollowState(bool foll) => follow = foll;
-        public void ResetToPlayerTransform() 
-        {
-            transform.position = target.position;
-            Debug.LogWarning($"{GetType().Name} ResetPosition");
-        }
+        public void ResetToPlayerTransform() => transform.position = target.position;
         public void Trigger(Vector3 n_offset, Vector3 n_rotation, Vector3 n_scale, float n_fov, float duration,
-            Ease ease, RotateMode mode, UnityEvent callback, bool use, AnimationCurve curve)
+            Ease ease, RotateMode mode, UnityEvent callback, bool use = false, AnimationCurve curve = null)
         {
             SetOffset(n_offset, duration, ease, use, curve);
             SetRotation(n_rotation, duration, mode, ease, use, curve);
@@ -221,7 +217,7 @@ namespace DancingLineFanmade.Gameplay
             Vector3 eulerPos = followingCamera.transform.position, followSpdPos = followingCamera.transform.position + Vector3.up * 1.5f;
 
             Color _backgroundColor = new Color(0, 0, 0, 0.5f);
-            Texture2D _background = UserInterfaceManager.ToTexture2D(_backgroundColor);
+            Texture2D _background = ExtensionUtils.ToTexture2D(_backgroundColor);
 
             GUIStyle style = new()
             {

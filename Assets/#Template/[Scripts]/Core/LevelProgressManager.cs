@@ -29,10 +29,6 @@ namespace DancingLineFanmade.Gameplay
             public int Percentage, DiamondCount, CheckpointCount;
         }
         public LevelProgress currentProgress;
-        private void Init()
-        {
-            InitializeReference();
-        }
         private void InitializeReference()
         {
             if (CurrentAudioManager == null) return;
@@ -72,7 +68,7 @@ namespace DancingLineFanmade.Gameplay
         {
             instance = this;
 
-            Init();
+            InitializeReference();
 
             ClearCollectedDiamonds();
             ClearCollectedCheckpoints();

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using Sirenix.OdinInspector;
 using DancingLineFanmade.Gameplay;
+using DancingLineFanmade.Audio;
 using DancingLineFanmade.UI;
 
 namespace DancingLineFanmade.Debugging
@@ -25,9 +26,10 @@ namespace DancingLineFanmade.Debugging
                 UserInterfaceManager.ShowGUIText("Player方向" + Mathf.Round(Player.instance.transform.eulerAngles.y).ToString(), Color.black, 30, new Rect(50, 150, 200, 70));
                 UserInterfaceManager.ShowGUIText("当前Stair状态:" + ReadyStairManager.curStairState, Color.black, 30, new Rect(50, 230, 200, 70));
                 UserInterfaceManager.ShowGUIText("当前Stair:Stared:" + ReadyStairManager.started, Color.black, 30, new Rect(50, 270, 200, 70));
-
+                
                 UserInterfaceManager.ShowGUIText("PoniterOnUI:" + GameController.PointerOnUI, Color.black, 30, new Rect(50, 310, 200, 70));
-                UserInterfaceManager.ShowGUIText("CurrentFps:" + (int)1 / _deltaTime, Color.black, 30, new Rect(50, 350, 200, 70));
+                UserInterfaceManager.ShowGUIText("CurrentFps:" + (int)(1 / _deltaTime), Color.black, 30, new Rect(50, 350, 200, 70));
+                UserInterfaceManager.ShowGUIText("当前SoundtrackTime:" + AudioManager.instance.CurrentLevelTime, Color.black, 30, new Rect(50, 390, 200, 70));
             }
         }
         private float _deltaTime = 0;

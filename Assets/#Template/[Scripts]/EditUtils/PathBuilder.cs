@@ -4,6 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using DancingLineFanmade.Debugging;
+using DancingLineFanmade.Triggers;
 
 
 public class PathBuilder : OdinEditorWindow

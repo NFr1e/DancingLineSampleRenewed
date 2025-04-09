@@ -6,9 +6,12 @@ using Sirenix.OdinInspector;
 using DancingLineFanmade.Audio;
 using DancingLineFanmade.Gameplay;
 using DancingLineFanmade.Triggers;
+using DancingLineFanmade.Collectable;
 
 public class RespawnAttributes : MonoBehaviour
 {
+    [BoxGroup("General")]
+        public Checkpoint Checkpoint;
     [BoxGroup("General")]
     [SerializeField]
         private UnityEventTrigger
@@ -16,12 +19,15 @@ public class RespawnAttributes : MonoBehaviour
             RecordTrigger;
     [BoxGroup("General")]
     [SerializeField]
-    private bool
+        private bool
             AutoRecord = true,
             AutoRespawnTransform = false;
     [BoxGroup("General")]
     [SerializeField]
         private Player CurrentPlayer;
+    [BoxGroup("General")]
+    [SerializeField]
+        private AudioManager CurrentAudioManager;
 
     [BoxGroup("PlayerAttributes")]
     [SerializeField]
@@ -34,6 +40,12 @@ public class RespawnAttributes : MonoBehaviour
     [BoxGroup("PlayerAttributes")]
     [SerializeField]
         private float DefaultPlayerSpeed = 12f;
+
+    [BoxGroup("AudioAttributes")]
+    [SerializeField]
+        private float LevelSoundtrackTime = 0;
+
+    private bool _recorded = false;
 
     public static event System.Action<RespawnAttributes> OnSetAttribute;
     public static event System.Action OnRecording;
@@ -55,6 +67,8 @@ public class RespawnAttributes : MonoBehaviour
     }
     private void RecordAttributes()
     {
+        if (_recorded) return;
+
         if (CurrentPlayer)
         {
             if (AutoRespawnTransform)
@@ -66,6 +80,11 @@ public class RespawnAttributes : MonoBehaviour
             SecondDir = CurrentPlayer.secondDirection;
             DefaultPlayerSpeed = CurrentPlayer.DefaultPlayerSpeed;
         }
+        if(CurrentAudioManager)
+        {
+            LevelSoundtrackTime = CurrentAudioManager.CurrentLevelTime;
+        }
+        _recorded = true;
     }
     /// <summary>
     /// »Ö¸´Attributes
@@ -77,6 +96,10 @@ public class RespawnAttributes : MonoBehaviour
         CurrentPlayer.firstDirection = FirstDir;
         CurrentPlayer.secondDirection = SecondDir;
         CurrentPlayer.DefaultPlayerSpeed = DefaultPlayerSpeed;
+
+        AudioEvents.AlterSoundtrackTime(LevelSoundtrackTime);
+
+        //Debug.LogWarning($"{GetType().Name} AttributesReset");
     }
 
 #if UNITY_EDITOR

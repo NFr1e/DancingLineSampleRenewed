@@ -62,13 +62,6 @@ namespace DancingLineFanmade.UI
             fontStyle.fontSize = size;
             GUI.Label(rect, content, fontStyle);
         }
-        public static Texture2D ToTexture2D(Color color)
-        {
-            Texture2D texture = new Texture2D(1, 1);
-            texture.SetPixel(0, 0, color);
-            texture.Apply();
-            return texture;
-        }
         #endregion
 
         public InterfaceBase ReadyInstance, 
@@ -89,7 +82,7 @@ namespace DancingLineFanmade.UI
             GameEvents.OnGamePaused += LoadReadyInterface;
             GameEvents.OnGameOver += LoadOverInterface;
 
-            Checkpoint.OnCheckpointCollected += SetCheckpointed;
+            CheckpointEvents.OnCheckpointCollected += SetCheckpointed;
 
             RespawnEvents.OnEndRespawn += LoadReadyInterface;
 
@@ -105,7 +98,7 @@ namespace DancingLineFanmade.UI
             GameEvents.OnGamePaused -= LoadReadyInterface;
             GameEvents.OnGameOver -= LoadOverInterface;
 
-            Checkpoint.OnCheckpointCollected -= SetCheckpointed;
+            CheckpointEvents.OnCheckpointCollected -= SetCheckpointed;
 
             RespawnEvents.OnEndRespawn -= LoadReadyInterface;
 

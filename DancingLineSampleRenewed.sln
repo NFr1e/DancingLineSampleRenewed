@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeTai.TranslucentImage", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.CompatibilityLayer", "Sirenix.OdinInspector.CompatibilityLayer.csproj", "{02FA9ACD-9FD7-0E94-0B3F-7B9E266BA46A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{D086FB61-8B71-2302-D2B8-A2395C34F01A}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeTai.TrueShadow.Editor", "LeTai.TrueShadow.Editor.csproj", "{CC8C99C0-E88C-9E7D-0A0E-137AB4B03BA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.CompatibilityLayer.Editor", "Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj", "{99E06526-9CEC-74C7-25BB-78FB15DEB9D7}"
@@ -49,6 +51,10 @@ Global
 		{02FA9ACD-9FD7-0E94-0B3F-7B9E266BA46A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02FA9ACD-9FD7-0E94-0B3F-7B9E266BA46A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02FA9ACD-9FD7-0E94-0B3F-7B9E266BA46A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D086FB61-8B71-2302-D2B8-A2395C34F01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D086FB61-8B71-2302-D2B8-A2395C34F01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D086FB61-8B71-2302-D2B8-A2395C34F01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D086FB61-8B71-2302-D2B8-A2395C34F01A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC8C99C0-E88C-9E7D-0A0E-137AB4B03BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC8C99C0-E88C-9E7D-0A0E-137AB4B03BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC8C99C0-E88C-9E7D-0A0E-137AB4B03BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU

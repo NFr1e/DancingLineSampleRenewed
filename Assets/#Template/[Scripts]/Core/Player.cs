@@ -157,7 +157,7 @@ namespace DancingLineFanmade.Gameplay
         }
         private void UpdatePlayerMovement()
         {
-            if (GameController.curGameState == GameState.Playing ||
+            if ((GameController.curGameState == GameState.Playing || GameController.curGameState == GameState.Respawning) ||
                 (GameController.curGameState == GameState.Over && _overMode != OverMode.Hit))
             {
                 transform.Translate(new Vector3(0, 0, _playerCurSpeed) * Time.deltaTime, Space.Self);
@@ -415,7 +415,7 @@ namespace DancingLineFanmade.Gameplay
             Vector3 textPosition = transform.position + Vector3.up * 1.5f;
 
             Color _backgroundColor = new Color(255, 255, 255, 0.5f);
-            Texture2D _background = UserInterfaceManager.ToTexture2D(_backgroundColor);
+            Texture2D _background = ExtensionUtils.ToTexture2D(_backgroundColor);
             
             GUIStyle style = new()
             {

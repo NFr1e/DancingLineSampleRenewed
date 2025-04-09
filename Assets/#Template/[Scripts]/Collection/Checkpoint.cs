@@ -7,6 +7,11 @@ using DancingLineFanmade.Gameplay;
 
 namespace DancingLineFanmade.Collectable
 {
+    public class CheckpointEvents
+    {
+        public static event System.Action OnCheckpointCollected;
+        public static void TriggerCollectCheckpoint() => OnCheckpointCollected?.Invoke();
+    }
     [RequireComponent(typeof(Collider))]
     public class Checkpoint : MonoBehaviour,ICollectable
     {
@@ -21,8 +26,9 @@ namespace DancingLineFanmade.Collectable
         private bool
             _animatedCollect = false,
             _animatedFade = false;
-        public static event System.Action OnCheckpointCollected;
-        public static void TriggerCollectCheckpoint() => OnCheckpointCollected?.Invoke();
+        public bool 
+            _consumed = false;
+        
         private void Awake()
         {
             _collider = GetComponent<Collider>();
@@ -48,7 +54,9 @@ namespace DancingLineFanmade.Collectable
 
             AnimateCollect();
             
-            TriggerCollectCheckpoint();
+            CheckpointEvents.TriggerCollectCheckpoint();
+
+            RespawnEvents.UpdateCheckpoint(this);
         }
         public void AnimateCollect()
         {
@@ -81,6 +89,8 @@ namespace DancingLineFanmade.Collectable
         }
         private void AnimateFade()
         {
+            if (RespawnEvents.currentCheckpoint != this) return;
+            if (!_consumed) return;
             if (!_animatedCollect) return;
             if (_animatedFade) return;
             if (!Crown || !Icon) return;

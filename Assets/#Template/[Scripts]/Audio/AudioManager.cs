@@ -8,15 +8,30 @@ using DancingLineFanmade.Collectable;
 
 namespace DancingLineFanmade.Audio
 {
+    public class AudioEvents
+    {
+        public static event System.Action<float> OnAlterSoundtrackTime;
+        public static void AlterSoundtrackTime(float time) => OnAlterSoundtrackTime?.Invoke(time);
+    }
     [DisallowMultipleComponent]
     public class AudioManager : MonoBehaviour
     {
-        public static void PlayAudioClip(AudioClip clip)
+        public static void PlayAudioClip(AudioClip clip,float startTime = 0)
         {
             AudioSource player = new GameObject(clip.name + "Player").AddComponent<AudioSource>();
             player.clip = clip;
+            player.time = startTime;
             player.Play();
             Destroy(player.gameObject, clip.length + 0.1f);//安全缓冲时间
+        }
+        public static void PlayFadeutAudioClip(AudioClip clip, float startTime = 0,float duration = 1,float volume = 1)
+        {
+            AudioSource player = new GameObject(clip.name + "FadePlayer").AddComponent<AudioSource>();
+            DontDestroyOnLoad(player);
+            player.clip = clip;
+            player.time = startTime;
+            player.Play();
+            player.DOFade(0, duration).SetUpdate(true).OnComplete(() => Destroy(player.gameObject));
         }
 
         public GameController Controller;
@@ -24,7 +39,10 @@ namespace DancingLineFanmade.Audio
         [BoxGroup("Sounds")]
         public AudioClip DrownSound,
                          HitSound;
-        public LevelData CurLevelData => Controller ? Controller.CurrentLevelData : null;
+        public LevelData CurLevelData => 
+            Controller 
+            ? Controller.CurrentLevelData 
+            : null;
 
         public static AudioManager instance;
         public float LevelMusicSyncDelay { get; set; }
@@ -48,6 +66,7 @@ namespace DancingLineFanmade.Audio
             instance = this;
 
             if (CurLevelData) _baseSoundtrackStartTime = CurLevelData.SoundtrackStartTime;
+            else Debug.LogError($"{GetType().Name} CurLevelData为空，检查GameController是否赋值?");
 
             GameEvents.OnEnterLevel += CreateMusicPlayer;
             GameEvents.OnStartPlay += PlayLevelSoundtrack;
@@ -58,18 +77,13 @@ namespace DancingLineFanmade.Audio
             PlayerEvents.OnPlayerHit += PlayPlayerHitSound;
             PlayerEvents.OnPlayerDrowned += PlayPlayerDrownSound;
 
+            AudioEvents.OnAlterSoundtrackTime += AlterLevelSoundtrackTime;
+
             RespawnAttributes.OnRecording += RecordLevelSoundtrackTime;
-            RespawnEvents.OnRespawning += SetLevelSoundtrackTime;
 
             CollectorEvents.OnCollectCheckpoint += RecordLevelSoundtrackTime;
 
             GameEvents.OnGameOver += FadeoutLevelSoundtrack;
-
-            if (CurLevelData == null)
-            {
-                Debug.LogError("CurLevelData is not assigned in AudioManager!");
-                return;
-            }
         }
         private void OnDisable()
         {
@@ -82,8 +96,9 @@ namespace DancingLineFanmade.Audio
             PlayerEvents.OnPlayerHit -= PlayPlayerHitSound;
             PlayerEvents.OnPlayerDrowned -= PlayPlayerDrownSound;
 
+            AudioEvents.OnAlterSoundtrackTime -= AlterLevelSoundtrackTime;
+
             RespawnAttributes.OnRecording -= RecordLevelSoundtrackTime;
-            RespawnEvents.OnRespawning -= SetLevelSoundtrackTime;
 
             CollectorEvents.OnCollectCheckpoint -= RecordLevelSoundtrackTime;
 
@@ -99,47 +114,60 @@ namespace DancingLineFanmade.Audio
             }
             _levelSoundtrackPlayer = new GameObject("LevelMusicPlayer").AddComponent<AudioSource>();
             _levelSoundtrackPlayer.playOnAwake = false;
-            if (CurLevelData) _levelSoundtrackPlayer.clip = CurLevelData.LevelSoundtrack;
+
+            if (CurLevelData) 
+                _levelSoundtrackPlayer.clip = CurLevelData.LevelSoundtrack;
+
             _levelSoundtrackPlayer.time = _baseSoundtrackStartTime;
             _originalVolume = _levelSoundtrackPlayer.volume;
+            _levelSoundtrackPlayer.volume = _originalVolume;
         }
         private void RecordLevelSoundtrackTime()
         {
             _lastSoundtrackTime = _levelSoundtrackPlayer.time;
         }
-        private void SetLevelSoundtrackTime()
+        public void AlterLevelSoundtrackTime(float time)
         {
-            _levelSoundtrackPlayer.time = _lastSoundtrackTime;
+            _levelSoundtrackPlayer.time = time;
         }
         private void PlayLevelSoundtrack()
         {
-            StartCoroutine(_PlayLevelSoundtrack());
-        }
-        private IEnumerator _PlayLevelSoundtrack()
-        {
-            if (_levelSoundtrackPlayer == null) yield break;
-            yield return new WaitForSeconds(Mathf.Abs(LevelMusicSyncDelay));
-            _levelSoundtrackPlayer.Play();
+            if (_levelSoundtrackPlayer == null) return;
+            _levelSoundtrackPlayer.Play((ulong)Mathf.Abs(LevelMusicSyncDelay));
         }
         private void PauseLevelSoundtrack()
         {
             _levelSoundtrackPlayer.Pause();
         }
+        /// <summary>
+        /// 喝喝喝，好暴力的办法...
+        /// </summary>
         private void FadeoutLevelSoundtrack()
         {
-            if (_audioFadeoutTween != null)
+            PauseLevelSoundtrack();
+
+            PlayFadeutAudioClip(CurLevelData.LevelSoundtrack,CurrentLevelTime,2,_originalVolume);
+
+            Debug.Log("SoundtrackFaded");
+
+            #region OldMethod
+            //之前的方法会导致因音频未暂停，复活后会重新开始播放的问题
+            /*if (_audioFadeoutTween != null)
             {
                 _audioFadeoutTween.Kill();
                 _audioFadeoutTween = null;
             }
-            _audioFadeoutTween = _levelSoundtrackPlayer.DOFade(0, 2f).OnComplete(() => _audioFadeoutTween.Kill(false));
-            Debug.Log("SoundtrackFaded");
+            _audioFadeoutTween = _levelSoundtrackPlayer.DOFade(0, 2f).OnComplete(() => 
+            { 
+                _audioFadeoutTween.Kill(false);
+            });*/
+            #endregion
         }
         private void ResetSoundTrackVolume()
         {
             if (_audioFadeoutTween != null)
             {
-                _audioFadeoutTween.Kill();
+                _audioFadeoutTween?.Kill();
                 _audioFadeoutTween = null;
             }
             _levelSoundtrackPlayer.volume = _originalVolume;
