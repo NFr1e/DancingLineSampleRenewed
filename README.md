@@ -6,9 +6,24 @@ A unity project aiming to make a template as the game DancingLine.
 
 ## 关于项目
   Project created in 2025/3
+## 支持
+  [OdinInspector](https://odininspector.com/)
+  [Tai's Assets](https://assetstore.unity.com/publishers/17505)
+  [DOTween](https://dotween.demigiant.com/)
+  [UI Modal](https://assetstore.unity.com/packages/tools/gui/ui-modal-175169)
+  [冰焰模板](https://chinadlrs.com/app/?id=41)
+  
   
 <html>
   <h1>ChangeLogs</h1>
+  <h2>2025/4/9</h2>
+  1.修改AudioManager中FadeoutLevelSoundtrack的逻辑防止冲突<br>
+  2.修复复活时所有检查点标志都会变灰的问题<br>
+  3.InLevelDebugLable中新增"当前SoundtrackTime"显示<br>
+  4.重新开始时淡出的音乐不会立即消失<br>
+  5.修复拾取皇冠后暂停再开始检查点标志会变灰的问题<br>
+  6.偷点懒直接从冰焰模板(见"支持")里拖了CameraFollower,CameraShakeTrigger,CameraTrigger，SetActive,嘻嘻<br>
+  7.新增复活后Soundtrack属性恢复<br>
   <h2>2025/4/8</h2>
   1.新增RespawnManager和RespawnAttributes以及修改了部分代码实现复活功能<br>
   2.修复<br>
