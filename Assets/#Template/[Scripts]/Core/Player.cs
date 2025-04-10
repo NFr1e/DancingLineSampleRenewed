@@ -415,7 +415,7 @@ namespace DancingLineFanmade.Gameplay
             Vector3 textPosition = transform.position + Vector3.up * 1.5f;
 
             Color _backgroundColor = new Color(255, 255, 255, 0.5f);
-            Texture2D _background = ExtensionUtils.ToTexture2D(_backgroundColor);
+            Texture2D _background = _backgroundColor.ToTexture2D();
             
             GUIStyle style = new()
             {

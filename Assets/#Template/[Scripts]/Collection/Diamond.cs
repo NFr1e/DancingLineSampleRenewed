@@ -6,7 +6,7 @@ using DancingLineFanmade.Gameplay;
 namespace DancingLineFanmade.Collectable 
 {
     [RequireComponent(typeof(Collider),typeof(MeshRenderer))]
-    public class Diamond : MonoBehaviour, ICollectable
+    public class Diamond : MonoBehaviour, ICollectable,IResettable
     {
         public GameObject[] CollectParticle;
 
@@ -19,11 +19,11 @@ namespace DancingLineFanmade.Collectable
         }
         private void OnEnable()
         {
-            RespawnEvents.OnRespawning += ResetObject;
+            RegisterResettable();
         }
         private void OnDisable()
         {
-            RespawnEvents.OnRespawning -= ResetObject;
+            UnregisterResettable();
         }
         private void Update()
         {
@@ -38,13 +38,34 @@ namespace DancingLineFanmade.Collectable
 
             foreach(GameObject a in CollectParticle)
             {
-                Destroy(Instantiate(a,transform.position,transform.rotation,GameController.CollectableRemainParent), 15f);
+                Destroy(
+                    Instantiate(
+                    a
+                    ,transform.position
+                    ,transform.rotation
+                    ,GameController.CollectableRemainParent)
+                , 15f);
             }
         }
-        private void ResetObject()
+
+        #region Reset
+        /// <summary>
+        /// 一般在OnEnable中调用
+        /// </summary>
+        private void RegisterResettable() => ResettableManager.Register(this);
+        /// <summary>
+        /// 一般在OnDisable中调用
+        /// </summary>
+        private void UnregisterResettable() => ResettableManager.Unregister(this);
+
+        public void NoteArgs() { }
+        public void ResetArgs()
         {
             _collider.enabled = true;
             _renderer.enabled = true;
+
+            Debug.Log($"{name} Reset");
         }
-    } 
+        #endregion
+    }
 }

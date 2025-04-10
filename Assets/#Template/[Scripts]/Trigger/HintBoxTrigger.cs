@@ -62,7 +62,7 @@ namespace DancingLineFanmade.Triggers
         {
             _displayable = Vector3.Distance(transform.position, Player.instance.transform.position) <= 20;
 
-            if (!_triggered)
+            if (!_triggered && GameController.curGameState != GameState.Over)
                 _renderer.enabled = _displayable;
         }
         #endregion
@@ -126,7 +126,7 @@ namespace DancingLineFanmade.Triggers
             Vector3 textPosition = transform.position;
 
             Color _backgroundColor = new Color(255, 255, 255, 0.5f);
-            Texture2D _background = ExtensionUtils.ToTexture2D(_backgroundColor);
+            Texture2D _background = _backgroundColor.ToTexture2D();
 
             GUIStyle style = new()
             {

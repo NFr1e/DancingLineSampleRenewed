@@ -217,7 +217,7 @@ namespace DancingLineFanmade.Gameplay
             Vector3 eulerPos = followingCamera.transform.position, followSpdPos = followingCamera.transform.position + Vector3.up * 1.5f;
 
             Color _backgroundColor = new Color(0, 0, 0, 0.5f);
-            Texture2D _background = ExtensionUtils.ToTexture2D(_backgroundColor);
+            Texture2D _background = _backgroundColor.ToTexture2D();
 
             GUIStyle style = new()
             {
