@@ -18,6 +18,7 @@ namespace DancingLineFanmade.UI
         private bool _isRespawn = false;
         private LevelData _levelData;
         private LevelProgressManager.LevelProgress _progress;
+        private Tween _barTween;
         protected override void EnterInterface()
         {
             base.EnterInterface();
@@ -54,13 +55,16 @@ namespace DancingLineFanmade.UI
         {
             if (!PercentageBar || !NameTitleText || !PercentageText || !DiamondText || !_levelData) return;
 
-            _progress = LevelProgressManager.instance.currentProgress;
-
             NameTitleText.text = _levelData.LevelName;
 
-            PercentageBar.maxValue = 100;
-            PercentageBar.value = 0;
-            DOTween.To(() => PercentageBar.value, a => PercentageBar.value = a, _progress.Percentage, 2f).SetEase(Ease.OutExpo);
+            _progress = LevelProgressManager.instance.currentProgress;
+
+            if (_barTween == null)
+            {
+                PercentageBar.maxValue = 100;
+                PercentageBar.value = 0;
+                _barTween = DOTween.To(() => PercentageBar.value, a => PercentageBar.value = a, _progress.Percentage, 2f).SetEase(Ease.OutExpo).OnComplete(() => _barTween.Complete());
+            }
 
             PercentageText.text = $"{_progress.Percentage}%";
             DiamondText.text = $"{_progress.DiamondCount}/{_levelData.MaxDiamondCount}";

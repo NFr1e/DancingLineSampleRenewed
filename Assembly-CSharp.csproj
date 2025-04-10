@@ -56,6 +56,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="D:\GameEngines\UnityEngine\Projects\DancingLineSampleRenewed\Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\#Template\[Scripts]\Collection\Pyramid.cs" />
@@ -110,8 +111,10 @@
     <Compile Include="Assets\#Template\[Scripts]\Collection\ICollectable.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\ErrorDebugger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Core\HintLineDisplayer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll" />
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />
     <None Include="Assets\碎碎念.txt" />
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\link.xml" />
@@ -127,6 +130,7 @@
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll" />
     <None Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\DOTween.dll" />
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\NoEditor\Sirenix.Utilities.dll" />
+    <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Readme.txt" />
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.xml" />
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll" />
     <None Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\readme.txt" />
@@ -455,10 +459,6 @@
       <HintPath>D:\GameEngines\UnityEngine\Editors\2021.3.39f1c1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sirenix.Reflection.Editor">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Sirenix.OdinInspector.Editor">
       <HintPath>Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
       <Private>False</Private>
@@ -493,6 +493,10 @@
     </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
       <HintPath>Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sirenix.Reflection.Editor">
+      <HintPath>Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -1085,10 +1089,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{D086FB61-8B71-2302-D2B8-A2395C34F01A}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
     <ProjectReference Include="LeTai.TrueShadow.Editor.csproj">
       <Project>{CC8C99C0-E88C-9E7D-0A0E-137AB4B03BA0}</Project>
       <Name>LeTai.TrueShadow.Editor</Name>
@@ -1100,14 +1100,6 @@
     <ProjectReference Include="LeTai.TrueShadow.csproj">
       <Project>{182841C3-8677-666F-57F2-9817B5443598}</Project>
       <Name>LeTai.TrueShadow</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
-      <Project>{02FA9ACD-9FD7-0E94-0B3F-7B9E266BA46A}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
-      <Project>{99E06526-9CEC-74C7-25BB-78FB15DEB9D7}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="LeTai.TranslucentImage.Editor.csproj">
       <Project>{737607B7-9786-DA45-9DDB-3D72ACA36250}</Project>

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1305542533766495078}
   - component: {fileID: 567682022398803868}
+  - component: {fileID: 1270064923222423879}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -45,6 +46,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1270064923222423879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946973316569116769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5c8a9fb9122e24ebeb517c6868295e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2718020052371701354
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,4 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TriggerTime: 0
-  _collider: {fileID: 567682022398803868}
+  TriggeredEffect: {fileID: 5039692027563676614, guid: a1f5767028ad03742872c8bd28b0d77c, type: 3}
+  _collider: {fileID: 1270064923222423879}
+  _renderer: {fileID: 4682039287335361065}
+  DrawHintBoxTime: 1
+  DrawHintBoxCollider: 1
