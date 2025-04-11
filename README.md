@@ -16,7 +16,7 @@ A unity project aiming to make a template as the game DancingLine.
   
 <html>
   <h1>ChangeLogs</h1>
-  <h2>2025/4/10</h2>
+  <h2>2025/4/11</h2>
   1.修改Player死亡逻辑<br>
   2.修复字体缺失问题<br>
   3.Pyramid接入IResettableManager<br>
