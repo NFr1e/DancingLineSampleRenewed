@@ -8,17 +8,15 @@ using UnityEngine;
 namespace DancingLineFanmade.Triggers
 {
     [Serializable]
-    public struct SingleActive
+    public class SingleActive
     {
         public GameObject target;
         public bool active;
-        public bool dontRevive;
 
-        public SingleActive(GameObject target, bool active, bool dontRevive)
+        public SingleActive(GameObject target, bool active)
         {
             this.target = target;
             this.active = active;
-            this.dontRevive = dontRevive;
         }
 
         public void SetActive()
@@ -28,13 +26,13 @@ namespace DancingLineFanmade.Triggers
     }
 
     [DisallowMultipleComponent]
-    public class SetActive : MonoBehaviour
+    public class SetActive : MonoBehaviour , IResettable
     {
-        [SerializeField] internal bool activeOnAwake;
-        [SerializeField, TableList] internal List<SingleActive> actives = new();
+        public bool activeOnAwake = false;
+        [TableList] 
+        public List<SingleActive> actives = new();
 
-        private readonly List<SingleActive> revives = new();
-        //internal int index;
+        private List<bool> _actives = new();
 
         private void Start()
         {
@@ -50,30 +48,50 @@ namespace DancingLineFanmade.Triggers
         {
             if (!other.CompareTag("Player") || activeOnAwake)
                 return;
-            //index = Player.Instance.Checkpoints.Count;
+            
             foreach (var s in actives)
             {
                 s.SetActive();
             }
         }
 
-        internal void AddRevives()
+        void OnEnable() 
         {
-            for (var a = 0; a < actives.Count; a++)
+            RegisterResettable();
+
+            RespawnAttributes.OnRecording += NoteArgs;
+        }
+        void OnDisable()
+        {
+            UnregisterResettable();
+
+            RespawnAttributes.OnRecording -= NoteArgs;
+        }
+        #region Reset
+        /// <summary>
+        /// 一般在OnEnable中调用
+        /// </summary>
+        private void RegisterResettable() => ResettableManager.Register(this);
+        /// <summary>
+        /// 一般在OnDisable中调用
+        /// </summary>
+        private void UnregisterResettable() => ResettableManager.Unregister(this);
+
+        public void NoteArgs() 
+        {
+            for(int a = 0; a < actives.Count; a++)
             {
-                revives.Add(new SingleActive(actives[a].target, actives[a].target.activeSelf, actives[a].dontRevive));
+                _actives.Add(actives[a].target.activeSelf);
             }
         }
-
-        /*internal void Revive()
+        public void ResetArgs()
         {
-            LevelManager.CompareCheckpointIndex(index, () =>
+            for(int r = 0; r < _actives.Count; r++)
             {
-                foreach (var s in revives.Where(s => !s.dontRevive))
-                {
-                    s.SetActive();
-                }
-            });
-        }*/
+                actives[r].target.SetActive(_actives[r]);
+            }
+            Debug.Log($"{name} Reset");
+        }
+        #endregion
     }
 }

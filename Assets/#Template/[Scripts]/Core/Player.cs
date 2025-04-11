@@ -218,7 +218,10 @@ namespace DancingLineFanmade.Gameplay
         /// </summary>
         private void UpdateActiveTail()
         {
-            if (activeTail != null && _isGrounded && GameController.curGameState == GameState.Playing)
+            if (activeTail != null && _isGrounded && 
+                (GameController.curGameState == GameState.Playing || 
+                (GameController.curGameState == GameState.Over && _overMode != OverMode.Hit)||
+                GameController.curGameState == GameState.Respawning))
             {
                 activeTail._transform.localScale = new Vector3(activeTail._transform.localScale.x, activeTail._transform.localScale.y, Vector3.Distance(activeTail.startPosition, this.gameObject.transform.position) + 0.5f);
                 activeTail._transform.position = (activeTail.startPosition + this.gameObject.transform.position) / 2;
@@ -284,7 +287,7 @@ namespace DancingLineFanmade.Gameplay
 
             if (!wasGrounded && _isGrounded)
             {
-                if(GameController.curGameState == GameState.Playing)PlayerLanding();
+                PlayerLanding();
             }
             else if (_isGrounded)
             {
@@ -301,12 +304,13 @@ namespace DancingLineFanmade.Gameplay
         /// </summary>
         private void PlayerLanding()
         {
+            Debug.Log($"{GetType().Name}:{name}Landed");
+
             if (GameController.curGameState == GameState.Playing ||
                 (GameController.curGameState == GameState.Over && _overMode != OverMode.Hit))
             {
                 PlayerEvents.TriggerLandingEvent();
                 CreateTail(transform.position);
-                Debug.Log("PlayerLanded");
             }
             if (Vector3.Distance(_enterCollisionPosition, _lastGroundPosition) > 1f)
             {
@@ -343,6 +347,7 @@ namespace DancingLineFanmade.Gameplay
         }
         private void PlayerDie()
         {
+            if (GameController.curGameState == GameState.Respawning) return;
             if (AutoPlay) return;
 
             CreateDieEffect();
@@ -399,7 +404,8 @@ namespace DancingLineFanmade.Gameplay
             {
                 if (!_pointsBuffer.SavedPoints[a].AutoPlayRotated && _audioManager.CurrentLevelTime >= _pointsBuffer.SavedPoints[a].Time)
                 {
-                    if(FixPosition)transform.position = _pointsBuffer.SavedPoints[a].Position;
+                    if(FixPosition)
+                        transform.position = _pointsBuffer.SavedPoints[a].Position;
                     RotatePlayer();
 
                     _pointsBuffer.SavedPoints[a].AutoPlayRotated = true;

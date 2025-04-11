@@ -112,6 +112,8 @@
     <Compile Include="Assets\#Template\[Scripts]\Debug\ErrorDebugger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Level\FogManager.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Debug\AutoPlayManager.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Trigger\FogTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll" />

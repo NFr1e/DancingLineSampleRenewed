@@ -50,7 +50,7 @@ namespace DancingLineFanmade.Debugging
             Points.Add(point);
         }
         
-        [Button(Name ="SaveInBuffer",ButtonHeight = 20)]
+        [Button("SaveInBuffer",buttonSize:20)]
         private void SaveInBuffer()
         {
             if (!Buffer) return;

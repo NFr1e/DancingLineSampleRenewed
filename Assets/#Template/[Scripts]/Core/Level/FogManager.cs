@@ -25,12 +25,24 @@ public class ExponentialFog
 {
     public float fogDensity = 0.01f;
     public Color fogColor = Color.white;
+
+    public ExponentialFog(float d,Color c)
+    {
+        fogDensity = d;
+        fogColor = c;
+    }
 }
 [Serializable]
 public class ExponentialSquaredFog
 {
     public float fogDensity = 0.01f;
     public Color fogColor = Color.white;
+
+    public ExponentialSquaredFog(float d, Color c)
+    {
+        fogDensity = d;
+        fogColor = c;
+    }
 }
 public enum FogType
 {
@@ -42,11 +54,6 @@ namespace DancingLineFanmade.Level
 {
     public class FogManager : MonoBehaviour , IResettable
     {
-        /*
-        public LinearFog linearFog;
-        public ExponentialFog exponentialFog;
-        public ExponentialSquaredFog exponentialSquaredFog;*/
-
         private Tween
             t_linear_start,
             t_linear_end,
@@ -59,65 +66,73 @@ namespace DancingLineFanmade.Level
             t_exponentialSquared_color;
 
 
-        private void 
+        public void 
             SetFogLinear
             (
-                float start,
-                float end,
-                Color colour,
-                float duration = 1,
+                LinearFog args,
+                float duration = 0,
                 Ease ease = Ease.InOutSine
             )
         {
+            KillTweens();
+
             RenderSettings.fogMode = FogMode.Linear;
+            _fogType = FogType.Linear;
 
             t_linear_start = DOTween
-                .To(() => RenderSettings.fogStartDistance, x => RenderSettings.fogStartDistance = x, start, duration)
+                .To(() => RenderSettings.fogStartDistance, x => RenderSettings.fogStartDistance = x, args.fogStart, duration)
                 .SetEase(ease);
             t_linear_end = DOTween
-                .To(() => RenderSettings.fogEndDistance, x => RenderSettings.fogEndDistance = x, end, duration)
+                .To(() => RenderSettings.fogEndDistance, x => RenderSettings.fogEndDistance = x, args.fogEnd, duration)
                 .SetEase(ease);
             t_linear_color = DOTween
-                .To(() => RenderSettings.fogColor, x => RenderSettings.fogColor = x, colour, duration)
+                .To(() => RenderSettings.fogColor, x => RenderSettings.fogColor = x, args.fogColor, duration)
                 .SetEase(ease);
         }
-        private void
+        public void
             SetFogExponential
             (
-                float density,
-                Color colour,
-                float duration = 1,
+                ExponentialFog args,
+                float duration = 0,
                 Ease ease = Ease.InOutSine
             )
         {
+            KillTweens();
+
             RenderSettings.fogMode = FogMode.Exponential;
-            
+            _fogType = FogType.Exponential;
+
             t_exponential_density = DOTween
-                .To(() => RenderSettings.fogDensity, x => RenderSettings.fogStartDistance = x, density, duration)
+                .To(() => RenderSettings.fogDensity, x => RenderSettings.fogDensity = x, args.fogDensity, duration)
                 .SetEase(ease);
             t_exponential_color = DOTween
-                .To(() => RenderSettings.fogColor, x => RenderSettings.fogColor = x, colour, duration)
+                .To(() => RenderSettings.fogColor, x => RenderSettings.fogColor = x, args.fogColor, duration)
                 .SetEase(ease);
         }
-        private void
+        public void
             SetFogExponentialSquared
             (
-                float density,
-                Color colour,
-                float duration = 1,
+                ExponentialSquaredFog args,
+                float duration = 0,
                 Ease ease = Ease.InOutSine
             )
         {
+            KillTweens();
+
             RenderSettings.fogMode = FogMode.ExponentialSquared;
+            _fogType = FogType.ExponentialSquared;
 
             t_exponentialSquared_density = DOTween
-                .To(() => RenderSettings.fogDensity, x => RenderSettings.fogStartDistance = x, density, duration)
+                .To(() => RenderSettings.fogDensity, x => RenderSettings.fogDensity = x, args.fogDensity, duration)
                 .SetEase(ease);
             t_exponentialSquared_color = DOTween
-                .To(() => RenderSettings.fogColor, x => RenderSettings.fogColor = x, colour, duration)
+                .To(() => RenderSettings.fogColor, x => RenderSettings.fogColor = x, args.fogColor, duration)
                 .SetEase(ease);
         }
 
+        /// <summary>
+        /// Kill所有雾气动画Tween
+        /// </summary>
         private void KillTweens()
         {
             t_linear_start.Kill();
@@ -131,6 +146,8 @@ namespace DancingLineFanmade.Level
             t_exponentialSquared_color.Kill();
         }
 
+        public static FogManager instance;
+
         private FogType _fogType;
         private LinearFog _linearFog;
         private ExponentialFog _expFog;
@@ -138,6 +155,8 @@ namespace DancingLineFanmade.Level
 
         void OnEnable()
         {
+            instance = this;
+
             RespawnAttributes.OnRecording += NoteArgs;
 
             RegisterResettable();
@@ -161,11 +180,26 @@ namespace DancingLineFanmade.Level
 
         public void NoteArgs() 
         {
-            _linearFog = new LinearFog(RenderSettings.fogStartDistance, RenderSettings.fogEndDistance, RenderSettings.fogColor);
+            _linearFog = new(RenderSettings.fogStartDistance, RenderSettings.fogEndDistance, RenderSettings.fogColor );
+            _expFog = new(RenderSettings.fogDensity, RenderSettings.fogColor);
+            _expSquaredFog = new(RenderSettings.fogDensity, RenderSettings.fogColor);
         }
         public void ResetArgs()
         {
             KillTweens();
+
+            switch(_fogType)
+            {
+                case FogType.Linear:
+                    SetFogLinear(_linearFog);
+                    break;
+                case FogType.Exponential:
+                    SetFogExponential(_expFog);
+                    break;
+                case FogType.ExponentialSquared:
+                    SetFogExponentialSquared(_expSquaredFog);
+                    break;
+            }
 
             Debug.Log($"{GetType().Name} Reset");
         }

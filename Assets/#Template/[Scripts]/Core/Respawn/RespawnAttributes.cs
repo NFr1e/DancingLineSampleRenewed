@@ -62,7 +62,9 @@ public class RespawnAttributes : MonoBehaviour
             OnRecording?.Invoke();
 
             if (!AutoRecord) return;
-            RecordAttributes(); 
+            RecordAttributes();
+
+            RecordTrigger.gameObject.SetActive(false);
         });
     }
     private void RecordAttributes()

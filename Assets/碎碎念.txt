@@ -30,4 +30,6 @@ Player里的CheckSpecialLayers(是叫这个名字吗)好像没啥必要哈。。
 
 tlou2真豪玩，不是很想写代码
 
+心血来潮想写个新的AutoPlayerManager，但是bug有点太多了。。还是用旧的吧
+
 
