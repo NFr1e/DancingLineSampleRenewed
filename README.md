@@ -16,6 +16,16 @@ A unity project aiming to make a template as the game DancingLine.
   
 <html>
   <h1>ChangeLogs</h1>
+  <h2>2025/4/10</h2>
+  1.新增可触发的引导框<br>
+  2.新增引导框出现逻辑<br>
+  3.新增引导线出现逻辑<br>
+  4.修复了Respawn界面百分比结算动画失效的问题<br>
+  5.新增ResettableManager类管理所有继承IResettable的实例<br>
+  6.修改了Over和Respawn界面的视觉效果<br>
+  7.新增FogManager管理场景雾气<br>
+  8.新增拓展方法类<br>
+  9.碎碎念更新(划掉<br>
   <h2>2025/4/9</h2>
   1.修改AudioManager中FadeoutLevelSoundtrack的逻辑防止冲突<br>
   2.修复复活时所有检查点标志都会变灰的问题<br>
