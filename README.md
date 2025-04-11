@@ -17,6 +17,15 @@ A unity project aiming to make a template as the game DancingLine.
 <html>
   <h1>ChangeLogs</h1>
   <h2>2025/4/10</h2>
+  1.修改Player死亡逻辑<br>
+  2.修复字体缺失问题<br>
+  3.Pyramid接入IResettableManager<br>
+  4.新增FogTrigger,FogManager接入IResettable<br>
+  5.修改SetActive,并接入IResettable<br>
+  6.CameraFollower接入IResettable<br>
+  7.新增BackgroundManager并接入IResettable,BackgroundTrigger<br>
+  8.修复了仅第一个检查点能复活的bug<br>
+  <h2>2025/4/10</h2>
   1.新增可触发的引导框<br>
   2.新增引导框出现逻辑<br>
   3.新增引导线出现逻辑<br>
