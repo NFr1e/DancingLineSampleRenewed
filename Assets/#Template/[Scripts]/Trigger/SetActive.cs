@@ -57,15 +57,15 @@ namespace DancingLineFanmade.Triggers
 
         void OnEnable() 
         {
-            RegisterResettable();
-
             RespawnAttributes.OnRecording += NoteArgs;
+
+            RegisterResettable();
         }
         void OnDisable()
         {
-            UnregisterResettable();
-
             RespawnAttributes.OnRecording -= NoteArgs;
+
+            UnregisterResettable();
         }
         #region Reset
         /// <summary>
@@ -79,6 +79,8 @@ namespace DancingLineFanmade.Triggers
 
         public void NoteArgs() 
         {
+            _actives.Clear();
+
             for(int a = 0; a < actives.Count; a++)
             {
                 _actives.Add(actives[a].target.activeSelf);

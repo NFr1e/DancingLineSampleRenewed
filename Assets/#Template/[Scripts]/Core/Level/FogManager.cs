@@ -52,19 +52,16 @@ public enum FogType
 }
 namespace DancingLineFanmade.Level
 {
+    [DisallowMultipleComponent]
     public class FogManager : MonoBehaviour , IResettable
     {
         private Tween
             t_linear_start,
             t_linear_end,
-            t_linear_color,
 
-            t_exponential_density,
-            t_exponential_color,
+            t_density,
 
-            t_exponentialSquared_density,
-            t_exponentialSquared_color;
-
+            t_color;
 
         public void 
             SetFogLinear
@@ -85,9 +82,8 @@ namespace DancingLineFanmade.Level
             t_linear_end = DOTween
                 .To(() => RenderSettings.fogEndDistance, x => RenderSettings.fogEndDistance = x, args.fogEnd, duration)
                 .SetEase(ease);
-            t_linear_color = DOTween
-                .To(() => RenderSettings.fogColor, x => RenderSettings.fogColor = x, args.fogColor, duration)
-                .SetEase(ease);
+
+            SetColorOnly(args.fogColor, duration, ease);
         }
         public void
             SetFogExponential
@@ -102,12 +98,11 @@ namespace DancingLineFanmade.Level
             RenderSettings.fogMode = FogMode.Exponential;
             _fogType = FogType.Exponential;
 
-            t_exponential_density = DOTween
+            t_density = DOTween
                 .To(() => RenderSettings.fogDensity, x => RenderSettings.fogDensity = x, args.fogDensity, duration)
                 .SetEase(ease);
-            t_exponential_color = DOTween
-                .To(() => RenderSettings.fogColor, x => RenderSettings.fogColor = x, args.fogColor, duration)
-                .SetEase(ease);
+
+            SetColorOnly(args.fogColor, duration, ease);
         }
         public void
             SetFogExponentialSquared
@@ -122,11 +117,16 @@ namespace DancingLineFanmade.Level
             RenderSettings.fogMode = FogMode.ExponentialSquared;
             _fogType = FogType.ExponentialSquared;
 
-            t_exponentialSquared_density = DOTween
+            t_density = DOTween
                 .To(() => RenderSettings.fogDensity, x => RenderSettings.fogDensity = x, args.fogDensity, duration)
                 .SetEase(ease);
-            t_exponentialSquared_color = DOTween
-                .To(() => RenderSettings.fogColor, x => RenderSettings.fogColor = x, args.fogColor, duration)
+
+            SetColorOnly(args.fogColor,duration,ease);
+        }
+        public void SetColorOnly(Color color,float duration,Ease ease)
+        {
+            t_color = DOTween
+                .To(() => RenderSettings.fogColor, x => RenderSettings.fogColor = x, color, duration)
                 .SetEase(ease);
         }
 
@@ -137,13 +137,10 @@ namespace DancingLineFanmade.Level
         {
             t_linear_start.Kill();
             t_linear_end.Kill();
-            t_linear_color.Kill();
 
-            t_exponential_density.Kill();
-            t_exponential_color.Kill();
+            t_density.Kill();
 
-            t_exponentialSquared_density.Kill();
-            t_exponentialSquared_color.Kill();
+            t_color.Kill();
         }
 
         public static FogManager instance;

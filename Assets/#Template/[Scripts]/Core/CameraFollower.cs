@@ -8,11 +8,8 @@ using DancingLineFanmade.UI;
 
 namespace DancingLineFanmade.Gameplay
 {
-    /// <summary>
-    /// Taken Frown IceFlameTemplate
-    /// </summary>
     [DisallowMultipleComponent]
-    public class CameraFollower : MonoBehaviour
+    public class CameraFollower : MonoBehaviour,IResettable
     {
         private Transform selfTransform;
 
@@ -28,6 +25,7 @@ namespace DancingLineFanmade.Gameplay
         public Vector3 followSpeed = new(1.2f, 3f, 6f);
         public bool follow = true;
         public bool smooth = true;
+
         [BoxGroup("Debugging")]
         [SerializeField] private bool DrawTargetGizmos = true,DrawConnectLine = true;
         private Tween offsetTween { get; set; }
@@ -35,6 +33,7 @@ namespace DancingLineFanmade.Gameplay
         private Tween scaleTween { get; set; }
         private Tween shakeTween { get; set; }
         private Tween fovTween { get; set; }
+        private Tween bgcolorTween { get; set; }
         private float shakePower { get; set; }
 
         private readonly Quaternion rotation = Quaternion.Euler(0, -45, 0);
@@ -55,22 +54,25 @@ namespace DancingLineFanmade.Gameplay
         {
             Instance = this;
             selfTransform = transform;
-            //followingCamera = Player.Instance.sceneCamera;
         }
         private void OnEnable()
         {
+            RegisterResettable();
+
             GameEvents.OnStartPlay += EnableFollow;
             GameEvents.OnGameOver += DisableFollow;
 
-            RespawnEvents.OnRespawning += KillAll;
+            RespawnAttributes.OnRecording += NoteArgs;
             RespawnEvents.OnEndRespawn += ResetToPlayerTransform;
         }
         private void OnDisable()
         {
+            UnregisterResettable();
+
             GameEvents.OnStartPlay -= EnableFollow;
             GameEvents.OnGameOver -= DisableFollow;
 
-            RespawnEvents.OnRespawning -= KillAll;
+            RespawnAttributes.OnRecording -= NoteArgs;
             RespawnEvents.OnEndRespawn -= ResetToPlayerTransform;
         }
 
@@ -173,7 +175,20 @@ namespace DancingLineFanmade.Gameplay
                 ? followingCamera.DOFieldOfView(n_fov, duration).SetEase(ease)
                 : followingCamera.DOFieldOfView(n_fov, duration).SetEase(curve);
         }
+        public void SetBackgroundColor(Color bgcolor,float duration,Ease ease)
+        {
+            if(bgcolorTween != null)
+            {
+                bgcolorTween.Kill();
+                bgcolorTween = null;
+            }
 
+            bgcolorTween = DOTween
+                .To(() => 
+                followingCamera.backgroundColor, x => followingCamera.backgroundColor = x
+                , bgcolor, duration)
+                .SetEase(ease);
+        }
         public void DoShake(float power = 1f, float duration = 3f)
         {
             if (shakeTween != null)
@@ -182,10 +197,11 @@ namespace DancingLineFanmade.Gameplay
                 shakeTween = null;
             }
 
-            shakeTween = DOTween.To(() => shakePower, x => shakePower = x, power, duration * 0.5f).SetEase(Ease.Linear);
-            shakeTween.SetLoops(2, LoopType.Yoyo);
-            shakeTween.OnUpdate(ShakeUpdate);
-            shakeTween.OnComplete(ShakeFinished);
+            shakeTween = DOTween
+                .To(() => shakePower, x => shakePower = x, power, duration * 0.5f).SetEase(Ease.Linear)
+                .SetLoops(2, LoopType.Yoyo)
+                .OnUpdate(ShakeUpdate)
+                .OnComplete(ShakeFinished);
         }
 
         private void ShakeUpdate()
@@ -205,6 +221,46 @@ namespace DancingLineFanmade.Gameplay
             rotator.eulerAngles = defaultRotation - new Vector3(60f, 0f, 0f);
             scale.localScale = defaultScale;
         }
+
+        #region Reset
+
+        private Vector3
+            r_offset = new(0,0,0),
+            r_rotation = new(60,45,0),
+            r_scale = new(1,1,1),
+            r_lerp = new(1.2f,3,6);
+        private float r_fov;
+
+        /// <summary>
+        /// 一般在OnEnable中调用
+        /// </summary>
+        private void RegisterResettable() => ResettableManager.Register(this);
+        /// <summary>
+        /// 一般在OnDisable中调用
+        /// </summary>
+        private void UnregisterResettable() => ResettableManager.Unregister(this);
+
+        public void NoteArgs() 
+        {
+            r_offset = rotator.localPosition;
+            r_rotation = rotator.eulerAngles;
+            r_scale = scale.localScale;
+            r_lerp = followSpeed;
+            r_fov = followingCamera.fieldOfView;
+        }
+        public void ResetArgs()
+        {
+            KillAll();
+
+            rotator.localPosition = r_offset;
+            rotator.eulerAngles = r_rotation;
+            scale.localScale = r_scale;
+            followSpeed = r_lerp;
+            followingCamera.fieldOfView = r_fov;
+
+            Debug.Log($"{name} Reset");
+        }
+        #endregion
 
 #if UNITY_EDITOR
         private void OnValidate()
