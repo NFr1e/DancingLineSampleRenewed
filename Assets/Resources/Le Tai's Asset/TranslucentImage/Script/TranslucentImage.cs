@@ -43,7 +43,7 @@ public partial class TranslucentImage : Image, IMeshModifier
     static readonly int _cropRegionPropId = Shader.PropertyToID("_CropRegion");
 
     Material replacedMaterial;
-
+    
     protected override void Start()
     {
         base.Start();
@@ -54,13 +54,13 @@ public partial class TranslucentImage : Image, IMeshModifier
         oldBrightness = brightness;
         oldFlatten    = flatten;
 
+#if UNITY_5_6_OR_NEWER
+            if (canvas)
+                canvas.additionalShaderChannels |= AdditionalCanvasShaderChannels.TexCoord1;
+#endif
+
         source = source ? source : FindObjectOfType<TranslucentImageSource>();
         material.SetTexture(_blurTexPropId, source.BlurredScreen);
-
-#if UNITY_5_6_OR_NEWER
-        if (canvas)
-            canvas.additionalShaderChannels |= AdditionalCanvasShaderChannels.TexCoord1;
-#endif
     }
 
     void PrepareShader()
@@ -72,8 +72,8 @@ public partial class TranslucentImage : Image, IMeshModifier
     {
         if (!source)
         {
-            Debug.LogError(
-                "TranslucentImageSource is missing. Add TranslucentImageSource component to your main camera, then assign it camera to the Source field of the Translucent Image(s)");
+            //Debug.LogError(
+                //"TranslucentImageSource is missing. Add TranslucentImageSource component to your main camera, then assign it camera to the Source field of the Translucent Image(s)");
             return;
         }
 

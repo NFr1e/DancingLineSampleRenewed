@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelSoundtrack: {fileID: 8300000, guid: eb666475d5b95ac4f8daa868c90e893c, type: 3}
   SoundtrackStartTime: 0
-  LevelName: Weavers
+  LevelName: SampleLevel
   AuthorName: NFr1e
   MaxDiamondCount: 10
   CrownCount: 3

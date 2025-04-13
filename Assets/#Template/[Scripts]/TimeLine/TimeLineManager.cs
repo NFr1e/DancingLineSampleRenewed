@@ -7,7 +7,7 @@ using DancingLineFanmade.Gameplay;
 
 namespace DancingLineFanmade.Playable
 {
-    public class TimeLineManager : MonoBehaviour
+    public class TimeLineManager : MonoBehaviour,IResettable
     {
         [System.Serializable]public class Director
         {
@@ -21,7 +21,9 @@ namespace DancingLineFanmade.Playable
         public static TimeLineManager instance;
 
         private double lastTime;
-        private bool stopped;
+        private bool 
+            stopped,
+            _stopped;//复活前是否停止
 
         private void Start()
         {
@@ -30,18 +32,30 @@ namespace DancingLineFanmade.Playable
             MainDirectorInit();
             
             PlayerEvents.OnPlayerStart += PlayMainTimeLine;
+
             GameEvents.OnGamePaused += PauseMainTimeLine;
-            GameEvents.OnGamePaused += RecordMainPlayableTime;
+            GameEvents.OnGamePaused += NoteArgs;
+            GameEvents.OnGameOver += PauseMainTimeLine;
+
+            RespawnAttributes.OnRecording += NoteArgs;
 
             MainDirector.director.stopped += OnTimeLineStopped;
+
+            RegisterResettable();
         }
         private void OnDestroy()
         {
             PlayerEvents.OnPlayerStart -= PlayMainTimeLine;
+
             GameEvents.OnGamePaused -= PauseMainTimeLine;
-            GameEvents.OnGamePaused -= RecordMainPlayableTime;
+            GameEvents.OnGamePaused -= NoteArgs;
+            GameEvents.OnGameOver -= PauseMainTimeLine;
+
+            RespawnAttributes.OnRecording -= NoteArgs;
 
             MainDirector.director.stopped += OnTimeLineStopped;
+
+            UnregisterResettable();
         }
         private void MainDirectorInit()
         {
@@ -69,9 +83,36 @@ namespace DancingLineFanmade.Playable
 
             Debug.Log($"{GetType().Name}:TimeLineStopped");
         }
-        private void RecordMainPlayableTime()
+
+        #region Reset
+        /// <summary>
+        /// 一般在OnEnable中调用
+        /// </summary>
+        private void RegisterResettable() => ResettableManager.Register(this);
+        /// <summary>
+        /// 一般在OnDisable中调用
+        /// </summary>
+        private void UnregisterResettable() => ResettableManager.Unregister(this);
+
+        public void NoteArgs() 
         {
             lastTime = MainDirector.currentDirectorTime;
+            _stopped = stopped;
         }
+        public void ResetArgs()
+        {
+            stopped = _stopped;
+
+            StartCoroutine(InitTimeline());
+            
+            Debug.Log($"{name} Reset");
+        }
+        IEnumerator InitTimeline()
+        {
+            PlayMainTimeLine();
+            yield return new WaitForEndOfFrame();
+            PauseMainTimeLine();
+        }
+        #endregion
     }
 }

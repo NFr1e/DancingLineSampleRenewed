@@ -52,6 +52,7 @@ namespace DancingLineFanmade.UI
         private void HandleInfoDisplay()
         {
             if (!PercentageBar || !NameTitleText || !PercentageText || !DiamondText || !_levelData) return;
+            if (GameController.curGameState != GameState.Over) return;
 
             NameTitleText.text = _levelData.LevelName;
 

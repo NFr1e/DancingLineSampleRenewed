@@ -45,6 +45,7 @@ namespace DancingLineFanmade.UI
         }
         protected virtual void Init()
         {
+            if (!GetComponent<CanvasGroup>()) return;
             _canvasGroup = GetComponent<CanvasGroup>();
             _canvasGroup.alpha = 0;
             _canvasGroup.interactable = true;
@@ -59,8 +60,9 @@ namespace DancingLineFanmade.UI
         }
         protected void AnimateExit()
         {
+            if (!GetComponent<CanvasGroup>()) return;
             _canvasGroup.blocksRaycasts = false;
-            _canvasGroup.DOFade(0, 0.4f).SetUpdate(true).OnComplete(() => { Destroy(gameObject); });
+            _canvasGroup.DOFade(0, 0.4f).SetUpdate(true).OnComplete(() => { Destroy(this.gameObject); });
         }
     }
 }

@@ -68,7 +68,7 @@ namespace DancingLineFanmade.UI
                              RespawnInstance, 
                              OverInstance;
 
-        private InterfaceBase curInterface;
+        private static InterfaceBase curInterface;
         private GameObject _eventSystem;
 
         private bool _checkpointed = false, 
@@ -130,12 +130,14 @@ namespace DancingLineFanmade.UI
             if (curInterface != null) curInterface.ExitInterface();
 
             curInterface = Instantiate(ReadyInstance.gameObject).GetComponent<InterfaceBase>();
+            DontDestroyOnLoad(curInterface);
         }
         private void LoadRespawnInterface()
         {
             if (!RespawnInstance) return;
 
             curInterface = Instantiate(RespawnInstance.gameObject).GetComponent<InterfaceBase>();
+            DontDestroyOnLoad(curInterface);
         }
         private void LoadOverInterface()
         {
@@ -148,6 +150,7 @@ namespace DancingLineFanmade.UI
             if (!OverInstance) return;
 
             curInterface = Instantiate(OverInstance.gameObject).GetComponent<InterfaceBase>();
+            DontDestroyOnLoad(curInterface);
         }
     }
 }

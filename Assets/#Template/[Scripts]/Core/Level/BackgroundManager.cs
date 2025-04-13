@@ -32,7 +32,7 @@ namespace DancingLineFanmade.Level
 
             if (_bgColorTransition != null)
             {
-                _bgColorTransition.Kill();
+                _bgColorTransition?.Kill();
                 _bgColorTransition = null;
             }
 

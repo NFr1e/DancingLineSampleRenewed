@@ -80,15 +80,11 @@ namespace DancingLineFanmade.Triggers
             uplimit = TriggerTime + s_interval;
             lowlimit = TriggerTime - s_interval;
 
-            if (
-                _audioManager.CurrentLevelTime > lowlimit
-                &&
-                _audioManager.CurrentLevelTime < uplimit
-              )
-                _triggerable = true;
-            else
-                _triggerable = false;
+            if (!_audioManager) _audioManager = AudioManager.instance;
 
+            _triggerable = 
+                _audioManager.CurrentLevelTime > lowlimit 
+                && _audioManager.CurrentLevelTime < uplimit;
         }
         private void AnimateTriggered()
         {

@@ -63,6 +63,9 @@ namespace DancingLineFanmade.Gameplay
         [BoxGroup("AutoPlay")] [SerializeField]
         private AudioManager _audioManager;
 
+        [HideInInspector]public Rigidbody _rigid;
+        [HideInInspector]public float _playerSpeedAddition = 1;
+
         private OverMode _overMode;
 
         private bool _isGrounded = true;
@@ -72,13 +75,12 @@ namespace DancingLineFanmade.Gameplay
         private bool _spawnTail = true;
         private Vector3 _lastGroundPosition;
         private Vector3 _enterCollisionPosition;
-        private Rigidbody _rigid;
-        private float _playerSpeedMultiply = 1;
+
         private float _playerCurSpeed
         {
             get 
             { 
-                return DefaultPlayerSpeed*_playerSpeedMultiply; 
+                return DefaultPlayerSpeed + _playerSpeedAddition; 
             }
         }
         private PlayerTail activeTail;
@@ -157,8 +159,9 @@ namespace DancingLineFanmade.Gameplay
         }
         private void UpdatePlayerMovement()
         {
-            if ((GameController.curGameState == GameState.Playing || GameController.curGameState == GameState.Respawning) ||
-                (GameController.curGameState == GameState.Over && _overMode != OverMode.Hit))
+            if (GameController.curGameState == GameState.Playing 
+                || (GameController.curGameState == GameState.Respawning && _overMode != OverMode.Hit) 
+                ||(GameController.curGameState == GameState.Over && _overMode != OverMode.Hit))
             {
                 transform.Translate(new Vector3(0, 0, _playerCurSpeed) * Time.deltaTime, Space.Self);
             }

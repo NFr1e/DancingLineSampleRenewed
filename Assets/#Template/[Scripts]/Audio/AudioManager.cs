@@ -53,22 +53,24 @@ namespace DancingLineFanmade.Audio
         private float _originalVolume;
 
         private Tween _audioFadeoutTween;
-        public float CurrentLevelTime
+        [HideInInspector]
+        public float CurrentLevelTime;//使用属性会存在生命周期上的问题,换为Upddate中取值了
+        private void Start()
         {
-            get
-            {
-                return _levelSoundtrackPlayer.time - _baseSoundtrackStartTime;
-            }
+            if (CurLevelData) _baseSoundtrackStartTime = CurLevelData.SoundtrackStartTime;
+            else Debug.LogError($"{GetType().Name} CurLevelData为空，检查GameController是否赋值?");
+        }
+        private void Update()
+        {
+            CurrentLevelTime = _levelSoundtrackPlayer.time - _baseSoundtrackStartTime;
         }
         #region 订阅事件
         private void Awake()
         {
             instance = this;
 
-            if (CurLevelData) _baseSoundtrackStartTime = CurLevelData.SoundtrackStartTime;
-            else Debug.LogError($"{GetType().Name} CurLevelData为空，检查GameController是否赋值?");
+            CreateMusicPlayer();
 
-            GameEvents.OnEnterLevel += CreateMusicPlayer;
             GameEvents.OnStartPlay += PlayLevelSoundtrack;
             GameEvents.OnStartPlay += ResetSoundTrackVolume;
             GameEvents.OnGamePaused += RecordLevelSoundtrackTime;
@@ -87,7 +89,6 @@ namespace DancingLineFanmade.Audio
         }
         private void OnDisable()
         {
-            GameEvents.OnEnterLevel -= CreateMusicPlayer;
             GameEvents.OnStartPlay -= PlayLevelSoundtrack;
             GameEvents.OnStartPlay -= ResetSoundTrackVolume;
             GameEvents.OnGamePaused -= RecordLevelSoundtrackTime;

@@ -8,9 +8,17 @@ namespace DancingLineFanmade.Triggers {
     {
         public static event System.Action OnEnterOutmapTrigger;
         private void TriggerOutmapEvent() => OnEnterOutmapTrigger?.Invoke();
+
+        private bool _triggerable = true;
+
+        private void Start()
+        {
+            if (this.gameObject.layer == LayerMask.NameToLayer("Outmap"))
+                _triggerable = false;
+        }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") && _triggerable)
             {
                 TriggerOutmapEvent();
             }

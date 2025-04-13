@@ -26,6 +26,7 @@ namespace DancingLineFanmade.Collectable
         private bool
             _animatedCollect = false,
             _animatedFade = false;
+        [HideInInspector]
         public bool 
             _consumed = false;
         
@@ -58,6 +59,9 @@ namespace DancingLineFanmade.Collectable
 
             RespawnEvents.UpdateCheckpoint(this);
         }
+        /// <summary>
+        /// 执行收集到检查点的动画
+        /// </summary>
         public void AnimateCollect()
         {
             if (!Crown || !Icon) return;
@@ -87,6 +91,9 @@ namespace DancingLineFanmade.Collectable
                 _animatedCollect = true;
             });
         }
+        /// <summary>
+        /// 执行检查点被消耗的动画
+        /// </summary>
         private void AnimateFade()
         {
             if (RespawnEvents.currentCheckpoint != this) return;

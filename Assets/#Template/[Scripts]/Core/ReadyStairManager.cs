@@ -207,7 +207,7 @@ namespace DancingLineFanmade.Gameplay
             sequence.AppendCallback(() =>
             {
                 PlayerTrans.SetParent(BaseTransform);
-                sequence.Kill(false);
+                sequence?.Kill(false);
                 _stateMachine.ChangeState(new LaunchedState(_stateMachine));
             });
         }

@@ -135,12 +135,12 @@ namespace DancingLineFanmade.Level
         /// </summary>
         private void KillTweens()
         {
-            t_linear_start.Kill();
-            t_linear_end.Kill();
+            t_linear_start?.Kill();
+            t_linear_end?.Kill();
 
-            t_density.Kill();
+            t_density?.Kill();
 
-            t_color.Kill();
+            t_color?.Kill();
         }
 
         public static FogManager instance;
@@ -163,6 +163,8 @@ namespace DancingLineFanmade.Level
             RespawnAttributes.OnRecording -= NoteArgs;
 
             UnregisterResettable();
+
+            KillTweens();
         }
 
         #region Reset
@@ -175,8 +177,21 @@ namespace DancingLineFanmade.Level
         /// </summary>
         private void UnregisterResettable() => ResettableManager.Unregister(this);
 
-        public void NoteArgs() 
+        public void NoteArgs()
         {
+            switch (RenderSettings.fogMode)
+            {
+                case FogMode.Linear:
+                    _fogType = FogType.Linear;
+                    break;
+                case FogMode.Exponential:
+                    _fogType = FogType.Exponential;
+                    break;
+                case FogMode.ExponentialSquared:
+                    _fogType = FogType.ExponentialSquared;
+                    break;
+            }
+
             _linearFog = new(RenderSettings.fogStartDistance, RenderSettings.fogEndDistance, RenderSettings.fogColor );
             _expFog = new(RenderSettings.fogDensity, RenderSettings.fogColor);
             _expSquaredFog = new(RenderSettings.fogDensity, RenderSettings.fogColor);

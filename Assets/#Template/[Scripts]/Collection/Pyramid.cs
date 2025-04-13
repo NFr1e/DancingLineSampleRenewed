@@ -66,8 +66,8 @@ namespace DancingLineFanmade.Collectable
         }
         public void ResetArgs()
         {
-            _leftTween.Kill();
-            _rightTween.Kill();
+            _leftTween?.Kill();
+            _rightTween?.Kill();
             Left.localPosition = _originLeftLocalPos;
             Right.localPosition = _originRightLocalPos;
 

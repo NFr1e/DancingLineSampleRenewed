@@ -99,7 +99,7 @@ namespace DancingLineFanmade.Gameplay
         /// </summary>
         /// <param name="duration"></param>
         /// <param name="MaskAnim"></param>
-        public static void ReloadScene(float duration = 0.5f, bool MaskAnim = true)
+        public static void ReloadScene(float duration = 0.7f, bool MaskAnim = true)
         {
             if (MaskAnim)
             {
@@ -511,7 +511,7 @@ namespace DancingLineFanmade.Gameplay
         {
             instance = this;
 
-            Screen.SetResolution(Screen.width, Screen.height, true, 240);
+            Screen.SetResolution(Screen.width, Screen.height, true, 120);
             Application.targetFrameRate = int.MaxValue;
 
             if (_stateMachine == null) _stateMachine = new StateMachine();
