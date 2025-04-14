@@ -14,7 +14,7 @@ namespace DancingLineFanmade.Debugging
         [BoxGroup("Vectors")]
         public Vector3 Euler;
         public float Time;
-        public bool AutoPlayRotated = false;
+        [HideInInspector]public bool AutoPlayRotated = false;
     }
 
     public class PlayerRotatePointRecorder : MonoBehaviour

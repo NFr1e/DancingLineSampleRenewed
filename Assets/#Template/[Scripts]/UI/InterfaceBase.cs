@@ -52,7 +52,7 @@ namespace DancingLineFanmade.UI
             _canvasGroup.blocksRaycasts = true;
 
             if (ExitTrigger == null || GetType().Name == "ReadyInterface") return;
-            ExitTrigger.onClick.AddListener(() => ExitInterface());
+            ExitTrigger.onClick.AddListener(ExitInterface);
         }
         private void AnimateEnter()
         {

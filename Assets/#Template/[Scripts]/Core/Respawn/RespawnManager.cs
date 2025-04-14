@@ -210,7 +210,10 @@ namespace DancingLineFanmade.Gameplay
         {
             RespawnEvents.OnRespawning += OnRespawnTriggered;
         }
-
+        ~ResettableManager()
+        {
+            RespawnEvents.OnRespawning -= OnRespawnTriggered;
+        }
         private static void OnRespawnTriggered()
         {
             foreach (var instance in instances.ToArray())

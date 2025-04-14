@@ -65,6 +65,7 @@
     <Compile Include="Assets\#Template\[Scripts]\Debug\RotatePointsBuffer.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\ModalManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\PlayerRotatePointRecorder.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\#Plugins\DBCreative\UniPool\UniPool.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerSetPlayerDirection.cs" />
     <Compile Include="Assets\#Template\[Scripts]\EditUtils\PathBuilder.cs" />
@@ -90,10 +91,12 @@
     <Compile Include="Assets\#Template\[Scripts]\UI\GuidanceToggle.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\InLevelDebugLable.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\Modal\GenericModal.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\#Plugins\DBCreative\UniPool\PoolManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\CameraShakeTrigger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Respawn\RespawnAttributes.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\HintBoxTrigger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\CameraTrigger.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\#Plugins\DBCreative\UniPool\Demo\DemoSpawner.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\LevelProgressManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\SetActive.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Guidance\HintLineDisplayer.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerCallOutmapEvent.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\Demo\DemoManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Collection\Checkpoint.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\#Plugins\DBCreative\UniPool\Demo\DemoSpawnObj.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\Modal.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Level\BackgroundManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\LevelData.cs" />
@@ -122,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll" />
+    <None Include="Assets\#Template\[Scripts]\#Plugins\DBCreative\UniPool\Readme.txt" />
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll" />
     <None Include="Assets\碎碎念.txt" />
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\link.xml" />

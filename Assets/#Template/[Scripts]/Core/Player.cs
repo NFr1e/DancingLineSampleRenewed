@@ -64,7 +64,7 @@ namespace DancingLineFanmade.Gameplay
         private AudioManager _audioManager;
 
         [HideInInspector]public Rigidbody _rigid;
-        [HideInInspector]public float _playerSpeedAddition = 1;
+        private float _playerSpeedMultiply = 1;
 
         private OverMode _overMode;
 
@@ -80,7 +80,7 @@ namespace DancingLineFanmade.Gameplay
         {
             get 
             { 
-                return DefaultPlayerSpeed + _playerSpeedAddition; 
+                return DefaultPlayerSpeed * _playerSpeedMultiply; 
             }
         }
         private PlayerTail activeTail;
@@ -351,7 +351,7 @@ namespace DancingLineFanmade.Gameplay
         private void PlayerDie()
         {
             if (GameController.curGameState == GameState.Respawning) return;
-            if (AutoPlay) return;
+            //if (AutoPlay) return;
 
             CreateDieEffect();
 
@@ -405,7 +405,9 @@ namespace DancingLineFanmade.Gameplay
 
             for(int a = 1;a < _pointsBuffer.SavedPoints.Count - 1;a++)
             {
-                if (!_pointsBuffer.SavedPoints[a].AutoPlayRotated && _audioManager.CurrentLevelTime >= _pointsBuffer.SavedPoints[a].Time)
+                if (!_pointsBuffer.SavedPoints[a].AutoPlayRotated && 
+                    _audioManager.CurrentLevelTime >= _pointsBuffer.SavedPoints[a].Time && 
+                    GameController.curGameState == GameState.Playing)
                 {
                     if(FixPosition)
                         transform.position = _pointsBuffer.SavedPoints[a].Position;

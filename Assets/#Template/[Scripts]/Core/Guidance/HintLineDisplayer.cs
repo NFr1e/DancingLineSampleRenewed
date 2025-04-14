@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DancingLineFanmade.Gameplay
 {
-    public class HintLineDisplayer : MonoBehaviour
+    public class HintLineDisplayer : MonoBehaviour , IResettable
     {
         public Transform StartPoint;
         public MeshRenderer Renderer;
@@ -14,11 +14,11 @@ namespace DancingLineFanmade.Gameplay
 
         private void OnEnable()
         {
-            RespawnEvents.OnRespawning += OnRespawn;
+            RegisterResettable();
         }
         private void OnDestroy()
         {
-            RespawnEvents.OnRespawning -= OnRespawn;
+            UnregisterResettable();
         }
         private void FixedUpdate()
         {
@@ -31,7 +31,19 @@ namespace DancingLineFanmade.Gameplay
             if (GameController.curGameState != GameState.Over)
                 Renderer.enabled = _displayable;
         }
-        private void OnRespawn()
+        /// <summary>
+        /// 一般在OnEnable中调用
+        /// </summary>
+        private void RegisterResettable() => ResettableManager.Register(this);
+        /// <summary>
+        /// 一般在OnDisable中调用
+        /// </summary>
+        private void UnregisterResettable() => ResettableManager.Unregister(this);
+        public void NoteArgs()
+        {
+
+        }
+        public void ResetArgs()
         {
             _displayable = true;
             Renderer.enabled = true;

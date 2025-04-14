@@ -30,11 +30,7 @@ namespace DancingLineFanmade.Gameplay
 
             GuidanceGroup.SetActive(_isUsing);
         }
-        private void SwitchIsUsing()
-        {
-            if (_isUsing)
-                _isUsing = false;
-            else _isUsing = true;
-        }
+        private void SwitchIsUsing() => _isUsing = !_isUsing;
+
     }
 }

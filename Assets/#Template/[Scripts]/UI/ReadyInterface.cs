@@ -45,7 +45,7 @@ namespace DancingLineFanmade.UI
             });
 
             if (ExitTrigger == null) return;
-            ExitTrigger.onClick.AddListener(() => HandleTriggerExit());
+            ExitTrigger.onClick.AddListener(HandleTriggerExit);
         }
 
         protected override void EnterInterface()

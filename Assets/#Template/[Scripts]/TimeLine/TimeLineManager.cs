@@ -53,7 +53,7 @@ namespace DancingLineFanmade.Playable
 
             RespawnAttributes.OnRecording -= NoteArgs;
 
-            MainDirector.director.stopped += OnTimeLineStopped;
+            MainDirector.director.stopped -= OnTimeLineStopped;
 
             UnregisterResettable();
         }

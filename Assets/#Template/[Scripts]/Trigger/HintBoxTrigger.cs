@@ -11,7 +11,7 @@ using DancingLineFanmade.Gameplay;
 
 namespace DancingLineFanmade.Triggers
 {
-    public class HintBoxTrigger : MonoBehaviour
+    public class HintBoxTrigger : MonoBehaviour , IResettable
     {
         public float TriggerTime;
         [SerializeField]
@@ -30,33 +30,37 @@ namespace DancingLineFanmade.Triggers
             _displayable = false,
             _triggered = false;
 
+        private float s_interval = 0.1f;
+
         private AudioManager _audioManager;
 
-        public static float s_interval = 0.1f;
         private void OnEnable()
         {
+            RegisterResettable();
+
             PlayerEvents.OnPlayerStart += CheckTriggerTime;
             PlayerEvents.OnPlayerRotate += CheckTriggerTime;
-            RespawnEvents.OnRespawning += OnRespawn;
 
-            _collider.OnStay.AddListener(() => OnPlayerStay());
+            _collider.OnEnter.AddListener(GetAudioManager);
+            _collider.OnStay.AddListener(OnPlayerStay);
         }
         private void OnDestroy()
         {
+            UnregisterResettable();
+
             PlayerEvents.OnPlayerStart -= CheckTriggerTime;
             PlayerEvents.OnPlayerRotate -= CheckTriggerTime;
-            RespawnEvents.OnRespawning -= OnRespawn;
 
-            _collider.OnStay.RemoveListener(() => OnPlayerStay());
+            _collider.OnEnter.RemoveListener(GetAudioManager);
+            _collider.OnStay.RemoveListener(OnPlayerStay);
         }
-        private void Start()
-        {
-            _audioManager = AudioManager.instance;
+        private void FixedUpdate() => HandleDisplay();
+        private void Start() 
+        { 
+            GetAudioManager();
         }
-        private void FixedUpdate()
-        {
-            HandleDisplay();
-        }
+        private void GetAudioManager() => _audioManager = AudioManager.instance;
+
         #region Handle Display
         private void HandleDisplay()
         {
@@ -76,11 +80,11 @@ namespace DancingLineFanmade.Triggers
         }
         private void CheckTriggerTime()
         {
+            if (!GuidanceManager._isUsing) return;
+
             float uplimit,lowlimit;
             uplimit = TriggerTime + s_interval;
             lowlimit = TriggerTime - s_interval;
-
-            if (!_audioManager) _audioManager = AudioManager.instance;
 
             _triggerable = 
                 _audioManager.CurrentLevelTime > lowlimit 
@@ -107,8 +111,27 @@ namespace DancingLineFanmade.Triggers
             _triggerable = false;
             _triggered = true;
         }
-        private void OnRespawn() => _triggered = false;
         #endregion
+
+        #region Reset
+        /// <summary>
+        /// 一般在OnEnable中调用
+        /// </summary>
+        private void RegisterResettable() => ResettableManager.Register(this);
+        /// <summary>
+        /// 一般在OnDisable中调用
+        /// </summary>
+        private void UnregisterResettable() => ResettableManager.Unregister(this);
+
+        public void NoteArgs() { }
+        public void ResetArgs()
+        {
+            _triggered = false;
+
+            Debug.Log($"{name} Reset");
+        }
+        #endregion
+
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {

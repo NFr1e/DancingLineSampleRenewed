@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6764023606900523984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1607674532308182049}
+  - component: {fileID: -877886742160795733}
+  m_Layer: 0
+  m_Name: DemoSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1607674532308182049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6764023606900523984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-877886742160795733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6764023606900523984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae47193242640714caef18d6c93fca44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorList:
+  - {r: 1, g: 0.029999997, b: 0, a: 0}
+  - {r: 1, g: 0.54679805, b: 0, a: 0}
+  - {r: 0.86237633, g: 1, b: 0, a: 0}
+  - {r: 0.49492073, g: 1, b: 0, a: 0}
+  - {r: 0.06674972, g: 0.9433962, b: 0.8663401, a: 0}
+  - {r: 0.11485406, g: 0.37147093, b: 0.8396226, a: 0}
+  - {r: 0.302742, g: 0.007742955, b: 0.5471698, a: 0}
+  - {r: 0.9716981, g: 0.46293163, b: 0.85678124, a: 0}
+  prefabList:
+  - {fileID: 2316676600326694466, guid: ac2a39b8b9646534d94ee9551bf43f93, type: 3}
+  - {fileID: 5136037074416689226, guid: b46c04eb0c4848a468eb3d8d79b45ae8, type: 3}
+  - {fileID: 2838227256352472864, guid: 1c790af7ef60cbe4b8f59e501e118ba9, type: 3}
+  multiplier: 5
+  fillAmount: 0

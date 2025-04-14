@@ -54,15 +54,16 @@ namespace DancingLineFanmade.Audio
 
         private Tween _audioFadeoutTween;
         [HideInInspector]
-        public float CurrentLevelTime;//使用属性会存在生命周期上的问题,换为Upddate中取值了
+        public float CurrentLevelTime => 
+            _levelSoundtrackPlayer
+            ?_levelSoundtrackPlayer.time - _baseSoundtrackStartTime
+            :0;
+        //使用属性会存在生命周期上的问题,换为Upddate中取值了
+        //又换回来了，哈哈
         private void Start()
         {
             if (CurLevelData) _baseSoundtrackStartTime = CurLevelData.SoundtrackStartTime;
             else Debug.LogError($"{GetType().Name} CurLevelData为空，检查GameController是否赋值?");
-        }
-        private void Update()
-        {
-            CurrentLevelTime = _levelSoundtrackPlayer.time - _baseSoundtrackStartTime;
         }
         #region 订阅事件
         private void Awake()
