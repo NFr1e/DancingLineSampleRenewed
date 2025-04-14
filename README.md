@@ -16,6 +16,15 @@ A unity project aiming to make a template as the game DancingLine.
   
 <html>
   <h1>ChangeLogs</h1>
+  <h2>2025/4/13</h2>
+  1.修复雾气恢复<br>
+  2.新增TimeLine恢复<br>
+  3.新增GuidanceManager,GuidanceToggle<br>
+  4.优化了DiamondEffect表现<br>
+  5.新增TriggerRotatePlayer<br>
+  6.新增Gravity恢复<br>
+  7.修复若干bug<br>
+
   <h2>2025/4/11</h2>
   1.修改Player死亡逻辑<br>
   2.修复字体缺失问题<br>
