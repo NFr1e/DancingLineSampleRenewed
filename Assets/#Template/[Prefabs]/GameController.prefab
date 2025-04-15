@@ -2508,7 +2508,6 @@ MonoBehaviour:
   Controller: {fileID: 9198332894940819241}
   DrownSound: {fileID: 8300000, guid: a8647e3d6dd1b064786ad2bfee8138c0, type: 3}
   HitSound: {fileID: 8300000, guid: bb5e46f36f2aebf4a9564d43d975b1c1, type: 3}
-  CurrentLevelTime: 0
 --- !u!1 &9198332894228776836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,10 +2953,9 @@ MonoBehaviour:
   DrawGizmos: 1
   AutoPlay: 0
   FixPosition: 1
-  _pointsBuffer: {fileID: 11400000, guid: 423e84ae410b9a34a975db0e76dc6ff7, type: 2}
+  _pointsBuffer: {fileID: 0}
   _audioManager: {fileID: 9198332894045423446}
   _rigid: {fileID: 0}
-  _playerSpeedAddition: 1
 --- !u!1 &9198332894554898622
 GameObject:
   m_ObjectHideFlags: 0

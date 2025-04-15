@@ -64,6 +64,7 @@
     <Compile Include="Assets\#Template\[Scripts]\Core\ReadyStairManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\RotatePointsBuffer.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\ModalManager.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerJump.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\PlayerRotatePointRecorder.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\DBCreative\UniPool\UniPool.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />

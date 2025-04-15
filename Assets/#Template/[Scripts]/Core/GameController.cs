@@ -511,7 +511,7 @@ namespace DancingLineFanmade.Gameplay
         {
             instance = this;
 
-            Screen.SetResolution(Screen.width, Screen.height, true, 120);
+            Screen.SetResolution(Screen.width, Screen.height, true, 240);
             Application.targetFrameRate = int.MaxValue;
 
             if (_stateMachine == null) _stateMachine = new StateMachine();

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,17 +54,16 @@ namespace DancingLineFanmade.Audio
         private float _originalVolume;
 
         private Tween _audioFadeoutTween;
-        [HideInInspector]
-        public float CurrentLevelTime => 
+        
+        [HideInInspector]public float CurrentLevelTime => 
             _levelSoundtrackPlayer
-            ?_levelSoundtrackPlayer.time - _baseSoundtrackStartTime
+            ?1f * _levelSoundtrackPlayer.timeSamples/_levelSoundtrackPlayer.clip.frequency - _baseSoundtrackStartTime
             :0;
-        //使用属性会存在生命周期上的问题,换为Upddate中取值了
-        //又换回来了，哈哈
+
         private void Start()
         {
             if (CurLevelData) _baseSoundtrackStartTime = CurLevelData.SoundtrackStartTime;
-            else Debug.LogError($"{GetType().Name} CurLevelData为空，检查GameController是否赋值?");
+            else UnityEngine.Debug.LogError($"{GetType().Name} CurLevelData为空，检查GameController是否赋值?");
         }
         #region 订阅事件
         private void Awake()
@@ -90,6 +90,7 @@ namespace DancingLineFanmade.Audio
         }
         private void OnDisable()
         {
+            
             GameEvents.OnStartPlay -= PlayLevelSoundtrack;
             GameEvents.OnStartPlay -= ResetSoundTrackVolume;
             GameEvents.OnGamePaused -= RecordLevelSoundtrackTime;
@@ -130,7 +131,7 @@ namespace DancingLineFanmade.Audio
         }
         public void AlterLevelSoundtrackTime(float time)
         {
-            _levelSoundtrackPlayer.time = time;
+            _levelSoundtrackPlayer.timeSamples = (int)(time * _levelSoundtrackPlayer.clip.frequency);
         }
         private void PlayLevelSoundtrack()
         {
@@ -150,7 +151,7 @@ namespace DancingLineFanmade.Audio
 
             PlayFadeutAudioClip(CurLevelData.LevelSoundtrack,CurrentLevelTime,2,_originalVolume);
 
-            Debug.Log("SoundtrackFaded");
+            UnityEngine.Debug.Log("SoundtrackFaded");
 
             #region OldMethod
             //之前的方法会导致因音频未暂停，复活后会重新开始播放的问题
