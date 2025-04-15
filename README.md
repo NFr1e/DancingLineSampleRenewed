@@ -16,6 +16,19 @@ A unity project aiming to make a template as the game DancingLine.
   
 <html>
   <h1>ChangeLogs</h1>
+  <h2>2025/4/14 Update Version 1.0</h2>
+  [功能基本完成]
+  1.修复部分情况下无法复活的bug<br>
+  2.修复Player速度问题<br>
+  TODO List:<br>
+  1.TriggerAlterSpeed<br>
+  2.PlayerSpeed和Controllable的恢复<br>
+  3.动画脚本以及动画对象的恢复(更推荐使用TimeLine)<br>
+  4.假线<br>
+  (下面几个随缘)
+  5.更多辅助功能<br>
+  6.Player自身重力<br>
+  7.爬墙<br>
   <h2>2025/4/13</h2>
   1.修复雾气恢复<br>
   2.新增TimeLine恢复<br>
