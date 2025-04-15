@@ -19,7 +19,7 @@ namespace DancingLineFanmade.UI
         protected virtual void EnterInterface() 
         {
             Init();
-            GameEvents.OnGameOver += ExitInterface;
+            //GameEvents.OnGameOver += ExitInterface; 这行写在这是干啥的?不知道。。。先不删，哈哈
             AnimateEnter();
         }
         /// <summary>
@@ -31,7 +31,7 @@ namespace DancingLineFanmade.UI
         /// </summary>
         public virtual void ExitInterface() 
         {
-            GameEvents.OnGameOver -= ExitInterface;
+            //GameEvents.OnGameOver -= ExitInterface; 同上，，不知道啥时候脑子抽了加的
             AnimateExit();
         }
 
@@ -51,10 +51,10 @@ namespace DancingLineFanmade.UI
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
 
-            if (ExitTrigger == null || GetType().Name == "ReadyInterface") return;
+            if (ExitTrigger == null || this is ReadyInterface) return;
             ExitTrigger.onClick.AddListener(ExitInterface);
         }
-        private void AnimateEnter()
+        protected virtual void AnimateEnter()
         {
             _canvasGroup.DOFade(1, 0.8f).SetUpdate(true);
         }
