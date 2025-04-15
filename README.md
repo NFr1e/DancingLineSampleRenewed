@@ -1,17 +1,18 @@
 # DancingLineTemplate-Renewed
 A unity project aiming to make a template as the game DancingLine.
-
+## 模板下载
+该项目默认分支为master,此分支提供模板的基础版本，项目文件较小。如果你需要一个示例关卡用于学习模板中的部分功能，请下载main分支中的项目
 ## 关于作者
 [Bilibili个人页](https://space.bilibili.com/291841883?spm_id_from=333.1007.0.0)
 
 ## 关于项目
   Project created in 2025/3
 ## 支持
-  [OdinInspector](https://odininspector.com/)
-  [Tai's Assets](https://assetstore.unity.com/publishers/17505)
-  [DOTween](https://dotween.demigiant.com/)
-  [UI Modal](https://assetstore.unity.com/packages/tools/gui/ui-modal-175169)
-  [冰焰模板](https://chinadlrs.com/app/?id=41)
+  [OdinInspector](https://odininspector.com/)<br>
+  [Tai's Assets](https://assetstore.unity.com/publishers/17505)<br>
+  [DOTween](https://dotween.demigiant.com/)<br>
+  [UI Modal](https://assetstore.unity.com/packages/tools/gui/ui-modal-175169)<br>
+  [冰焰模板](https://chinadlrs.com/app/?id=41)<br>
   
   
 <html>
