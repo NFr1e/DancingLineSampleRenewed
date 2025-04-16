@@ -1,7 +1,9 @@
 # DancingLineTemplate-Renewed
 A unity project aiming to make a template as the game DancingLine.
 ## 模板下载
-该项目默认分支为master,此分支提供模板的基础版本，项目文件较小。如果你需要一个示例关卡用于学习模板中的部分功能，请下载main分支中的项目
+该项目默认分支为master,此分支提供模板的基础版本，项目文件较小。如果你需要一个示例关卡用于学习模板中的部分功能，请下载main分支中的项目<br>
+
+4/16由于部分功能重写,main分支中的关卡实例需要修复，请先下载master分支中的项目
 ## 关于作者
 [Bilibili个人页](https://space.bilibili.com/291841883?spm_id_from=333.1007.0.0)
 
@@ -13,23 +15,20 @@ A unity project aiming to make a template as the game DancingLine.
   [DOTween](https://dotween.demigiant.com/)<br>
   [UI Modal](https://assetstore.unity.com/packages/tools/gui/ui-modal-175169)<br>
   [冰焰模板](https://chinadlrs.com/app/?id=41)<br>
-  
-  
+# TODO
+- [x] Player重力实现
+- [ ] 皮肤系统
+- [x] 重写引导线
 <html>
   <h1>ChangeLogs</h1>
+  <h2>2025/4/16 Update Version 1.1.2</h2>
+  1.重写引导线生成<br>
+  2.实现Player重力<br>
+  3.修复一些小bug<br>
   <h2>2025/4/14 Update Version 1.0</h2>
-  [功能基本完成]
+  [功能基本完成]<br>
   1.修复部分情况下无法复活的bug<br>
   2.修复Player速度问题<br>
-  TODO List:<br>
-  1.TriggerAlterSpeed<br>
-  2.PlayerSpeed和Controllable的恢复<br>
-  3.动画脚本以及动画对象的恢复(更推荐使用TimeLine)<br>
-  4.假线<br>
-  (下面几个随缘)
-  5.更多辅助功能<br>
-  6.Player自身重力<br>
-  7.爬墙<br>
   <h2>2025/4/13</h2>
   1.修复雾气恢复<br>
   2.新增TimeLine恢复<br>
