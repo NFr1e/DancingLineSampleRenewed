@@ -20,15 +20,20 @@ namespace DancingLineFanmade.Triggers
         private UnityEventTrigger _collider;
         [SerializeField]
         private MeshRenderer _renderer;
+
+        public GameObject childLine;
+
         [SerializeField,BoxGroup("Debug")] 
         private bool 
             DrawHintBoxTime = true, 
             DrawHintBoxCollider = true;
 
-        private bool 
+        private bool
             _triggerable = false,
             _displayable = false,
-            _triggered = false;
+            _triggered = false,
+            _lineDisapperaTimeArrive = false;
+        
 
         private float s_interval = 0.1f;
 
@@ -64,10 +69,13 @@ namespace DancingLineFanmade.Triggers
         #region Handle Display
         private void HandleDisplay()
         {
-            _displayable = Vector3.Distance(transform.position, Player.instance.transform.position) <= 20;
+            _displayable = _audioManager.CurrentLevelTime >  TriggerTime - 2;
 
             if (!_triggered && GameController.curGameState != GameState.Over)
-                _renderer.enabled = _displayable;
+            {
+                _renderer.gameObject.SetActive(_displayable);
+                if(childLine && !_lineDisapperaTimeArrive) childLine.SetActive(_displayable);
+            }
         }
         #endregion
 
@@ -89,10 +97,16 @@ namespace DancingLineFanmade.Triggers
             _triggerable = 
                 _audioManager.CurrentLevelTime > lowlimit 
                 && _audioManager.CurrentLevelTime < uplimit;
+
+            if (_audioManager.CurrentLevelTime > lowlimit && childLine)
+            {
+                _lineDisapperaTimeArrive = true;
+                childLine.SetActive(false);
+            }
         }
         private void AnimateTriggered()
         {
-            _renderer.enabled = false;
+            _renderer.gameObject.SetActive(false);
 
             GameObject effect = Instantiate(TriggeredEffect,transform.position,transform.rotation,GameController.CollectableRemainParent);
             effect.transform.localScale = 0.15f * Vector3.one;

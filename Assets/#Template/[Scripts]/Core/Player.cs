@@ -54,6 +54,9 @@ namespace DancingLineFanmade.Gameplay
         [BoxGroup("Collide")] public BoxCollider CentralCollider;
         [BoxGroup("Collide")] public LayerMask HitLayer,DrownLayer,FallLayer, floorLayer;
 
+        [BoxGroup("Physics")] public Vector3 selfGravity = new Vector3(0, -15f, 0);
+        [BoxGroup("Physics")] public bool useGravity = true;
+
         [BoxGroup("Debugging")]
         public bool DrawGizmos = true;
         [BoxGroup("AutoPlay")]
@@ -73,6 +76,9 @@ namespace DancingLineFanmade.Gameplay
         private bool _inputCooldown = true;
         private bool _onCollider = true;
         private bool _spawnTail = true;
+
+        private Vector3 currentVelocity; 
+
         private Vector3 _lastGroundPosition;
         private Vector3 _enterCollisionPosition;
 
@@ -132,10 +138,13 @@ namespace DancingLineFanmade.Gameplay
             UpdateActiveTail();
 
             HandleAutoPlay();
+            HandleGravity();
         }
         private void PlayerInit()
         {
+            useGravity = false;
             _rigid.useGravity = false;
+            _rigid.isKinematic = true;
             _inputCooldown = true;
 
             gameObject.tag = "Player";
@@ -152,7 +161,8 @@ namespace DancingLineFanmade.Gameplay
         }
         private void StartPlayer()
         {
-            _rigid.useGravity = true;
+            useGravity = true;
+            _rigid.isKinematic = false;
             StartCoroutine(InputCooldown());
             CreateTail(transform.position);
             PlayerEvents.TriggerStartEvent();
@@ -174,6 +184,19 @@ namespace DancingLineFanmade.Gameplay
             {
                 StartCoroutine(InputCooldown());
                 RotatePlayer();
+            }
+        }
+        private void HandleGravity()
+        {
+            if (useGravity)
+            {
+                currentVelocity += selfGravity * Time.deltaTime;
+
+                transform.Translate(currentVelocity * Time.deltaTime);
+            }
+            else
+            {
+                currentVelocity = Vector3.zero; // ÷ÿ÷√ÀŸ∂»
             }
         }
         /// <summary>
@@ -229,7 +252,7 @@ namespace DancingLineFanmade.Gameplay
                 activeTail._transform.localScale = new Vector3(activeTail._transform.localScale.x, activeTail._transform.localScale.y, Vector3.Distance(activeTail.startPosition, this.gameObject.transform.position) + 0.5f);
                 activeTail._transform.position = (activeTail.startPosition + this.gameObject.transform.position) / 2;
                 activeTail._transform.Translate(Vector3.back * 0.25f, Space.Self);
-                activeTail._transform.LookAt(gameObject.transform);
+                //activeTail._transform.LookAt(gameObject.transform);
             }
         }
         private void OnCollisionEnter(Collision collision)
@@ -282,12 +305,16 @@ namespace DancingLineFanmade.Gameplay
         private void CheckGroundStatus()
         {
             bool wasGrounded = _isGrounded;
-            _isGrounded = Physics.Raycast(transform.position, Vector3.down, _checkGroundMaxDistance, floorLayer) && _onCollider;
+            _isGrounded = Physics.Raycast(transform.position,-transform.up, _checkGroundMaxDistance, floorLayer) && _onCollider;
 
             CheckSpecialLayers(HitLayer, OverMode.Hit);
             CheckSpecialLayers(DrownLayer, OverMode.Drowned);
             CheckSpecialLayers(FallLayer, OverMode.Fall);
 
+            if (currentVelocity.y < 0 && _isGrounded)
+            {
+                currentVelocity.y = 0;
+            }
             if (!wasGrounded && _isGrounded)
             {
                 PlayerLanding();
@@ -439,6 +466,9 @@ namespace DancingLineFanmade.Gameplay
             };
             
             Handles.Label(textPosition, $"Direction:{transform.eulerAngles}", style);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(new Ray(transform.position,-transform.up));
         }
 #endif
     }

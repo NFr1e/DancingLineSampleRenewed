@@ -12,4 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619ecefe3a05cf347bab0593d8103674, type: 3}
   m_Name: Level01RotatePoints
   m_EditorClassIdentifier: 
-  SavedPoints: []
+  SavedPoints:
+  - Position: {x: 5, y: 0, z: 0}
+    Euler: {x: 0, y: 0, z: 0}
+    Time: 0
+    AutoPlayRotated: 0
+  - Position: {x: 5, y: 0, z: 10}
+    Euler: {x: 0, y: 0, z: 0}
+    Time: 0
+    AutoPlayRotated: 0
+  - Position: {x: 14, y: 0, z: 10}
+    Euler: {x: 0, y: 0, z: 0}
+    Time: 0
+    AutoPlayRotated: 0
+  - Position: {x: 14, y: 0, z: 18}
+    Euler: {x: 0, y: 0, z: 0}
+    Time: 0
+    AutoPlayRotated: 0
+  - Position: {x: 16, y: 0, z: 18}
+    Euler: {x: 0, y: 0, z: 0}
+    Time: 0
+    AutoPlayRotated: 0
+  - Position: {x: 16, y: 0, z: 26}
+    Euler: {x: 0, y: 0, z: 0}
+    Time: 0
+    AutoPlayRotated: 0
+  - Position: {x: 20, y: 0, z: 32}
+    Euler: {x: 0, y: 0, z: 0}
+    Time: 0
+    AutoPlayRotated: 0
+  - Position: {x: 23, y: 0, z: 25}
+    Euler: {x: 0, y: 0, z: 0}
+    Time: 0
+    AutoPlayRotated: 0
