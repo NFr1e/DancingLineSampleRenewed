@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DancingLineFanmade.Gameplay;
 
 namespace DancingLineFanmade.Triggers
 {
     [RequireComponent(typeof(Collider))]
     public class TriggerJump : MonoBehaviour
     {
-        public Rigidbody targetRigid;
         public float Power = 10;
         private void Start()
         {
@@ -16,7 +16,14 @@ namespace DancingLineFanmade.Triggers
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
-                targetRigid.AddForce(Vector3.up * Power, ForceMode.Impulse);
+            {
+                Player player = other.GetComponent<Player>();
+                if (player != null)
+                {
+                    player.SetVerticalVelocity(Power);
+                    Debug.Log("PlayerJump");
+                }
+            }
         }
     }
 }

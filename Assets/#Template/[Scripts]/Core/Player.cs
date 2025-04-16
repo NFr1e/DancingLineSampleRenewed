@@ -37,7 +37,7 @@ namespace DancingLineFanmade.Gameplay
         public static void TriggerLandingEvent() => OnPlayerLanding?.Invoke();
     }
     [RequireComponent(typeof(Rigidbody),typeof(BoxCollider))][DisallowMultipleComponent]
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour,IResettable
     {
         public static Player instance;
 
@@ -77,8 +77,8 @@ namespace DancingLineFanmade.Gameplay
         private bool _onCollider = true;
         private bool _spawnTail = true;
 
-        private Vector3 currentVelocity; 
-
+        private Vector3 currentVelocity;
+        private Vector3 _lastGravity;
         private Vector3 _lastGroundPosition;
         private Vector3 _enterCollisionPosition;
 
@@ -104,6 +104,8 @@ namespace DancingLineFanmade.Gameplay
         }
         private void OnEnable()
         {
+            RegisterResettable();
+
             StairEvents.OnEndLaunch += SetAsStartDirection;
 
             TriggerCallOutmapEvent.OnEnterOutmapTrigger += PlayerFall;
@@ -114,10 +116,14 @@ namespace DancingLineFanmade.Gameplay
             GameEvents.OnStartPlay += StartPlayer;
             GameEvents.OnGamePaused += PlayerInit;
 
+            RespawnAttributes.OnRecording += NoteArgs;
+
             RespawnEvents.OnEndRespawn += PlayerInit;
         }
         private void OnDisable()
         {
+            UnregisterResettable();
+
             StairEvents.OnEndLaunch -= SetAsStartDirection;
 
             TriggerCallOutmapEvent.OnEnterOutmapTrigger -= PlayerFall;
@@ -127,6 +133,8 @@ namespace DancingLineFanmade.Gameplay
             GameEvents.OnEnterLevel -= PlayerInit;
             GameEvents.OnStartPlay -= StartPlayer;
             GameEvents.OnGamePaused -= PlayerInit;
+
+            RespawnAttributes.OnRecording -= NoteArgs;
 
             RespawnEvents.OnEndRespawn -= PlayerInit;
         }
@@ -188,16 +196,18 @@ namespace DancingLineFanmade.Gameplay
         }
         private void HandleGravity()
         {
+            transform.Translate(currentVelocity * Time.deltaTime);
+
+            if (_isGrounded) return;
+
             if (useGravity)
             {
                 currentVelocity += selfGravity * Time.deltaTime;
-
-                transform.Translate(currentVelocity * Time.deltaTime);
             }
-            else
-            {
-                currentVelocity = Vector3.zero; // 重置速度
-            }
+        }
+        public void SetVerticalVelocity(float newV)
+        {
+            currentVelocity = new Vector3(0, newV, 0);
         }
         /// <summary>
         /// 一般在Playing状态时调用，用于输入冷却
@@ -311,10 +321,6 @@ namespace DancingLineFanmade.Gameplay
             CheckSpecialLayers(DrownLayer, OverMode.Drowned);
             CheckSpecialLayers(FallLayer, OverMode.Fall);
 
-            if (currentVelocity.y < 0 && _isGrounded)
-            {
-                currentVelocity.y = 0;
-            }
             if (!wasGrounded && _isGrounded)
             {
                 PlayerLanding();
@@ -335,6 +341,8 @@ namespace DancingLineFanmade.Gameplay
         private void PlayerLanding()
         {
             Debug.Log($"{GetType().Name}:{name}Landed");
+
+            currentVelocity.y = 0;
 
             if (GameController.curGameState == GameState.Playing ||
                 (GameController.curGameState == GameState.Over && _overMode != OverMode.Hit))
@@ -444,6 +452,27 @@ namespace DancingLineFanmade.Gameplay
                 }
             }
         }
+        #region Reset
+        /// <summary>
+        /// 一般在OnEnable中调用
+        /// </summary>
+        private void RegisterResettable() => ResettableManager.Register(this);
+        /// <summary>
+        /// 一般在OnDisable中调用
+        /// </summary>
+        private void UnregisterResettable() => ResettableManager.Unregister(this);
+
+        public void NoteArgs() 
+        {
+            _lastGravity = selfGravity;
+        }
+        public void ResetArgs()
+        {
+            selfGravity = _lastGravity;
+
+            Debug.Log($"{name} Reset");
+        }
+        #endregion
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
