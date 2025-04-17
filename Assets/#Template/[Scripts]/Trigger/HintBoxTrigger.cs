@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using DG.Tweening;
 using Sirenix.OdinInspector;
-using DancingLineFanmade.UI;
-using DancingLineFanmade.Debugging;
 using DancingLineFanmade.Audio;
 using DancingLineFanmade.Gameplay;
 
@@ -49,7 +45,7 @@ namespace DancingLineFanmade.Triggers
             _collider.OnEnter.AddListener(GetAudioManager);
             _collider.OnStay.AddListener(OnPlayerStay);
         }
-        private void OnDestroy()
+        private void OnDisable()
         {
             UnregisterResettable();
 
@@ -74,7 +70,7 @@ namespace DancingLineFanmade.Triggers
             if (!_triggered && GameController.curGameState != GameState.Over)
             {
                 _renderer.gameObject.SetActive(_displayable);
-                if(childLine && !_lineDisapperaTimeArrive) childLine.SetActive(_displayable);
+                if(!_lineDisapperaTimeArrive && childLine) childLine.SetActive(_displayable);//使用空条件运算符通过不了Unity的序列化检查
             }
         }
         #endregion
@@ -98,10 +94,10 @@ namespace DancingLineFanmade.Triggers
                 _audioManager.CurrentLevelTime > lowlimit 
                 && _audioManager.CurrentLevelTime < uplimit;
 
-            if (_audioManager.CurrentLevelTime > lowlimit && childLine)
+            if (_audioManager.CurrentLevelTime > lowlimit)
             {
                 _lineDisapperaTimeArrive = true;
-                childLine.SetActive(false);
+                if(childLine)childLine.SetActive(false);
             }
         }
         private void AnimateTriggered()
@@ -141,6 +137,8 @@ namespace DancingLineFanmade.Triggers
         public void ResetArgs()
         {
             _triggered = false;
+            _lineDisapperaTimeArrive = false;
+            if(childLine)childLine.SetActive(true);
 
             Debug.Log($"{name} Reset");
         }

@@ -267,6 +267,12 @@ namespace DancingLineFanmade.Gameplay
         }
         private void OnCollisionEnter(Collision collision)
         {
+            if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+            {
+                _overMode = OverMode.Hit;
+                PlayerDie();
+            }
+
             for (int i = 0; i < collision.contacts.Length; i++)
             {
                 if (collision.contacts[i].thisCollider == CentralCollider && GameController.curGameState != GameState.Over)
@@ -302,7 +308,7 @@ namespace DancingLineFanmade.Gameplay
         /// <param name="mode"></param>
         private void CheckSpecialLayers(LayerMask layer, OverMode mode)
         {
-            if (Physics.Raycast(transform.position, Vector3.down,
+            if (Physics.Raycast(transform.position, -transform.up,
                 _checkGroundMaxDistance + 0.1f, layer) && GameController.curGameState != GameState.Over)
             {
                 _overMode = mode;
@@ -397,6 +403,7 @@ namespace DancingLineFanmade.Gameplay
                     break;
                 case OverMode.Hit:
                     PlayerInit();
+                    currentVelocity = Vector3.zero;
                     PlayerEvents.TriggerHitEvent();
                     break;
                 case OverMode.Drowned:
@@ -469,6 +476,7 @@ namespace DancingLineFanmade.Gameplay
         public void ResetArgs()
         {
             selfGravity = _lastGravity;
+            currentVelocity = Vector3.zero;
 
             Debug.Log($"{name} Reset");
         }
