@@ -1,9 +1,6 @@
 # DancingLineTemplate-Renewed
 A unity project aiming to make a template as the game DancingLine.
-## 模板下载
-该项目默认分支为master,此分支提供模板的基础版本，项目文件较小。如果你需要一个示例关卡用于学习模板中的部分功能，请下载main分支中的项目<br>
 
-4/16由于部分功能重写,main分支中的关卡实例需要修复，请先下载master分支中的项目
 ## 关于作者
 [Bilibili个人页](https://space.bilibili.com/291841883?spm_id_from=333.1007.0.0)
 
@@ -15,10 +12,13 @@ A unity project aiming to make a template as the game DancingLine.
   [DOTween](https://dotween.demigiant.com/)<br>
   [UI Modal](https://assetstore.unity.com/packages/tools/gui/ui-modal-175169)<br>
   [冰焰模板](https://chinadlrs.com/app/?id=41)<br>
-# TODO
+# TODO List
 - [x] Player重力实现
+- [x] Player爬墙
 - [ ] 皮肤系统
 - [x] 重写引导线
+- [ ] 脚本动画
+- [ ] 更高精度音频(maybe done)
 <html>
   <h1>ChangeLogs</h1>
   <h2>2025/4/16 Update Version 1.1.2</h2>
