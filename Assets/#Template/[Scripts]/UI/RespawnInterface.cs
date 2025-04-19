@@ -18,7 +18,15 @@ namespace DancingLineFanmade.UI
         private bool _isRespawn = false;
         private LevelData _levelData;
         private LevelProgressManager.LevelProgress _progress;
-        private Tween _barTween;
+        private Tween 
+            _barTween,
+            _respawnTween,
+            _backTween;
+
+        private Vector3
+            _respawnOrigin,
+            _backOrigin;
+
         protected override void EnterInterface()
         {
             base.EnterInterface();
@@ -33,6 +41,21 @@ namespace DancingLineFanmade.UI
             });
 
             UserInterfaceEvents.TriggerRespawnEnterEvent();
+
+            _respawnOrigin = RespawnButton.transform.position;
+            _backOrigin = ExitTrigger.transform.position;
+
+            _respawnTween?.Kill();
+            _backTween?.Kill();
+
+            RespawnButton.transform.position = new(_respawnOrigin.x, _respawnOrigin.y - 200f, _respawnOrigin.z);
+            _respawnTween = RespawnButton.transform
+                .DOMoveY(_respawnOrigin.y, 0.5f)
+                .SetEase(Ease.OutSine);
+            ExitTrigger.transform.position = new(_backOrigin.x, _backOrigin.y - 200f, _respawnOrigin.z);
+            _backTween = ExitTrigger.transform
+                .DOMoveY(_backOrigin.y, 0.5f)
+                .SetEase(Ease.OutSine);
         }
         protected override void UpdateInterface()
         {
@@ -46,6 +69,16 @@ namespace DancingLineFanmade.UI
 
             if(!_isRespawn)
                 UserInterfaceEvents.TriggerRespawnExitEvent();
+
+            _respawnTween?.Kill();
+            _backTween?.Kill();
+
+            _respawnTween = RespawnButton.transform
+                .DOMoveY(_respawnOrigin.y - 200f, 0.5f)
+                .SetEase(Ease.OutSine);
+            _backTween = ExitTrigger.transform
+                .DOMoveY(_backOrigin.y - 200, 0.5f)
+                .SetEase(Ease.OutSine);
         }
         protected override void OnEnable()
         {

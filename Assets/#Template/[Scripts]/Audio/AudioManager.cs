@@ -25,7 +25,7 @@ namespace DancingLineFanmade.Audio
             player.Play();
             Destroy(player.gameObject, clip.length + 0.1f);//安全缓冲时间
         }
-        public static void PlayFadeutAudioClip(AudioClip clip, float startTime = 0,float duration = 1,float volume = 1)
+        public static void PlayFadeoutAudioClip(AudioClip clip, float startTime = 0,float duration = 1,float volume = 1)
         {
             AudioSource player = new GameObject(clip.name + "FadePlayer").AddComponent<AudioSource>();
             DontDestroyOnLoad(player);
@@ -149,7 +149,7 @@ namespace DancingLineFanmade.Audio
         {
             PauseLevelSoundtrack();
 
-            PlayFadeutAudioClip(CurLevelData.LevelSoundtrack,CurrentLevelTime,2,_originalVolume);
+            PlayFadeoutAudioClip(CurLevelData.LevelSoundtrack,CurrentLevelTime,2,_originalVolume);
 
             UnityEngine.Debug.Log("SoundtrackFaded");
 

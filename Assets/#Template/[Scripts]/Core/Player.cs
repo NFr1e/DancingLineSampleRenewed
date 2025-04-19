@@ -67,8 +67,9 @@ namespace DancingLineFanmade.Gameplay
         private AudioManager _audioManager;
 
         [HideInInspector]public Rigidbody _rigid;
-        private float _playerSpeedMultiply = 1;
 
+        private float _playerSpeedMultiply = 1;
+        private float _flyDuration = 0;
         private OverMode _overMode;
 
         private bool _isGrounded = true;
@@ -198,11 +199,14 @@ namespace DancingLineFanmade.Gameplay
         {
             transform.Translate(currentVelocity * Time.deltaTime);
 
+            if (_flyDuration > selfGravity.y * 2/15) CentralCollider.enabled = false; //´ÖÂ³ÇÒ±©Á¦
+
             if (_isGrounded) return;
 
             if (useGravity)
             {
                 currentVelocity += selfGravity * Time.deltaTime;
+                _flyDuration += Time.deltaTime;
             }
         }
         public void SetVerticalVelocity(float newV)
@@ -321,7 +325,7 @@ namespace DancingLineFanmade.Gameplay
         private void CheckGroundStatus()
         {
             bool wasGrounded = _isGrounded;
-            _isGrounded = Physics.Raycast(transform.position,-transform.up, _checkGroundMaxDistance, floorLayer) && _onCollider;
+            _isGrounded = Physics.Raycast(transform.position,-transform.up, _checkGroundMaxDistance, floorLayer);
 
             CheckSpecialLayers(HitLayer, OverMode.Hit);
             CheckSpecialLayers(DrownLayer, OverMode.Drowned);
@@ -330,6 +334,8 @@ namespace DancingLineFanmade.Gameplay
             if (!wasGrounded && _isGrounded)
             {
                 PlayerLanding();
+                _flyDuration = 0;
+                CentralCollider.enabled = true;
             }
             else if (_isGrounded)
             {

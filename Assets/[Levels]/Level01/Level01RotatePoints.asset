@@ -13,35 +13,655 @@ MonoBehaviour:
   m_Name: Level01RotatePoints
   m_EditorClassIdentifier: 
   SavedPoints:
-  - Position: {x: 5, y: 0, z: 0}
-    Euler: {x: 0, y: 0, z: 0}
+  - Position: {x: 0, y: 0.000000095367426, z: 0}
+    Euler: {x: -0, y: 90, z: -0}
     Time: 0
     AutoPlayRotated: 0
-  - Position: {x: 5, y: 0, z: 10}
-    Euler: {x: 0, y: 0, z: 0}
-    Time: 0
+  - Position: {x: 13.758135, y: 0.000000095367426, z: -0.0000017704442}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 1.1306576
     AutoPlayRotated: 0
-  - Position: {x: 14, y: 0, z: 10}
-    Euler: {x: 0, y: 0, z: 0}
-    Time: 0
+  - Position: {x: 13.758135, y: 0, z: 6.5327234}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 1.6853288
     AutoPlayRotated: 0
-  - Position: {x: 14, y: 0, z: 18}
-    Euler: {x: 0, y: 0, z: 0}
-    Time: 0
+  - Position: {x: 19.828056, y: 0.000000095367426, z: 6.5327234}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 2.1759863
     AutoPlayRotated: 0
-  - Position: {x: 16, y: 0, z: 18}
-    Euler: {x: 0, y: 0, z: 0}
-    Time: 0
+  - Position: {x: 19.828056, y: 0, z: 12.713399}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 2.6879818
     AutoPlayRotated: 0
-  - Position: {x: 16, y: 0, z: 26}
-    Euler: {x: 0, y: 0, z: 0}
-    Time: 0
+  - Position: {x: 25.716492, y: 0.000000095367426, z: 12.713399}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 3.178662
     AutoPlayRotated: 0
-  - Position: {x: 20, y: 0, z: 32}
-    Euler: {x: 0, y: 0, z: 0}
-    Time: 0
+  - Position: {x: 25.716492, y: 0, z: 21.273281}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 3.903991
     AutoPlayRotated: 0
-  - Position: {x: 23, y: 0, z: 25}
-    Euler: {x: 0, y: 0, z: 0}
-    Time: 0
+  - Position: {x: 28.260475, y: 0.000000095367426, z: 21.273281}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 4.1386623
+    AutoPlayRotated: 0
+  - Position: {x: 28.260475, y: 0, z: 24.111647}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 4.3733106
+    AutoPlayRotated: 0
+  - Position: {x: 31.04885, y: 0.000000095367426, z: 24.111647}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 4.586644
+    AutoPlayRotated: 0
+  - Position: {x: 31.04885, y: 0, z: 26.895773}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 4.8213153
+    AutoPlayRotated: 0
+  - Position: {x: 34.186905, y: 0.000000095367426, z: 26.895773}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 5.0773244
+    AutoPlayRotated: 0
+  - Position: {x: 34.186905, y: 0, z: 35.82522}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 5.823991
+    AutoPlayRotated: 0
+  - Position: {x: 36.73172, y: 0.000000095367426, z: 35.82522}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 6.0373244
+    AutoPlayRotated: 0
+  - Position: {x: 36.73172, y: 0, z: 44.286472}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 6.7413154
+    AutoPlayRotated: 0
+  - Position: {x: 39.938293, y: 0.000000095367426, z: 44.286472}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 6.9973245
+    AutoPlayRotated: 0
+  - Position: {x: 39.938293, y: 0, z: 66.93859}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 8.895987
+    AutoPlayRotated: 0
+  - Position: {x: 45.452465, y: 0.000000095367426, z: 66.93859}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 9.365329
+    AutoPlayRotated: 0
+  - Position: {x: 45.452465, y: 0, z: 72.4363}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 9.834648
+    AutoPlayRotated: 0
+  - Position: {x: 51.45267, y: 0.000000095367426, z: 72.4363}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 10.325329
+    AutoPlayRotated: 0
+  - Position: {x: 51.45267, y: 0, z: 78.374466}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 10.815987
+    AutoPlayRotated: 0
+  - Position: {x: 59.918186, y: 0.000000095367426, z: 78.374466}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 11.519978
+    AutoPlayRotated: 0
+  - Position: {x: 59.918186, y: 0, z: 81.3423}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 11.754648
+    AutoPlayRotated: 0
+  - Position: {x: 62.751465, y: 0.000000095367426, z: 81.3423}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 12.010657
+    AutoPlayRotated: 0
+  - Position: {x: 62.751465, y: 0, z: 84.11148}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 12.245329
+    AutoPlayRotated: 0
+  - Position: {x: 65.60557, y: 0.000000095367426, z: 84.11148}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 12.479978
+    AutoPlayRotated: 0
+  - Position: {x: 65.60557, y: 0, z: 87.17481}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 12.735987
+    AutoPlayRotated: 0
+  - Position: {x: 74.23224, y: 0.000000095367426, z: 87.17481}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 13.439978
+    AutoPlayRotated: 0
+  - Position: {x: 74.23224, y: 0, z: 90.29528}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 13.695987
+    AutoPlayRotated: 0
+  - Position: {x: 82.69779, y: 0.000000095367426, z: 90.29528}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 14.421315
+    AutoPlayRotated: 0
+  - Position: {x: 82.69779, y: 0, z: 93.345924}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 14.655987
+    AutoPlayRotated: 0
+  - Position: {x: 106.14448, y: 0.000000095367426, z: 93.345924}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 16.618662
+    AutoPlayRotated: 0
+  - Position: {x: 106.14448, y: 0, z: 98.286316}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 17.02399
+    AutoPlayRotated: 0
+  - Position: {x: 111.97725, y: 0.000000095367426, z: 98.286316}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 17.514648
+    AutoPlayRotated: 0
+  - Position: {x: 111.97725, y: 0, z: 104.21523}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 18.00533
+    AutoPlayRotated: 0
+  - Position: {x: 117.83132, y: 0.000000095367426, z: 104.21523}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 18.495987
+    AutoPlayRotated: 0
+  - Position: {x: 117.83132, y: 0, z: 113.09438}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 19.242653
+    AutoPlayRotated: 0
+  - Position: {x: 120.68695, y: 0.000000095367426, z: 113.09438}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 19.455986
+    AutoPlayRotated: 0
+  - Position: {x: 120.68695, y: 0, z: 115.98463}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 19.711996
+    AutoPlayRotated: 0
+  - Position: {x: 123.60759, y: 0.000000095367426, z: 115.98463}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 19.967981
+    AutoPlayRotated: 0
+  - Position: {x: 123.60759, y: 0, z: 118.574524}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 20.159977
+    AutoPlayRotated: 0
+  - Position: {x: 126.96747, y: 0.000000095367426, z: 118.574524}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 20.458662
+    AutoPlayRotated: 0
+  - Position: {x: 126.96747, y: 0, z: 127.29993}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 21.18399
+    AutoPlayRotated: 0
+  - Position: {x: 129.49686, y: 0.000000095367426, z: 127.29993}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 21.375986
+    AutoPlayRotated: 0
+  - Position: {x: 129.49686, y: 0, z: 135.95146}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 22.122654
+    AutoPlayRotated: 0
+  - Position: {x: 132.17604, y: 0.000000095367426, z: 135.95146}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 22.335987
+    AutoPlayRotated: 0
+  - Position: {x: 132.17604, y: 0, z: 159.40375}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 24.277325
+    AutoPlayRotated: 0
+  - Position: {x: 137.28583, y: 0.000000095367426, z: 159.40375}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 24.725328
+    AutoPlayRotated: 0
+  - Position: {x: 137.28583, y: 0, z: 165.35277}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 25.215986
+    AutoPlayRotated: 0
+  - Position: {x: 143.14859, y: 0.000000095367426, z: 165.35277}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 25.706644
+    AutoPlayRotated: 0
+  - Position: {x: 143.14859, y: 0, z: 170.99266}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 26.175987
+    AutoPlayRotated: 0
+  - Position: {x: 151.80553, y: 0.000000095367426, z: 170.99266}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 26.901316
+    AutoPlayRotated: 0
+  - Position: {x: 151.80553, y: 0, z: 173.85435}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 27.135986
+    AutoPlayRotated: 0
+  - Position: {x: 154.8628, y: 0.000000095367426, z: 173.85435}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 27.391996
+    AutoPlayRotated: 0
+  - Position: {x: 154.8628, y: 0, z: 176.4453}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 27.60533
+    AutoPlayRotated: 0
+  - Position: {x: 158.00143, y: 0.000000095367426, z: 176.4453}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 27.861315
+    AutoPlayRotated: 0
+  - Position: {x: 158.00143, y: 0, z: 179.44177}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 28.095987
+    AutoPlayRotated: 0
+  - Position: {x: 172.05038, y: 0.000000095367426, z: 179.44177}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 29.26932
+    AutoPlayRotated: 0
+  - Position: {x: 172.05038, y: 0, z: 182.24298}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 29.50399
+    AutoPlayRotated: 0
+  - Position: {x: 175.04907, y: 0.000000095367426, z: 182.24298}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 29.781315
+    AutoPlayRotated: 0
+  - Position: {x: 175.04907, y: 0, z: 185.28723}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 30.015985
+    AutoPlayRotated: 0
+  - Position: {x: 198.13713, y: 0.000000095367426, z: 185.28723}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 31.957325
+    AutoPlayRotated: 0
+  - Position: {x: 198.13713, y: 0, z: 190.82866}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 32.40533
+    AutoPlayRotated: 0
+  - Position: {x: 203.83711, y: 0.000000095367426, z: 190.82866}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 32.87465
+    AutoPlayRotated: 0
+  - Position: {x: 203.83711, y: 0, z: 196.51352}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 33.36533
+    AutoPlayRotated: 0
+  - Position: {x: 209.53932, y: 0.000000095367426, z: 196.51352}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 33.83465
+    AutoPlayRotated: 0
+  - Position: {x: 209.53932, y: 0, z: 205.44933}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 34.581314
+    AutoPlayRotated: 0
+  - Position: {x: 212.4361, y: 0.000000095367426, z: 205.44933}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 34.815987
+    AutoPlayRotated: 0
+  - Position: {x: 212.4361, y: 0, z: 208.01668}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 35.02932
+    AutoPlayRotated: 0
+  - Position: {x: 215.1273, y: 0.000000095367426, z: 208.01668}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 35.263992
+    AutoPlayRotated: 0
+  - Position: {x: 215.1273, y: 0, z: 211.01265}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 35.49866
+    AutoPlayRotated: 0
+  - Position: {x: 218.32988, y: 0.000000095367426, z: 211.01265}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 35.775986
+    AutoPlayRotated: 0
+  - Position: {x: 218.32988, y: 0, z: 219.40694}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 36.479977
+    AutoPlayRotated: 0
+  - Position: {x: 221.18802, y: 0.000000095367426, z: 219.40694}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 36.71465
+    AutoPlayRotated: 0
+  - Position: {x: 221.18802, y: 0, z: 222.11868}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 36.927982
+    AutoPlayRotated: 0
+  - Position: {x: 224.12215, y: 0.000000095367426, z: 222.11868}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 37.18399
+    AutoPlayRotated: 0
+  - Position: {x: 224.12215, y: 0, z: 224.94778}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 37.397324
+    AutoPlayRotated: 0
+  - Position: {x: 227.5339, y: 0.000000095367426, z: 224.94778}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 37.695988
+    AutoPlayRotated: 0
+  - Position: {x: 227.5339, y: 0, z: 248.267}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 39.637325
+    AutoPlayRotated: 0
+  - Position: {x: 233.05707, y: 0.000000095367426, z: 248.267}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 40.106644
+    AutoPlayRotated: 0
+  - Position: {x: 233.05707, y: 0, z: 253.80109}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 40.55465
+    AutoPlayRotated: 0
+  - Position: {x: 238.5254, y: 0.000000095367426, z: 253.80109}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 41.02399
+    AutoPlayRotated: 0
+  - Position: {x: 238.5254, y: 0, z: 259.7692}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 41.51465
+    AutoPlayRotated: 0
+  - Position: {x: 247.64433, y: 0.000000095367426, z: 259.7692}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 42.282654
+    AutoPlayRotated: 0
+  - Position: {x: 247.64433, y: 0, z: 262.7465}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 42.517323
+    AutoPlayRotated: 0
+  - Position: {x: 250.26001, y: 0.000000095367426, z: 262.7465}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 42.751995
+    AutoPlayRotated: 0
+  - Position: {x: 250.26001, y: 0, z: 265.5721}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 42.986645
+    AutoPlayRotated: 0
+  - Position: {x: 253.22115, y: 0.000000095367426, z: 265.5721}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 43.221313
+    AutoPlayRotated: 0
+  - Position: {x: 253.22115, y: 0, z: 268.66632}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 43.477325
+    AutoPlayRotated: 0
+  - Position: {x: 261.2836, y: 0.000000095367426, z: 268.66632}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 44.159977
+    AutoPlayRotated: 0
+  - Position: {x: 261.2836, y: 0, z: 271.71667}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 44.415985
+    AutoPlayRotated: 0
+  - Position: {x: 269.49075, y: 0.000000095367426, z: 271.71667}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 45.077324
+    AutoPlayRotated: 0
+  - Position: {x: 269.49075, y: 0, z: 274.68793}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 45.33331
+    AutoPlayRotated: 0
+  - Position: {x: 281.29028, y: 0.000000095367426, z: 274.68793}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 46.335987
+    AutoPlayRotated: 0
+  - Position: {x: 281.29028, y: 0, z: 280.72388}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 46.826645
+    AutoPlayRotated: 0
+  - Position: {x: 286.87585, y: 0.000000095367426, z: 280.72388}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 47.295986
+    AutoPlayRotated: 0
+  - Position: {x: 286.87585, y: 0, z: 286.22668}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 47.74399
+    AutoPlayRotated: 0
+  - Position: {x: 292.80215, y: 0.000000095367426, z: 286.22668}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 48.255985
+    AutoPlayRotated: 0
+  - Position: {x: 292.80215, y: 0, z: 292.11435}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 48.72533
+    AutoPlayRotated: 0
+  - Position: {x: 295.30197, y: 0.000000095367426, z: 292.11435}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 48.959976
+    AutoPlayRotated: 0
+  - Position: {x: 295.30197, y: 0, z: 295.32367}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 49.21599
+    AutoPlayRotated: 0
+  - Position: {x: 303.53125, y: 0.000000095367426, z: 295.32367}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 49.898663
+    AutoPlayRotated: 0
+  - Position: {x: 303.53125, y: 0, z: 298.301}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 50.154648
+    AutoPlayRotated: 0
+  - Position: {x: 306.35327, y: 0.000000095367426, z: 298.301}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 50.36798
+    AutoPlayRotated: 0
+  - Position: {x: 306.35327, y: 0, z: 301.13217}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 50.62399
+    AutoPlayRotated: 0
+  - Position: {x: 309.08914, y: 0.000000095367426, z: 301.13217}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 50.85866
+    AutoPlayRotated: 0
+  - Position: {x: 309.08914, y: 0, z: 304.21954}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 51.09331
+    AutoPlayRotated: 0
+  - Position: {x: 318.2721, y: 0.000000095367426, z: 304.21954}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 51.861317
+    AutoPlayRotated: 0
+  - Position: {x: 318.2721, y: 0, z: 307.02954}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 52.095985
+    AutoPlayRotated: 0
+  - Position: {x: 326.7726, y: 0.000000095367426, z: 307.02954}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 52.821316
+    AutoPlayRotated: 0
+  - Position: {x: 326.7726, y: 0, z: 309.7364}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 53.03465
+    AutoPlayRotated: 0
+  - Position: {x: 337.80847, y: 0.000000095367426, z: 309.7364}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 53.973312
+    AutoPlayRotated: 0
+  - Position: {x: 337.80847, y: 0, z: 316.0567}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 54.48533
+    AutoPlayRotated: 0
+  - Position: {x: 343.8762, y: 0.000000095367426, z: 316.0567}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 54.975986
+    AutoPlayRotated: 0
+  - Position: {x: 343.8762, y: 0, z: 321.44052}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 55.445328
+    AutoPlayRotated: 0
+  - Position: {x: 349.4786, y: 0.000000095367426, z: 321.44052}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 55.89331
+    AutoPlayRotated: 0
+  - Position: {x: 349.4786, y: 0, z: 327.53583}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 56.40533
+    AutoPlayRotated: 0
+  - Position: {x: 355.3118, y: 0.000000095367426, z: 327.53583}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 56.895985
+    AutoPlayRotated: 0
+  - Position: {x: 355.3118, y: 0, z: 335.91937}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 57.599976
+    AutoPlayRotated: 0
+  - Position: {x: 358.16025, y: 0.000000095367426, z: 335.91937}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 57.83465
+    AutoPlayRotated: 0
+  - Position: {x: 358.16025, y: 0, z: 338.5651}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 58.04798
+    AutoPlayRotated: 0
+  - Position: {x: 360.93842, y: 0.000000095367426, z: 338.5651}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 58.282654
+    AutoPlayRotated: 0
+  - Position: {x: 360.93842, y: 0, z: 341.28696}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 58.495987
+    AutoPlayRotated: 0
+  - Position: {x: 364.4087, y: 0.000000095367426, z: 341.28696}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 58.794647
+    AutoPlayRotated: 0
+  - Position: {x: 364.4087, y: 0, z: 356.19238}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 60.05331
+    AutoPlayRotated: 0
+  - Position: {x: 367.0971, y: 0.000000095367426, z: 356.19238}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 60.266644
+    AutoPlayRotated: 0
+  - Position: {x: 367.0971, y: 0, z: 359.17212}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 60.501316
+    AutoPlayRotated: 0
+  - Position: {x: 370.20102, y: 0.000000095367426, z: 359.17212}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 60.757324
+    AutoPlayRotated: 0
+  - Position: {x: 370.20102, y: 0, z: 382.13083}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 62.677322
+    AutoPlayRotated: 0
+  - Position: {x: 376.22122, y: 0.000000095367426, z: 382.13083}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 63.18932
+    AutoPlayRotated: 0
+  - Position: {x: 376.22122, y: 0, z: 387.57675}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 63.637325
+    AutoPlayRotated: 0
+  - Position: {x: 381.8995, y: 0.000000095367426, z: 387.57675}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 64.10664
+    AutoPlayRotated: 0
+  - Position: {x: 381.8995, y: 0, z: 392.79248}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 64.53331
+    AutoPlayRotated: 0
+  - Position: {x: 390.83096, y: 0.000000095367426, z: 392.79248}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 65.301315
+    AutoPlayRotated: 0
+  - Position: {x: 390.83096, y: 0, z: 395.60916}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 65.53599
+    AutoPlayRotated: 0
+  - Position: {x: 393.4577, y: 0.000000095367426, z: 395.60916}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 65.74932
+    AutoPlayRotated: 0
+  - Position: {x: 393.4577, y: 0, z: 398.23026}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 65.962654
+    AutoPlayRotated: 0
+  - Position: {x: 396.44864, y: 0.000000095367426, z: 398.23026}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 66.19733
+    AutoPlayRotated: 0
+  - Position: {x: 396.44864, y: 0, z: 401.34222}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 66.47465
+    AutoPlayRotated: 0
+  - Position: {x: 405.9584, y: 0.000000095367426, z: 401.34222}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 67.28533
+    AutoPlayRotated: 0
+  - Position: {x: 405.9584, y: 0, z: 404.24518}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 67.498665
+    AutoPlayRotated: 0
+  - Position: {x: 414.1311, y: 0.000000095367426, z: 404.24518}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 68.20265
+    AutoPlayRotated: 0
+  - Position: {x: 414.1311, y: 0, z: 407.2222}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 68.437325
+    AutoPlayRotated: 0
+  - Position: {x: 436.9601, y: 0.000000095367426, z: 407.2222}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 70.33598
+    AutoPlayRotated: 0
+  - Position: {x: 436.9601, y: 0, z: 413.41577}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 70.847984
+    AutoPlayRotated: 0
+  - Position: {x: 442.59827, y: 0.000000095367426, z: 413.41577}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 71.33866
+    AutoPlayRotated: 0
+  - Position: {x: 442.59827, y: 0, z: 419.03476}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 71.786644
+    AutoPlayRotated: 0
+  - Position: {x: 448.05807, y: 0.000000095367426, z: 419.03476}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 72.23465
+    AutoPlayRotated: 0
+  - Position: {x: 448.05807, y: 0, z: 428.18246}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 73.023994
+    AutoPlayRotated: 0
+  - Position: {x: 450.82034, y: 0.000000095367426, z: 428.18246}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 73.23733
+    AutoPlayRotated: 0
+  - Position: {x: 450.82034, y: 0, z: 431.27588}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 73.49331
+    AutoPlayRotated: 0
+  - Position: {x: 454.22684, y: 0.000000095367426, z: 431.27588}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 73.79199
+    AutoPlayRotated: 0
+  - Position: {x: 454.22684, y: 0, z: 434.57047}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 74.04798
+    AutoPlayRotated: 0
+  - Position: {x: 458.9613, y: 0.000000095367426, z: 434.57047}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 74.47465
+    AutoPlayRotated: 0
+  - Position: {x: 458.9613, y: 0, z: 438.7681}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 74.79465
+    AutoPlayRotated: 0
+  - Position: {x: 461.81143, y: 0.000000095367426, z: 438.7681}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 75.02932
+    AutoPlayRotated: 0
+  - Position: {x: 461.81143, y: 0, z: 441.92792}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 75.30664
+    AutoPlayRotated: 0
+  - Position: {x: 465.9041, y: 0.000000095367426, z: 441.92792}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 75.62664
+    AutoPlayRotated: 0
+  - Position: {x: 465.9041, y: 0, z: 445.25436}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 75.92533
+    AutoPlayRotated: 0
+  - Position: {x: 469.14688, y: 0.000000095367426, z: 445.25436}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 76.18131
+    AutoPlayRotated: 0
+  - Position: {x: 469.14688, y: 0, z: 449.8611}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 76.58665
+    AutoPlayRotated: 0
+  - Position: {x: 478.93866, y: 0.000000095367426, z: 449.8611}
+    Euler: {x: -0, y: 0, z: 0}
+    Time: 77.375984
+    AutoPlayRotated: 0
+  - Position: {x: 478.93866, y: 0, z: 480.82816}
+    Euler: {x: -0, y: 90, z: -0}
+    Time: 79.97866
     AutoPlayRotated: 0

@@ -68,28 +68,42 @@ namespace DancingLineFanmade.Collectable
 
             particle = Instantiate(CollectParticle, transform.position, transform.rotation, GameController.CollectableRemainParent);
 
-            Vector3 icon, crown;
+            Vector3 icon, crown, topVec,midVec;
+
             float offestHeight;
+
             icon = Icon.transform.position;
             crown = Crown.transform.position;
-            Vector3 topvec, offestvec, vec;
 
             offestHeight = Vector3.Distance(icon, crown) / 1.5f;
-            offestvec = new Vector3(crown.x + icon.x, crown.y + icon.y, crown.z + icon.z);//写错了 offest => offset
-            vec = new Vector3(offestvec.x / 2, offestvec.y / 2, offestvec.z / 2);
-            topvec = new Vector3(vec.x, vec.y + offestHeight, vec.z);
+
+            midVec = (crown + icon) * 0.5f;
+            topVec = new(midVec.x, midVec.y + offestHeight, midVec.z);
 
             iconFadeTween?.Kill();
 
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(particle.transform.DOMove(topvec, 0.5f).SetEase(Ease.Linear));
-            sequence.Append(particle.transform.DOMove(icon, 0.5f).SetEase(Ease.Linear));
-            sequence.AppendCallback(() =>
-            {
-                iconFadeTween = Icon.material.DOFade(1f, 1f);
-                Destroy(particle, 1f);
-                _animatedCollect = true;
-            });
+            particle.transform
+                .DOPath
+                (
+                    new[] 
+                    { 
+                        crown, 
+                        topVec, 
+                        icon 
+                    },
+                    1f,
+                    PathType.Linear,
+                    PathMode.Full3D
+                 )
+                .SetEase(Ease.Linear)
+                .OnComplete(() =>
+                {
+                    iconFadeTween = Icon.material
+                        .DOFade(1f, 1f)
+                        .OnComplete(() =>
+                            Destroy(particle, 1f));
+                    _animatedCollect = true;
+                });
         }
         /// <summary>
         /// 执行检查点被消耗的动画
@@ -105,7 +119,9 @@ namespace DancingLineFanmade.Collectable
             if (particle) Destroy(particle);
 
             particle = Instantiate(CollectParticle, Icon.transform.position, transform.rotation, GameController.CollectableRemainParent);
-            particle.transform.DOLocalMoveY(10, 2f).SetEase(Ease.OutQuad);
+            particle.transform.
+                DOLocalMoveY(10, 2f)
+                .SetEase(Ease.OutQuad);
 
             iconFadeTween?.Kill();
             iconFadeTween = Icon.material.DOFade(0, 1);
