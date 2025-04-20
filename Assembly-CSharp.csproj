@@ -62,6 +62,7 @@
     <Compile Include="Assets\#Template\[Scripts]\Core\GameController.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\UnityEventTrigger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\ReadyStairManager.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Debug\TrailPredictor.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Debug\RotatePointsBuffer.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\ModalManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\PlayerGravityTrigger.cs" />
@@ -76,7 +77,7 @@
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
-    <Compile Include="Assets\#Template\[Scripts]\TimeLine\TimeLineManager.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Animate\TimeLineManager.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\Modal\GenericModalContent.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\BackgroundTrigger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\CameraFollower.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Assets\#Template\[Scripts]\Collection\Checkpoint.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\DBCreative\UniPool\Demo\DemoSpawnObj.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\Modal.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Debug\TriggerRenderer.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Level\BackgroundManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\LevelData.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="Assets\#Template\[Scripts]\Debug\ErrorDebugger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Level\FogManager.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerTeleport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll" />

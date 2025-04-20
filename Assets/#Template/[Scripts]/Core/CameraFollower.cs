@@ -1,10 +1,11 @@
 using DG.Tweening;
 using System;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
-using DancingLineFanmade.UI;
+using DancingLineFanmade.Triggers;
 
 namespace DancingLineFanmade.Gameplay
 {
@@ -64,6 +65,8 @@ namespace DancingLineFanmade.Gameplay
 
             RespawnAttributes.OnRecording += NoteArgs;
             RespawnEvents.OnEndRespawn += ResetToPlayerTransform;
+
+            TeleportEvents.OnTriggerCameraTeleport += ResetToPlayerTransform;
         }
         private void OnDisable()
         {
@@ -74,6 +77,8 @@ namespace DancingLineFanmade.Gameplay
 
             RespawnAttributes.OnRecording -= NoteArgs;
             RespawnEvents.OnEndRespawn -= ResetToPlayerTransform;
+
+            TeleportEvents.OnTriggerCameraTeleport -= ResetToPlayerTransform;
         }
 
         private void Start()
@@ -103,7 +108,18 @@ namespace DancingLineFanmade.Gameplay
         private void EnableFollow() => follow = true;
         private void DisableFollow() => follow = false;
         public void SetFollowState(bool foll) => follow = foll;
-        public void ResetToPlayerTransform() => transform.position = target.position;
+        public void ResetToPlayerTransform() 
+        {
+            StartCoroutine(SetAtTarget());
+        }
+        private IEnumerator SetAtTarget()
+        {
+            bool _smooth = smooth;
+            smooth = false;
+            yield return new WaitForEndOfFrame();
+            transform.position = target.position;
+            smooth = _smooth;
+        }
         public void Trigger(Vector3 n_offset, Vector3 n_rotation, Vector3 n_scale, float n_fov, float duration,
             Ease ease, RotateMode mode, UnityEvent callback, bool use = false, AnimationCurve curve = null)
         {

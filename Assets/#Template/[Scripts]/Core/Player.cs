@@ -117,6 +117,8 @@ namespace DancingLineFanmade.Gameplay
             GameEvents.OnStartPlay += StartPlayer;
             GameEvents.OnGamePaused += PlayerInit;
 
+            TeleportEvents.OnPlayerTeleport += CreateTail;
+
             RespawnAttributes.OnRecording += NoteArgs;
 
             RespawnEvents.OnEndRespawn += PlayerInit;
@@ -134,6 +136,8 @@ namespace DancingLineFanmade.Gameplay
             GameEvents.OnEnterLevel -= PlayerInit;
             GameEvents.OnStartPlay -= StartPlayer;
             GameEvents.OnGamePaused -= PlayerInit;
+
+            TeleportEvents.OnPlayerTeleport -= CreateTail;
 
             RespawnAttributes.OnRecording -= NoteArgs;
 
@@ -197,6 +201,7 @@ namespace DancingLineFanmade.Gameplay
         }
         private void HandleGravity()
         {
+
             transform.Translate(currentVelocity * Time.deltaTime);
 
             if (_flyDuration > selfGravity.y * 2/15) CentralCollider.enabled = false; //´ÖÂ³ÇÒ±©Á¦

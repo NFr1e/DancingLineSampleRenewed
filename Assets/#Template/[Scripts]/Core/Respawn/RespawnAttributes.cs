@@ -114,13 +114,13 @@ public class RespawnAttributes : MonoBehaviour
 
         if (!RecordTrigger) return;
 
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.white;
         Gizmos.matrix = Matrix4x4.TRS(
             RecordTrigger.transform.position,
             RecordTrigger.transform.rotation,
             Vector3.one
         );
-        Gizmos.DrawWireCube(Vector3.zero, RecordTrigger.transform.localScale);
+        Gizmos.DrawCube(Vector3.zero, RespawnTransform.localScale);
     }
 #endif
 }

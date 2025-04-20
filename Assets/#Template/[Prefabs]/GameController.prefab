@@ -2949,7 +2949,9 @@ MonoBehaviour:
     m_Bits: 1024
   floorLayer:
     serializedVersion: 2
-    m_Bits: 1281
+    m_Bits: 257
+  selfGravity: {x: 0, y: -15, z: 0}
+  useGravity: 1
   DrawGizmos: 1
   AutoPlay: 0
   FixPosition: 1
@@ -3050,7 +3052,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 250
   field of view: 80
   orthographic: 0
   orthographic size: 5

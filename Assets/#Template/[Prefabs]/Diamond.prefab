@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2603546306446197973}
   - component: {fileID: 2603546306446197972}
   - component: {fileID: 1158196342092850165}
+  - component: {fileID: 1496602554766653667}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Collection
@@ -112,3 +113,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollectParticle:
   - {fileID: 1555213631443067923, guid: 7a6617b52f7963b42ad5538b05683602, type: 3}
+--- !u!114 &1496602554766653667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603546306446197971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab45f3b0302b1cc4f89704547248c3d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderBox: 1
+  renderWire: 1
+  boxColor: {r: 1, g: 0.9505099, b: 0, a: 0.5}
+  wireColor: {r: 1, g: 1, b: 1, a: 1}

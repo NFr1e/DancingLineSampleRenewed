@@ -30,13 +30,10 @@ namespace DancingLineFanmade.UI
 
             InitializeHandAnimation();
 
-            float shrink;
-            shrink = UserInterfaceManager.CurrentResolution().x / 2560;
-            if (shrink < 0.7f) shrink = 0.7f;
-
+            float shrink = Mathf.Clamp(UserInterfaceManager.CurrentResolution().x / 2560f, 0.7f, 1.2f);
             if (Hand) Hand.localScale = new Vector3(shrink, shrink, 1);
 
-            if(RestartButton)RestartButton.onClick.AddListener(() =>
+            if (RestartButton)RestartButton.onClick.AddListener(() =>
             {
                 TriggerPauseAlterRestart();
                 GameController.ReloadScene();
