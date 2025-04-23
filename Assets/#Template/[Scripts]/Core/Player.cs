@@ -70,6 +70,7 @@ namespace DancingLineFanmade.Gameplay
 
         private float _playerSpeedMultiply = 1;
         private float _flyDuration = 0;
+        private int _rotateTimes = 1;
         private OverMode _overMode;
 
         private bool _isGrounded = true;
@@ -179,6 +180,8 @@ namespace DancingLineFanmade.Gameplay
             StartCoroutine(InputCooldown());
             CreateTail(transform.position);
             PlayerEvents.TriggerStartEvent();
+
+            _rotateTimes = transform.eulerAngles == firstDirection ? 1 : 2;
         }
         private void UpdatePlayerMovement()
         {
@@ -204,7 +207,7 @@ namespace DancingLineFanmade.Gameplay
 
             transform.Translate(currentVelocity * Time.deltaTime);
 
-            if (_flyDuration > selfGravity.y * 2/15) CentralCollider.enabled = false; //粗鲁且暴力
+            if (_flyDuration > -selfGravity.y * 2/15) CentralCollider.enabled = false; //粗鲁且暴力
 
             if (_isGrounded) return;
 
@@ -233,7 +236,7 @@ namespace DancingLineFanmade.Gameplay
         /// </summary>
         public void RotatePlayer()
         {
-            Quaternion targetRotation = transform.rotation.eulerAngles == firstDirection
+            Quaternion targetRotation = _rotateTimes == 1
                 ? Quaternion.Euler(secondDirection)
                 : Quaternion.Euler(firstDirection);
 
@@ -241,6 +244,9 @@ namespace DancingLineFanmade.Gameplay
             CreateTail(transform.position);
             PlayerEvents.TriggerRotateEvent();
             Debug.Log("PlayerRotated");
+
+            if (_rotateTimes >= 2) _rotateTimes = 1;
+            else _rotateTimes++;
         }
         /// <summary>
         /// 创建新的activeTail

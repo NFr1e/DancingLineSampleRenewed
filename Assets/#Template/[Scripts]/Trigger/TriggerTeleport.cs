@@ -20,7 +20,9 @@ namespace DancingLineFanmade.Triggers
     {
         public Player Player;
         public Transform TargetTransform;
-        public bool TeleportCamera = true;
+        public bool 
+            EditRotation = false,
+            TeleportCamera = true;
 
         private void Start()
         {
@@ -34,7 +36,7 @@ namespace DancingLineFanmade.Triggers
             if (TeleportCamera)
                 TeleportEvents.TriggerCameraTeleport();
             Player.transform.position = TargetTransform.position;
-            Player.transform.rotation = TargetTransform.rotation;
+            if(EditRotation) Player.transform.rotation = TargetTransform.rotation;
             TeleportEvents.TriggerPlayerTeleport(TargetTransform.position);
         }
     }

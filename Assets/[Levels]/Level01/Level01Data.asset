@@ -16,5 +16,5 @@ MonoBehaviour:
   SoundtrackStartTime: 0
   LevelName: SampleLevel
   AuthorName: NFr1e
-  MaxDiamondCount: 10
+  MaxDiamondCount: 3
   CrownCount: 3

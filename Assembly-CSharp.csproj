@@ -70,6 +70,7 @@
     <Compile Include="Assets\#Template\[Scripts]\Debug\PlayerRotatePointRecorder.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\DBCreative\UniPool\UniPool.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerTeleport.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerSetPlayerDirection.cs" />
     <Compile Include="Assets\#Template\[Scripts]\EditUtils\PathBuilder.cs" />
     <Compile Include="Assets\Resources\UIModal\Scripts\ModalButton.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Assets\#Template\[Scripts]\Core\LevelProgressManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Trigger\SetActive.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Guidance\HintLineDisplayer.cs" />
+    <Compile Include="Assets\#Template\[Scripts]\Core\Skin\ISkin.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Guidance\GuidanceManager.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Collection\CollectionCollector.cs" />
     <Compile Include="Assets\#Template\[Scripts]\UI\OverInterface.cs" />
@@ -127,7 +129,6 @@
     <Compile Include="Assets\#Template\[Scripts]\Debug\ErrorDebugger.cs" />
     <Compile Include="Assets\#Template\[Scripts]\#Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\#Template\[Scripts]\Core\Level\FogManager.cs" />
-    <Compile Include="Assets\#Template\[Scripts]\Trigger\TriggerTeleport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\#Template\[Scripts]\#Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll" />
