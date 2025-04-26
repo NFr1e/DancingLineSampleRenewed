@@ -24,7 +24,7 @@ namespace DancingLineFanmade.Gameplay
         private List<ICollectable> _collectedDiamonds = new();
         private List<ICollectable> _collectedCheckpoints = new();
 
-        public class LevelProgress
+        [System.Serializable]public class LevelProgress
         {
             public int Percentage, DiamondCount, CheckpointCount;
         }
@@ -77,15 +77,17 @@ namespace DancingLineFanmade.Gameplay
         private void ClearCollectedCheckpoints() => _collectedCheckpoints.Clear();
         private void OnEnable()
         {
-            GameEvents.OnGameOver += UpdateCurrentProgress;
             RespawnEvents.OnRespawning += ClearCollectedDiamonds;
             PyramidTrigger.OnEnterPyramidTrigger += GamePassed;
+
+            GameEvents.OnGameOver += UpdateCurrentProgress;
         }
         private void OnDestroy()
         {
-            GameEvents.OnGameOver -= UpdateCurrentProgress;
             RespawnEvents.OnRespawning -= ClearCollectedDiamonds;
             PyramidTrigger.OnEnterPyramidTrigger -= GamePassed;
+
+            GameEvents.OnGameOver -= UpdateCurrentProgress;
         }
     }
 }

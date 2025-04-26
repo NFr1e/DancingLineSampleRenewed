@@ -19,7 +19,7 @@ namespace DancingLineFanmade.UI
         protected virtual void EnterInterface() 
         {
             Init();
-            //GameEvents.OnGameOver += ExitInterface; 这行写在这是干啥的?不知道。。。先不删，哈哈
+            GameEvents.OnGameOver += ExitInterface;
             AnimateEnter();
         }
         /// <summary>
@@ -31,7 +31,7 @@ namespace DancingLineFanmade.UI
         /// </summary>
         public virtual void ExitInterface() 
         {
-            //GameEvents.OnGameOver -= ExitInterface; 同上，，不知道啥时候脑子抽了加的
+            GameEvents.OnGameOver -= ExitInterface;
             AnimateExit();
         }
 

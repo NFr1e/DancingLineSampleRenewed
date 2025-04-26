@@ -39,6 +39,10 @@ namespace DancingLineFanmade.Gameplay
 
         private readonly Quaternion rotation = Quaternion.Euler(0, -45, 0);
 
+        private bool 
+            _followable = true,
+            _lastfollowable = true;
+
         private Vector3 Translation
         {
             get
@@ -60,8 +64,9 @@ namespace DancingLineFanmade.Gameplay
         {
             RegisterResettable();
 
-            GameEvents.OnStartPlay += EnableFollow;
+            GameEvents.OnStartPlay += SetAsLastFollowable;
             GameEvents.OnGameOver += DisableFollow;
+            GameEvents.OnGamePaused += RecordFollowState;
 
             RespawnAttributes.OnRecording += NoteArgs;
             RespawnEvents.OnEndRespawn += ResetToPlayerTransform;
@@ -72,8 +77,9 @@ namespace DancingLineFanmade.Gameplay
         {
             UnregisterResettable();
 
-            GameEvents.OnStartPlay -= EnableFollow;
+            GameEvents.OnStartPlay -= SetAsLastFollowable;
             GameEvents.OnGameOver -= DisableFollow;
+            GameEvents.OnGamePaused -= RecordFollowState;
 
             RespawnAttributes.OnRecording -= NoteArgs;
             RespawnEvents.OnEndRespawn -= ResetToPlayerTransform;
@@ -94,6 +100,8 @@ namespace DancingLineFanmade.Gameplay
                     localScale = Vector3.one
                 }
             }.transform;
+
+            _lastfollowable = follow;
         }
 
         private void Update()
@@ -101,24 +109,21 @@ namespace DancingLineFanmade.Gameplay
             var translation = new Vector3(Translation.x * Time.smoothDeltaTime * followSpeed.x,
                 Translation.y * Time.smoothDeltaTime * followSpeed.y,
                 Translation.z * Time.smoothDeltaTime * followSpeed.z);
-            if ((GameController.curGameState == GameState.Playing || GameController.curGameState == GameState.Respawning) && follow)
+            if ((GameController.curGameState == GameState.Playing || GameController.curGameState == GameState.Respawning) && _followable && follow)
                 selfTransform.Translate(smooth ? translation : Translation, origin);
         }
 
-        private void EnableFollow() => follow = true;
-        private void DisableFollow() => follow = false;
-        public void SetFollowState(bool foll) => follow = foll;
+        private void EnableFollow() => _followable = true;
+        private void DisableFollow() => _followable = false;
+        public void SetFollowState(bool foll) => _followable = foll;
+        public void RecordFollowState() => _lastfollowable = _followable;
+        private void SetAsLastFollowable() => _followable = _lastfollowable;
         public void ResetToPlayerTransform() 
         {
-            StartCoroutine(SetAtTarget());
-        }
-        private IEnumerator SetAtTarget()
-        {
-            bool _smooth = smooth;
-            smooth = false;
-            yield return new WaitForEndOfFrame();
+            bool _follow = _followable;
+            _followable = false;
             transform.position = target.position;
-            smooth = _smooth;
+            SetFollowState(_follow);
         }
         public void Trigger(Vector3 n_offset, Vector3 n_rotation, Vector3 n_scale, float n_fov, float duration,
             Ease ease, RotateMode mode, UnityEvent callback, bool use = false, AnimationCurve curve = null)
@@ -246,6 +251,7 @@ namespace DancingLineFanmade.Gameplay
             r_scale = new(1,1,1),
             r_lerp = new(1.2f,3,6);
         private float r_fov;
+        private bool r_smooth;
 
         /// <summary>
         /// 一般在OnEnable中调用
@@ -263,6 +269,7 @@ namespace DancingLineFanmade.Gameplay
             r_scale = scale.localScale;
             r_lerp = followSpeed;
             r_fov = followingCamera.fieldOfView;
+            r_smooth = smooth;
         }
         public void ResetArgs()
         {
@@ -273,6 +280,7 @@ namespace DancingLineFanmade.Gameplay
             scale.localScale = r_scale;
             followSpeed = r_lerp;
             followingCamera.fieldOfView = r_fov;
+            smooth = r_smooth;
 
             Debug.Log($"{name} Reset");
         }

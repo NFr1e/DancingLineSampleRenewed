@@ -58,7 +58,9 @@ namespace DancingLineFanmade.Gameplay
         [BoxGroup("Physics")] public bool useGravity = true;
 
         [BoxGroup("Debugging")]
-        public bool DrawGizmos = true;
+        public bool 
+            DrawGizmos = true,
+            Noclip = false;
         [BoxGroup("AutoPlay")]
         public bool AutoPlay = false,FixPosition = true;
         [BoxGroup("AutoPlay")][SerializeField]
@@ -73,6 +75,7 @@ namespace DancingLineFanmade.Gameplay
         private int _rotateTimes = 1;
         private OverMode _overMode;
 
+        private bool _gravity = false;
         private bool _isGrounded = true;
         private bool _controllable = true;
         private bool _inputCooldown = true;
@@ -156,7 +159,7 @@ namespace DancingLineFanmade.Gameplay
         }
         private void PlayerInit()
         {
-            useGravity = false;
+            _gravity = false;
             _rigid.useGravity = false;
             _rigid.isKinematic = true;
             _inputCooldown = true;
@@ -175,13 +178,15 @@ namespace DancingLineFanmade.Gameplay
         }
         private void StartPlayer()
         {
-            useGravity = true;
+            _gravity = useGravity;
             _rigid.isKinematic = false;
             StartCoroutine(InputCooldown());
             CreateTail(transform.position);
             PlayerEvents.TriggerStartEvent();
 
-            _rotateTimes = transform.eulerAngles == firstDirection ? 1 : 2;
+            _rotateTimes = transform.eulerAngles == firstDirection 
+                ? 1 
+                : 2;
         }
         private void UpdatePlayerMovement()
         {
@@ -211,7 +216,7 @@ namespace DancingLineFanmade.Gameplay
 
             if (_isGrounded) return;
 
-            if (useGravity)
+            if (_gravity)
             {
                 currentVelocity += selfGravity * Time.deltaTime;
                 _flyDuration += Time.deltaTime;
@@ -277,7 +282,7 @@ namespace DancingLineFanmade.Gameplay
                 activeTail._transform.localScale = new Vector3(activeTail._transform.localScale.x, activeTail._transform.localScale.y, Vector3.Distance(activeTail.startPosition, this.gameObject.transform.position) + 0.5f);
                 activeTail._transform.position = (activeTail.startPosition + this.gameObject.transform.position) / 2;
                 activeTail._transform.Translate(Vector3.back * 0.25f, Space.Self);
-                //activeTail._transform.LookAt(gameObject.transform);
+                activeTail._transform.LookAt(gameObject.transform);
             }
         }
         private void OnCollisionEnter(Collision collision)
@@ -299,7 +304,11 @@ namespace DancingLineFanmade.Gameplay
             _enterCollisionPosition = transform.position;
         }
         private void OnCollisionStay(Collision collision) => _onCollider = true;
-        private void OnCollisionExit(Collision collision) => _onCollider = false;
+        private void OnCollisionExit(Collision collision) 
+        {
+            _lastGroundPosition = transform.position;
+            _onCollider = false; 
+        }
         /// <summary>
         /// Player坠落或超出地图范围时调用
         /// </summary>
@@ -323,8 +332,7 @@ namespace DancingLineFanmade.Gameplay
         /// <param name="mode"></param>
         private void CheckSpecialLayers(LayerMask layer, OverMode mode)
         {
-            if (Physics.Raycast(transform.position, -transform.up,
-                _checkGroundMaxDistance + 0.1f, layer) && GameController.curGameState != GameState.Over)
+            if (Physics.Raycast(transform.position, -transform.up,_checkGroundMaxDistance + 0.1f, layer) && GameController.curGameState != GameState.Over)
             {
                 _overMode = mode;
                 PlayerDie();
@@ -348,10 +356,6 @@ namespace DancingLineFanmade.Gameplay
                 _flyDuration = 0;
                 CentralCollider.enabled = true;
             }
-            else if (_isGrounded)
-            {
-                _lastGroundPosition = transform.position;
-            }
 
             if (!_isGrounded && activeTail != null)
             {
@@ -373,10 +377,8 @@ namespace DancingLineFanmade.Gameplay
                 PlayerEvents.TriggerLandingEvent();
                 CreateTail(transform.position);
             }
-            if (Vector3.Distance(_enterCollisionPosition, _lastGroundPosition) > 1f)
-            {
-                CreateLandingEffect();
-            }
+
+            CreateLandingEffect();
         }
         /// <summary>
         /// 一般在PlayerLanding中调用，用于生成LandingEffects等特效
@@ -408,8 +410,8 @@ namespace DancingLineFanmade.Gameplay
         }
         private void PlayerDie()
         {
+            if (Noclip) return;
             if (GameController.curGameState == GameState.Respawning) return;
-            //if (AutoPlay) return;
 
             CreateDieEffect();
 

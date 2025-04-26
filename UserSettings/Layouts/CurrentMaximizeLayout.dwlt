@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 14012
+  controlID: 3581
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 14013
+  controlID: 3582
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,9 +202,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3e9effff
-      m_LastClickedID: -25026
-      m_ExpandedIDs: cc35f1ffca3af5ff7ca0fcff98faffffaefaffff30fbffff985c0000905d0000ac5d0000448a0000268c00004e8c0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 38f2ffff90f2ffff0af6ffff30fbffffbeca00009cce0000c4e70000dcea00006aec000084ee000004f40000a0fb0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -525,9 +525,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -10.172732, y: -46.988937, z: 28.307625}
+    m_Target: {x: 22.16797, y: -0.03406906, z: -27.67731}
     speed: 2
-    m_Value: {x: -10.172732, y: -46.988937, z: 28.307625}
+    m_Value: {x: 22.16797, y: -0.03406906, z: -27.67731}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -574,13 +574,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.33895952, y: 0.59660417, z: -0.25658736, w: -0.68415415}
+    m_Target: {x: 0.11931326, y: 0.53917956, z: -0.078109786, w: 0.8303064}
     speed: 2
-    m_Value: {x: -0.33790386, y: 0.59587914, z: -0.25632015, w: -0.6819449}
+    m_Value: {x: 0.119363844, y: 0.5382252, z: -0.0779725, w: 0.830654}
   m_Size:
-    m_Target: 47.533524
+    m_Target: 18.513397
     speed: 2
-    m_Value: 47.533524
+    m_Value: 19.385756
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -709,7 +709,7 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: 62954
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 1
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 14035
+  controlID: 3708
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -811,23 +811,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/[Levels]/Level01
+    - Assets/#Template/[Prefabs]
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/[Levels]/Level01
+  - Assets/#Template/[Prefabs]
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\GameEngines\UnityEngine\Projects\DancingLineSampleRenewed
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 105.66669}
-    m_SelectedIDs: d2070100
-    m_LastClickedID: 67538
-    m_ExpandedIDs: 00000000ec630000ee630000f0630000f26300004264000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 3a630100
+    m_LastClickedID: 90938
+    m_ExpandedIDs: 00000000ac940000ae940000b0940000b294000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -855,7 +855,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ec630000ee630000f0630000f263000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000ac940000ae940000b0940000b294000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -880,8 +880,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 3e9effff
-    m_LastClickedInstanceID: -25026
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: b46e0000ea620000
     m_RenameOverlay:
@@ -1009,7 +1009,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -705846
+  m_LastSelectedObjectID: 62954
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1917,8 +1917,8 @@ MonoBehaviour:
     y: 0
     width: 536.6666
     height: 335.3333
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 19}

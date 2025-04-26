@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Sirenix.OdinInspector;
 using DancingLineFanmade.Gameplay;
 using DancingLineFanmade.Collectable;
 using DancingLineFanmade.Triggers;
@@ -123,6 +124,7 @@ namespace DancingLineFanmade.UI
 
             Debug.Log("EventSystemGenerated");
         }
+        [BoxGroup("Debugging"),Button(Name ="LoadReadyUI",ButtonHeight = 30)]
         private void LoadReadyInterface()
         {
             if (!ReadyInstance) return;
@@ -132,6 +134,7 @@ namespace DancingLineFanmade.UI
             curInterface = Instantiate(ReadyInstance.gameObject).GetComponent<InterfaceBase>();
             DontDestroyOnLoad(curInterface);
         }
+        [BoxGroup("Debugging"), Button(Name = "LoadRespawnUI", ButtonHeight = 30)]
         private void LoadRespawnInterface()
         {
             if (!RespawnInstance) return;

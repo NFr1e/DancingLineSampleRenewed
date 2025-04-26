@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
 using DancingLineFanmade.Audio;
 using DancingLineFanmade.UI;
 using DancingLineFanmade.Triggers;
@@ -231,18 +232,26 @@ namespace DancingLineFanmade.Gameplay
             if (CollectableRemainParent != null) Destroy(CollectableRemainParent.gameObject);
             if (PlayerRemainParent != null) Destroy(PlayerRemainParent.gameObject);
         }
+        [BoxGroup("StateChange(RuntimeOnly)"), Button(buttonSize: 30)]
+        private void ChangeToPlayingState() => _stateMachine.ChangeState(new PlayingState(_stateMachine));
         /// <summary>
         /// 切换当前游戏模式为ReadyState
         /// </summary>
+        [BoxGroup("StateChange(RuntimeOnly)"),Button(buttonSize: 30)] 
         private void ChangeToReadyState() => _stateMachine.ChangeState(new ReadyState(_stateMachine));
         /// <summary>
         /// 切换当前游戏模式为OnStairState
         /// </summary>
+        [BoxGroup("StateChange(RuntimeOnly)"), Button(buttonSize: 30)]
         private void ChangeToOnStairState() => _stateMachine.ChangeState(new OnStairState(_stateMachine));
         /// <summary>
         /// 切换当前游戏模式为RespawnState
         /// </summary>
         private void ChangeToRespawningState() => _stateMachine.ChangeState(new RespawnState(_stateMachine));
+        [BoxGroup("StateChange(RuntimeOnly)"), Button(buttonSize: 30)]
+        private void ChangeToOverState() => _stateMachine.ChangeState(new OverState(_stateMachine));
+        [BoxGroup("StateChange(RuntimeOnly)"), Button(buttonSize: 30)]
+        private void ChangeToPausedState() => _stateMachine.ChangeState(new PausedState(_stateMachine));
         #region StateMachine
         /// <summary>
         /// 进入关卡状态
@@ -537,8 +546,6 @@ namespace DancingLineFanmade.Gameplay
             PlayerEvents.OnPlayerHit += GameOver;
             PlayerEvents.OnPlayerDrowned += GameOver;
             PlayerEvents.OnPlayerFall += GameOver;
-
-            PyramidTrigger.OnEnterPyramidTrigger += GameOver;
         }
         private void OnDestroy()
         {
@@ -560,8 +567,6 @@ namespace DancingLineFanmade.Gameplay
             PlayerEvents.OnPlayerHit -= GameOver;
             PlayerEvents.OnPlayerDrowned -= GameOver;
             PlayerEvents.OnPlayerFall -= GameOver;
-
-            PyramidTrigger.OnEnterPyramidTrigger -= GameOver;
         }
 
         void Update() => _stateMachine.Update();
