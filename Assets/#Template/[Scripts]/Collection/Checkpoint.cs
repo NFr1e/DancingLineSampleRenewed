@@ -16,7 +16,7 @@ namespace DancingLineFanmade.Collectable
     public class Checkpoint : MonoBehaviour,ICollectable
     {
         public MeshRenderer Crown;
-        public MeshRenderer Icon;
+        public SpriteRenderer Icon;
         public GameObject CollectParticle;
 
         private Collider _collider;
@@ -26,9 +26,9 @@ namespace DancingLineFanmade.Collectable
         private bool
             _animatedCollect = false,
             _animatedFade = false;
-        [HideInInspector]
-        public bool 
-            _consumed = false;
+
+        public bool
+            _consumed { get; set; } = false;
         
         private void Awake()
         {
@@ -38,7 +38,7 @@ namespace DancingLineFanmade.Collectable
         private void OnEnable()
         {
             PlayerEvents.OnPlayerStart += AnimateFade;
-            Icon.material.DOFade(0, 0f);
+            Icon.DOFade(0, 0f);
         }
         private void OnDisable()
         {
@@ -52,6 +52,8 @@ namespace DancingLineFanmade.Collectable
         {
             _collider.enabled = false;
             _renderer.enabled = false;
+
+            LevelProgressManager.instance.RecordCollectable(this);
 
             AnimateCollect();
             
@@ -98,7 +100,7 @@ namespace DancingLineFanmade.Collectable
                 .SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
-                    iconFadeTween = Icon.material
+                    iconFadeTween = Icon
                         .DOFade(1f, 1f)
                         .OnComplete(() =>
                             Destroy(particle, 1f));
@@ -124,7 +126,7 @@ namespace DancingLineFanmade.Collectable
                 .SetEase(Ease.OutQuad);
 
             iconFadeTween?.Kill();
-            iconFadeTween = Icon.material.DOFade(0, 1);
+            iconFadeTween = Icon.DOFade(0, 1);
 
             _animatedFade = true;
         }

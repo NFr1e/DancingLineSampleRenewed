@@ -75,6 +75,7 @@ namespace DancingLineFanmade.Gameplay
         }
         private void ClearCollectedDiamonds() => _collectedDiamonds.Clear();
         private void ClearCollectedCheckpoints() => _collectedCheckpoints.Clear();
+        public void ClearConsumedCheckpopint(ICollectable target) => _collectedCheckpoints.Remove(target);
         private void OnEnable()
         {
             RespawnEvents.OnRespawning += ClearCollectedDiamonds;

@@ -15,6 +15,11 @@ namespace DancingLineFanmade.UI
         public Text PercentageText;
         public Text DiamondText;
 
+        public Image 
+            CrownFill_1,
+            CrownFill_2,
+            CrownFill_3;
+
         private LevelData _levelData;
         private LevelProgressManager.LevelProgress _progress;
         private Tween 
@@ -100,6 +105,13 @@ namespace DancingLineFanmade.UI
 
             PercentageText.text = $"{_progress.Percentage}%";
             DiamondText.text = $"{_progress.DiamondCount}/{_levelData.MaxDiamondCount}";
+
+            if (!CrownFill_1 || !CrownFill_2 || !CrownFill_3) return;
+
+            CrownFill_1.enabled = _progress.CheckpointCount >= 1;
+            CrownFill_2.enabled = _progress.CheckpointCount >= 2;
+            CrownFill_3.enabled = _progress.CheckpointCount >= 3;
+
         }
     }
 }

@@ -32,6 +32,7 @@ namespace DancingLineFanmade.Gameplay
         { 
             OnEndRespawn?.Invoke();
             currentCheckpoint._consumed = true;
+            LevelProgressManager.instance.ClearConsumedCheckpopint(currentCheckpoint);
         }
     }
     /// <summary>

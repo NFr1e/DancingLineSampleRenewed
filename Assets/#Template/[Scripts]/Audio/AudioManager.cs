@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using Gravitons.UI.Modal;
 using DancingLineFanmade.Gameplay;
 using DancingLineFanmade.Collectable;
 
@@ -55,22 +56,23 @@ namespace DancingLineFanmade.Audio
 
         private Tween _audioFadeoutTween;
         
-        [HideInInspector]public float CurrentLevelTime => 
+        public float CurrentLevelTime => 
             _levelSoundtrackPlayer
             ?1f * _levelSoundtrackPlayer.timeSamples/_levelSoundtrackPlayer.clip.frequency - _baseSoundtrackStartTime
             :0;
 
         private void Start()
         {
-            if (CurLevelData) _baseSoundtrackStartTime = CurLevelData.SoundtrackStartTime;
-            else UnityEngine.Debug.LogError($"{GetType().Name} CurLevelData为空，检查GameController是否赋值?");
+            if (CurLevelData) 
+                _baseSoundtrackStartTime = CurLevelData.SoundtrackStartTime;
+            else ModalManager.Show("啊呀!",$"{GetType().Name}中Controller未赋值?", new[] { new ModalButton() { Text = "确定" } });
+
+            CreateMusicPlayer();
         }
         #region 订阅事件
         private void Awake()
         {
             instance = this;
-
-            CreateMusicPlayer();
 
             GameEvents.OnStartPlay += PlayLevelSoundtrack;
             GameEvents.OnStartPlay += ResetSoundTrackVolume;
@@ -121,9 +123,10 @@ namespace DancingLineFanmade.Audio
             if (CurLevelData) 
                 _levelSoundtrackPlayer.clip = CurLevelData.LevelSoundtrack;
 
-            _levelSoundtrackPlayer.time = _baseSoundtrackStartTime;
             _originalVolume = _levelSoundtrackPlayer.volume;
             _levelSoundtrackPlayer.volume = _originalVolume;
+
+            AlterLevelSoundtrackTime(_baseSoundtrackStartTime);
         }
         private void RecordLevelSoundtrackTime()
         {
@@ -136,7 +139,8 @@ namespace DancingLineFanmade.Audio
         private void PlayLevelSoundtrack()
         {
             if (_levelSoundtrackPlayer == null) return;
-            _levelSoundtrackPlayer.Play((ulong)Mathf.Abs(LevelMusicSyncDelay));
+
+            _levelSoundtrackPlayer.Play((ulong)LevelMusicSyncDelay);
         }
         private void PauseLevelSoundtrack()
         {

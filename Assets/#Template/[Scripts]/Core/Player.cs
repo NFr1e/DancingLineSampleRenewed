@@ -84,8 +84,6 @@ namespace DancingLineFanmade.Gameplay
 
         private Vector3 currentVelocity;
         private Vector3 _lastGravity;
-        private Vector3 _lastGroundPosition;
-        private Vector3 _enterCollisionPosition;
 
         private float _playerCurSpeed
         {
@@ -117,6 +115,7 @@ namespace DancingLineFanmade.Gameplay
 
             TriggerCallDrownEvent.OnEnterDrownTrigger += PlayerDrown;
 
+            GameEvents.OnGameReady += ResetRotateTimes;
             GameEvents.OnEnterLevel += PlayerInit;
             GameEvents.OnStartPlay += StartPlayer;
             GameEvents.OnGamePaused += PlayerInit;
@@ -137,6 +136,7 @@ namespace DancingLineFanmade.Gameplay
 
             TriggerCallDrownEvent.OnEnterDrownTrigger -= PlayerDrown;
 
+            GameEvents.OnGameReady -= ResetRotateTimes;
             GameEvents.OnEnterLevel -= PlayerInit;
             GameEvents.OnStartPlay -= StartPlayer;
             GameEvents.OnGamePaused -= PlayerInit;
@@ -183,9 +183,11 @@ namespace DancingLineFanmade.Gameplay
             StartCoroutine(InputCooldown());
             CreateTail(transform.position);
             PlayerEvents.TriggerStartEvent();
-
-            _rotateTimes = transform.eulerAngles == firstDirection 
-                ? 1 
+        }
+        private void ResetRotateTimes()
+        {
+            _rotateTimes = transform.eulerAngles == firstDirection
+                ? 1
                 : 2;
         }
         private void UpdatePlayerMovement()
@@ -268,12 +270,15 @@ namespace DancingLineFanmade.Gameplay
                     isStretching = true
                 };
             }
+            if (!_spawnTail) activeTail = null;
         }
         /// <summary>
         /// 拉伸ActiveTail
         /// </summary>
         private void UpdateActiveTail()
         {
+            if (!_spawnTail) return;
+
             if (activeTail != null && _isGrounded && 
                 (GameController.curGameState == GameState.Playing || 
                 (GameController.curGameState == GameState.Over && _overMode != OverMode.Hit)||
@@ -301,12 +306,10 @@ namespace DancingLineFanmade.Gameplay
                     PlayerDie();
                 }
             }
-            _enterCollisionPosition = transform.position;
         }
         private void OnCollisionStay(Collision collision) => _onCollider = true;
         private void OnCollisionExit(Collision collision) 
         {
-            _lastGroundPosition = transform.position;
             _onCollider = false; 
         }
         /// <summary>
@@ -369,8 +372,6 @@ namespace DancingLineFanmade.Gameplay
         {
             Debug.Log($"{GetType().Name}:{name}Landed");
 
-            currentVelocity.y = 0;
-
             if (GameController.curGameState == GameState.Playing ||
                 (GameController.curGameState == GameState.Over && _overMode != OverMode.Hit))
             {
@@ -379,12 +380,16 @@ namespace DancingLineFanmade.Gameplay
             }
 
             CreateLandingEffect();
+
+            currentVelocity.y = 0;
         }
         /// <summary>
         /// 一般在PlayerLanding中调用，用于生成LandingEffects等特效
         /// </summary>
         private void CreateLandingEffect()
         {
+            if (Mathf.Abs(currentVelocity.magnitude) <= 2) return;
+
             if (GameController.curGameState == GameState.Playing || 
                 (GameController.curGameState == GameState.Over && _overMode != OverMode.Hit))
             {
