@@ -211,9 +211,6 @@ namespace DancingLineFanmade.Gameplay
         }
         private void HandleGravity()
         {
-
-            transform.Translate(currentVelocity * Time.deltaTime);
-
             if (_flyDuration > -selfGravity.y * 2/15) CentralCollider.enabled = false; //´ÖÂ³ÇÒ±©Á¦
 
             if (_isGrounded) return;
@@ -222,6 +219,8 @@ namespace DancingLineFanmade.Gameplay
             {
                 currentVelocity += selfGravity * Time.deltaTime;
                 _flyDuration += Time.deltaTime;
+
+                transform.Translate(currentVelocity * Time.deltaTime);
             }
         }
         public void SetVerticalVelocity(float newV)
